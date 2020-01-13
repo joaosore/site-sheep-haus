@@ -39,7 +39,7 @@ class PropertyMatchesController extends Controller
         $Alerts = Alert::where('property_id', '=', $id)->pluck('user_id')->toArray();
 
         return view('dashboard.owner.matches.index', [
-            'macths' => $Users_macth,
+            'matchs' => $Users_macth,
             'contract' => $contract,
             'property' => (object) array('id' => $id),
             'alerts' => $Users_alerts,

@@ -34,7 +34,7 @@
 						      {{ Form::open(array('route' => 'v_match', 'method' => 'post')) }}
 						          {{ Form::hidden('vacancy_id', $vacancy->id) }}
 								  <div class="links">
-						          	{{ Form::submit('Macth') }}
+						          	{{ Form::submit('Match') }}
 								  </div>
 						      {{ Form::close() }}
 						    @endif

@@ -11,7 +11,7 @@
 				<section class="adm-matches">
 					<a href="{{ route('property.update', [$property->id.'/edit/#perfil-macth']) }}" class="link">Configurações do macth</a>
 					<header class="titulo-matches">
-						<h1 class="titulo">Novos Matchs</h1>
+						<h1 class="titulo">Matches Sugeridos</h1>
 					</header>
 
 					@foreach ($alerts as $alert)
@@ -44,7 +44,7 @@
 						<h1 class="titulo">Matchs já realizados nesse imóvel</h1>
 					</header>
 
-					@foreach ($macths as $macth)
+					@foreach ($matchs as $macth)
 					<section class="bloco-quarto">
 						<header class="titulo-matches">
 							<h1 class="titulo">{{ $macth->name }}</h1>

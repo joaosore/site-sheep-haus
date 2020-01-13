@@ -31,8 +31,9 @@
 					      @if(!in_array($property->id ,$match))
 					        {{ Form::open(array('route' => 'match', 'method' => 'post')) }}
 					            {{ Form::hidden('property_id', $property->id) }}
+					            {{ Form::hidden('user_id', $property->user_id) }}
 							<div class="links">
-					            {{ Form::submit('Macth') }}
+					            {{ Form::submit('Match') }}
 							</div>
 					        {{ Form::close() }}
 					      @endif

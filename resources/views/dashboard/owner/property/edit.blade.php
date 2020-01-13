@@ -128,7 +128,7 @@
 				</div>
 				{{ Form::close() }}
 			</section>
-		<section id="perfil-macth" class="formulario--cadastro">
+		<section id="perfil-Match" class="formulario--cadastro">
 				<header class="cadastro-titulo">
 					<div class="icones">
 						<i data-font="" class="icone-formulario">M</i>

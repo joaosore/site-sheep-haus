@@ -39,7 +39,7 @@
 					</a>
 
 					<a class="vaga-imovel" href="{{ route('alert.index', [$property->id]) }}">
-					  Dar Macths
+					  Dar Matchs
 					</a>
   				</footer>
 			</div>
