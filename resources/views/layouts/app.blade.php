@@ -58,8 +58,8 @@
             </div>
 
             <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="nav-item dropdown"><a href="#">Tenho imóvel</a>
+                <ul class="nav-menu dropdown no-arrow">
+                    <li class="dropdown"><a href="#">Tenho imóvel</a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
                             <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
@@ -94,15 +94,14 @@
                     </li>
                     @guest
                         <li class="menu-active">
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
+                            <button class="btn btn-danger" style="margin-top: -10%;" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
                         </li>
                         @if (Route::has('register'))
                             <!-- <li class="lista-item">
                                 <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li> -->
                         @endif
-                    @else
-                        <!-- <li><a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre><span class="caret"></span></a> -->
+                    @else                        
                         <li><a href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
                             <ul>
                                 <li><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
