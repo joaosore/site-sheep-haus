@@ -73,15 +73,26 @@
 						@csrf                    
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" style="margin-left: 5px;" class="form-control" name="username" placeholder="E-mail" required="required">
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>                                
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="EMAIL" value="{{ old('email') }}" required autocomplete="email" autofocus>
                             </div>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" style="margin-left: 5px;" class="form-control" name="password" placeholder="Senha" required="required">
-                            </div>
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>                                
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="SENHA" required autocomplete="current-password">
+                            </div>                            
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>        
                         <div class="form-group">
                             <button type="submit" class="btn btn-success btn-block login-btn">{{ __('Login') }}</button>                            
