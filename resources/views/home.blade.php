@@ -12,7 +12,7 @@
                                 <figure class="logo--baner">
                                     <img src="{{ asset('images/icones/logo_extensa.png') }}" alt="">
                                 </figure>
-                                <h2 class="card-title">Dê macth e more com quem combina com você.</h2>
+                                <h2 class="card-title">Dê match e more com quem combina com você.</h2>
                                 <form action="" class="form-inline">
                                     <input class="form-control col-md-10" style="margin-right: 5px;" type="text" name="q" value="" placeholder="(55)0000-0000">
                                     <button type="submit" class="btn btn-danger">Buscar</button>
