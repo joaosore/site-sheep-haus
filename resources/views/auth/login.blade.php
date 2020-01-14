@@ -93,9 +93,32 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>        
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block login-btn">{{ __('Login') }}</button>                            
+                        </div>
+
+                        <!-- <div class="form-group row">
+							<div class="col-md-6 offset-md-4">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+									<label class="form-check-label" for="remember">
+										{{ __('Remember Me') }}
+									</label>
+								</div>
+							</div>
+						</div> -->
+
+                        <div class="form-group row mb-0 login">
+                            <div class="links" style="float: left; margin-left: 1.5rem;">
+                                @if (Route::has('password.request'))
+                                    <a class="esqueci btn btn-link" href="{{ route('password.request') }}">
+                                        {{ __('Esqueci a senha') }}
+                                    </a>
+                                @endif
+                            </div> 
+
+                            <div class="form-group col-md-7" style="margin-left: 2rem;">
+                                <button type="submit" class="btn btn-success btn-block login-btn">{{ __('Login') }}</button>                            
+                            </div>                                                       
                         </div>
                         
                         <div class="or-seperator"><i>ou</i></div>

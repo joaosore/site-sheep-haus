@@ -123,7 +123,55 @@
         <main>
             @yield('content')
         </main>
-		<footer class="rodape">
+        <div class="fixed-footer">
+            <div class="container">
+                <section>
+                    <!-- <div class="bs-example"> -->
+                        <ul class="list-inline pull-right;" style="margin-left: 32rem;">
+                            <li class="list-inline-item"><a href="#" class="nav-item nav-link disabled"><b>Tenho imóvel</b></a>
+                                <ul>
+                                    <li><a href="#">Divulgar</a></li>
+                                    <li><a href="#">Match moradores</a></li>
+                                    <li><a href="#"><b>Anunciar imóvel</b></a></li>
+                                </ul>
+                            </li>
+                            <li class="list-inline-item" style="margin-left: 5rem;"><a href="#" class="nav-item nav-link disabled"><b>Sou aluno</b></a>
+                                <ul>
+                                    <li><a href="#">Match imóveis</a><li>
+                                    <li><a href="#">Amigos</a><li>
+                                    <li><a href="#"><b>Procurar vagas</b></a></li>
+                                </ul> 
+                            </li>
+                            <li class="list-inline-item" style="margin-left: 5rem;"><a href="#" class="nav-item nav-link disabled"><b>Prestador de serviço</b></a>
+                                <ul>
+                                    <li><a href="#">Anunciar</a></li>
+                                    <li><a href="#"></a></li><br>
+                                    <li><a href="#"><b>Anunciar serviços</b></a></li>
+                                </ul>                                
+                            </li>                              
+                        </ul>
+                    <!-- </div> -->
+                </section>
+                <section>
+                    <nav class="navbar navbar-expand-md">
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <div class="navbar-nav">
+                                <a href="#" class="nav-item nav-link">Sobre</a>
+                                <a href="#" class="nav-item nav-link">Contato</a>
+                                <a href="#" class="nav-item nav-link">Termo</a>
+                                <a href="#" class="nav-item nav-link" style="margin-left: 15rem;"><i class="fa fa-copyright"></i> {{date('Y')}} @lang('general.terms')</a>
+                            </div>
+                            <div class="navbar-nav ml-auto">
+                                <a href="#" class="nav-item nav-link disabled">Follow</a>
+                                <a href="#" target="_blank" style="margin-top: 0.5rem;"><i class="fab fa-facebook"></i></a>
+                                <a href="#" target="_blank" style="margin-top: 0.5rem; margin-left: 0.75rem;"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </nav>
+                </section>
+            </div>
+        </div>
+		<!-- <footer class="rodape">
 			<div class="centralizar">
 				<nav class="menu--rodape">
 					<section class="menu--linguagem" id="navbarSupportedContent">
@@ -184,29 +232,10 @@
 								<a href="{{route('home')}}">Anunciar vaga</a>
 							</li>
 						</ul>
-					</section>
-					<section class="menu--base">
-						<nav class="base-menu">
-							<ul class="base-lista">
-								<li class="base-itens"><a href="">Sobre</a></li>
-								<li class="base-itens"><a href="">Contato</a></li>
-								<li class="base-itens"><a >Termo</a></li>
-							</ul>
-							<div class="copyright">
-								<p class="texto">
-									© {{date('Y')}} @lang('general.terms')
-								</p>
-							</div>
-							<div class="compartilhar">
-								<p class="texto">Follow</p>
-								<a href=""><i class="icone facebook" data-fonte="&#xf09a;"></i></a>
-								<a href=""><i class="icone twitter" data-fonte="&#xf099;"></i></a>
-							</div>
-						</nav>
-					</section>
+					</section>					
 				</nav>
 			</div>
-		</footer>
+		</footer> -->
     </div>
 </body>
 </html>
