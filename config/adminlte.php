@@ -113,7 +113,7 @@ return [
     */
 
     'right_sidebar' => false,
-    'right_sidebar_icon' => 'fas fa-cogs',
+    'right_sidebar_icon' => '',
     'right_sidebar_theme' => '',
     'right_sidebar_slide' => false,
     'right_sidebar_push' => false,
