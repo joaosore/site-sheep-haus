@@ -49,7 +49,7 @@ return [
     |
     */
 
-    'layout_topnav' => '',
+    'layout_topnav' => null,
     'layout_boxed' => '',
     'layout_fixed_sidebar' => '',
     'layout_fixed_navbar' => '',
