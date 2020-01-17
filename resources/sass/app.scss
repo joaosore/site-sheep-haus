@@ -19,8 +19,12 @@
 // Components
 @import "components/header";
 @import "components/header";
+@import "components/footer";
 @import "components/buttons";
 
 // Pages
+@import "pages/pages";
 @import "pages/login";
 @import "pages/home";
+@import "pages/register";
+@import "pages/registration";
