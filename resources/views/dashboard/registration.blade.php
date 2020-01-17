@@ -52,15 +52,15 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('telephone', 'Telefone') }}
-                        {{ Form::text('telephone', null, array('class'=>'form-control')) }}
+                        {{ Form::text('telephone', null, array('class'=>'form-control m_phone_with_ddd', 'placeholder' => '(__) _____-____')) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('cell_phone', 'Celular') }}
-                        {{ Form::text('cell_phone', null, array('class'=>'form-control')) }}
+                        {{ Form::text('cell_phone', null, array('class'=>'form-control m_celphone_only_numbers', 'placeholder' => '__ __ _________')) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('birthday', 'Data de nascimento') }}
-                        {{ Form::text('birthday', null, array('class'=>'form-control')) }}
+                        {{ Form::text('birthday', null, array('class'=>'form-control m_date', 'placeholder' => '__/__/____')) }}
                     </div>
 
                     @if ($errors->any())
@@ -72,9 +72,18 @@
                         </ul>
                     </div>
                     @endif
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
                     <br />
-                    {{ Form::submit('Salvar', array('class'=>'btn btn-success float-right')) }}
+                    {{ Form::submit('Avançar', array('class'=>'btn btn-lg btn-success float-right')) }}
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
         {{ Form::close() }}

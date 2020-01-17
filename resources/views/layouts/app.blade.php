@@ -105,9 +105,9 @@
                                     <li>
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
-                                            <li class="dropdown-item"><a href="{{ route('profile') }}" class="dropdown-item">Profile</a></li>
-                                            <li class="dropdown-item"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('profile') }}">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
