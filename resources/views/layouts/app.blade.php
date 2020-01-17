@@ -10,8 +10,8 @@
     <title>{{ config('app.name', 'Sheep Haus') }}</title>
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('images/logo-sheep-haus-element.png') }}" rel="icon">
+    <link href="{{ asset('images/logo-sheep-haus-element.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -54,17 +54,68 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col col-2">
-                        <div id="logo" class="pull-left">
+                    <div class="col col-1">
+                        <div class="site-logo">
                             <h1>
                                 <a class="navbar-brand" href="{{ url('/') }}">
-                                    <img src="{{ asset('images/logo-sheep-haus.png') }}" alt="{{ config('app.name', 'Sheep Haus') }}" class="img-fluid" />
+                                    <img src="{{ asset('images/logo-sheep-haus-element.png') }}" alt="{{ config('app.name', 'Sheep Haus') }}" class="img-fluid" />
                                 </a>
                             </h1>
                         </div>
                     </div>
 
-                    <div class="col col-10">
+                    <div class="col col-11">
+                        <nav id="nav-menu-container">
+                            <ul class="nav float-right">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Criar imóvel</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Criar república</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Procurar vaga</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Anunciar vaga</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Anunciar</a>
+                                </li>
+                                @guest
+                                    <li class="nav-item menu-active">
+                                        <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('Entrar') }}</button>                            
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <!-- <li class="lista-item">
+                                            <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li> -->
+                                    @endif
+                                @else                        
+                                    <li>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('profile') }}" class="dropdown-item">Profile</a></li>
+                                            <li class="dropdown-item"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form></li>                                                                        
+                                        </ul>
+                                    </li>
+                                @endguest    
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=en">BR</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=es">ES</a></li>
+                                    </ul>
+                                </li>                  
+                            </ul>
+                        </nav><!-- #nav-menu-container -->
+{{-- 
                         <nav id="nav-menu-container">
                             <ul class="nav">
                                 <li class="nav-item dropdown">
@@ -106,7 +157,7 @@
                                 </li>
                                 @guest
                                     <li class="nav-item menu-active">
-                                        <button class="btn btn-danger" style="margin-top: -10%;" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
+                                        <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('Entrar') }}</button>                            
                                     </li>
                                     @if (Route::has('register'))
                                         <!-- <li class="lista-item">
@@ -128,7 +179,8 @@
                                     </li>
                                 @endguest                    
                             </ul>
-                        </nav><!-- #nav-menu-container -->
+                        </nav><!-- #nav-menu-container --> --}}
+
                     </div>
                 </div>
             </div>

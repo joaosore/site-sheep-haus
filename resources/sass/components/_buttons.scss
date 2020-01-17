@@ -1,0 +1,11 @@
+
+// Buttons SCSS
+
+.btn {
+    border-radius: 0.25rem !important;
+
+    &.btn-padding {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
