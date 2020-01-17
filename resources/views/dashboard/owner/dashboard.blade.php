@@ -1,47 +1,66 @@
-@extends('../layouts.app')
+
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+@stop
+
 @section('content')
-<div class="container">
+<div class="box">
+    <div class="box-header">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="box-title">Dashboard Proprietário</h3>
+            </div>
+            <div class="col-md-4 pull-right">
+                <a href="{{ route('property.create') }}" class="btn btn-primary pull-right">Novo anuncio</a>
+                <a href="{{ route('properties') }}" class="btn btn-info pull-right" style="margin-right: 5px;">Meus Imóveis</a>
+            </div>
+        </div>                        
+    </div>
+    
+    <div class="box-body">
+        <h4 class="titulo">IMÓVEIS ANUNCIADOS</h4>
+        <section class="adm-imovel">
+            @foreach ($properties as $property)
+                <div class="imovel">
+                    <header>
+                        @foreach ($property->galeries as $key => $item)
+                            @if($key === 0)
+                                <figure style="background-image: url('/images/{{ $item->src }}')"></figure>
+                            @endif
+                        @endforeach
+                        <h1 class="titulo">{{ $property->title }}</h1>
+                    </header>
+                    <p class="texto">{{ $property->description }}</p>
+                    <div class="info">
+                    <p class="valor">R$ {{ $property->account->SUM('value') }}</p>
+                        <p class="metragem"> {{ $property->property_size }} m²</p>
+                    </div>
+                    <a href="{{ route('match_property', [$property->id]) }}" class="link">VER MATCHES</a>
+                    <a href="" class="link destacar"><i data-fonte="" class="icone">M</i>DESTACAR ANÚNCIO</a>
+                    <div class="links">
+                        <a href="{{ route('property.edit', $property->id ) }}" class="link editar">EDITAR</a>
+                        {{ Form::open(array('route' => 'property.destroy', 'method' => 'delete')) }}
+                        {{ Form::submit('APAGAR', ['class' => 'link apagar']) }}
+                        {{ Form::hidden('property_id', $property->id) }}
+                    </div>
+                </div>
+            @endforeach
+        </section>
+    </div>
 	<div class="flex-center position-ref full-height">
-		<div class="content centralizar bloco-adm">
-			<section class="adm-unico-bloco">
-				<header class="adm-breadcrumb">Dashboard</header>
-			</section>
+		<div class="content centralizar bloco-adm"> 
 			<section class="adm-primeiro-bloco">
 				<section class="adm-vagas">
 					<div class="bloco-menu">
-						<a href="{{ route('property.create') }}" class="link">Novo anuncio</a>
-						<a href="{{ route('properties') }}" class="link">Meus Imóveis</a>
+
 					</div>
 					<header class="titulo-contas">
 						<h1 class="titulo">IMÓVEIS ANUNCIADOS</h1>
 					</header>
-					<section class="adm-imovel">
-						@foreach ($properties as $property)
-							<div class="imovel">
-								<header>
-									@foreach ($property->galeries as $key => $item)
-										@if($key === 0)
-											<figure style="background-image: url('/images/{{ $item->src }}')"></figure>
-										@endif
-									@endforeach
-									<h1 class="titulo">{{ $property->title }}</h1>
-								</header>
-								<p class="texto">{{ $property->description }}</p>
-								<div class="info">
-								<p class="valor">R$ {{ $property->account->SUM('value') }}</p>
-									<p class="metragem"> {{ $property->property_size }} m²</p>
-								</div>
-								<a href="{{ route('match_property', [$property->id]) }}" class="link">VER MATCHES</a>
-								<a href="" class="link destacar"><i data-fonte="" class="icone">M</i>DESTACAR ANÚNCIO</a>
-								<div class="links">
-									<a href="{{ route('property.edit', $property->id ) }}" class="link editar">EDITAR</a>
-									{{ Form::open(array('route' => 'property.destroy', 'method' => 'delete')) }}
-									{{ Form::submit('APAGAR', ['class' => 'link apagar']) }}
-									{{ Form::hidden('property_id', $property->id) }}
-								</div>
-							</div>
-						@endforeach
-					</section>
+					
 				</section>
 				
 			</section>
@@ -123,4 +142,4 @@
 		</div>
 	</div>
 </div>
-@endsection
+@stop
