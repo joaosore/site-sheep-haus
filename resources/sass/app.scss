@@ -1,7 +1,9 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
+
 //reset CSS
 @import "reset";
+
 // Variables
 @import "variables";
 
@@ -9,9 +11,14 @@
 @import "~bootstrap/scss/bootstrap";
 
 // resources/assets/sass/app.scss
-
 @import "~jquery-ui/themes/base/all.css";
-
 
 // Conteúdo Original
 @import "layout";
+
+// Components
+@import "components/header";
+@import "components/footer";
+
+// Pages
+@import "pages/home";

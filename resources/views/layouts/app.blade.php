@@ -19,7 +19,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -50,72 +50,88 @@
 <body>
 	@include('../auth.login')
 
-    <header id="header">
-        <div class="container-fluid" style="background: rgb(169, 7, 7);">
+    <header class="site-header">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-2">
+                        <div id="logo" class="pull-left">
+                            <h1>
+                                <a class="navbar-brand" href="{{ url('/') }}">
+                                    <img src="{{ asset('images/logo-sheep-haus.png') }}" alt="{{ config('app.name', 'Sheep Haus') }}" class="img-fluid" />
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
 
-            <div id="logo" class="pull-left">
-                <h1><a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Sheep Haus') }}</a></h1>
-            </div>
-
-            <nav id="nav-menu-container">
-                <ul class="nav-menu dropdown no-arrow">
-                    <li class="dropdown"><a href="#">Tenho imóvel</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
-                            <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Sou aluno</a>
-                        <ul>
-                            <li><a href="{{route('home')}}">Match imóveis</a></li>
-                            <li><a href="{{route('home')}}">Amigos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Prestador Serviços</a>
-                        <ul>
-                            <li><a href="{{route('home')}}">Anunciar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Procurar vaga</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Anunciar Serviços</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Anunciar vaga</a>
-                    </li>
-                    <li><a href="#">BR</a>
-                        <ul>
-                            <li><a href="{{Request::url()}}?locale=en">BR</a></li>
-                            <li><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
-                            <li><a href="{{Request::url()}}?locale=es">ES</a></li>
-                        </ul>
-                    </li>
-                    @guest
-                        <li class="menu-active">
-                            <button class="btn btn-danger" style="margin-top: -10%;" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
-                        </li>
-                        @if (Route::has('register'))
-                            <!-- <li class="lista-item">
-                                <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li> -->
-                        @endif
-                    @else                        
-                        <li><a href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <ul>
-                                <li><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
-                                <li><a href="{{ route('profile') }}" class="dropdown-item">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form></li>                                                                        
+                    <div class="col col-10">
+                        <nav id="nav-menu-container">
+                            <ul class="nav">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Match imóveis</a></li>
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Amigos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Prestador Serviços</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Anunciar</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Procurar vaga</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Anunciar Serviços</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('home')}}">Anunciar vaga</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=en">BR</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=es">ES</a></li>
+                                    </ul>
+                                </li>
+                                @guest
+                                    <li class="nav-item menu-active">
+                                        <button class="btn btn-danger" style="margin-top: -10%;" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <!-- <li class="lista-item">
+                                            <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li> -->
+                                    @endif
+                                @else                        
+                                    <li>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('profile') }}" class="dropdown-item">Profile</a></li>
+                                            <li class="dropdown-item"><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form></li>                                                                        
+                                        </ul>
+                                    </li>
+                                @endguest                    
                             </ul>
-                        </li>
-                    @endguest                    
-                </ul>
-            </nav><!-- #nav-menu-container -->
+                        </nav><!-- #nav-menu-container -->
+                    </div>
+                </div>
+            </div>
         </div>
     </header><!-- #header -->
 
@@ -123,7 +139,7 @@
         <main>
             @yield('content')
         </main>
-        <div class="fixed-footer">
+        <footer class="fixed-footer site-footer">
             <div class="container">
                 <section>
                     <!-- <div class="bs-example"> -->
@@ -170,7 +186,7 @@
                     </nav>
                 </section>
             </div>
-        </div>
+        </footer>
 		<!-- <footer class="rodape">
 			<div class="centralizar">
 				<nav class="menu--rodape">

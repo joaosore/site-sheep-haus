@@ -1,6 +1,16 @@
 // Body
 $corpo-bg: #f6f6f7;
 
+// Bootstrap Customize
+$grid-gutter-width: 30px;
+// $container-large-desktop: (1160px + $grid-gutter-width) !default;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1172px
+);
+
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
