@@ -10,8 +10,8 @@
     <title>{{ config('app.name', 'Sheep Haus') }}</title>
 
     <!-- Favicons -->
-    <link href="img/favicon.png" rel="icon">
-    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="{{ asset('images/logo-sheep-haus-element.png') }}" rel="icon">
+    <link href="{{ asset('images/logo-sheep-haus-element.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -19,7 +19,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}" /> --}}
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -47,75 +47,88 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/icons/font-awesome.css') }}" rel="stylesheet">
 </head>
-<body>
+@guest
+<body class="site-body">
+@else
+<body class="site-body user-logged">
+@endguest  
 	@include('../auth.login')
 
-    <header id="header">
-        <div class="container-fluid" style="background: rgb(169, 7, 7);">
+    <header class="site-header">
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-1">
+                        <div class="site-logo">
+                            <h1>
+                                <a class="navbar-brand" href="{{ url('/') }}">
+                                    <img src="{{ asset('images/logo-sheep-haus-element.png') }}" alt="{{ config('app.name', 'Sheep Haus') }}" class="img-fluid" />
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
 
-            <div id="logo" class="pull-left">
-                <h1><a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'Sheep Haus') }}</a></h1>
-            </div>
-
-            <nav id="nav-menu-container">
-                <ul class="nav-menu dropdown no-arrow">
-                    <li class="dropdown"><a href="#">Tenho imóvel</a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
-                            <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Sou aluno</a>
-                        <ul>
-                            <li><a href="{{route('home')}}">Match imóveis</a></li>
-                            <li><a href="{{route('home')}}">Amigos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Prestador Serviços</a>
-                        <ul>
-                            <li><a href="{{route('home')}}">Anunciar</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Procurar vaga</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Anunciar Serviços</a>
-                    </li>
-                    <li>
-                        <a href="{{route('home')}}">Anunciar vaga</a>
-                    </li>
-                    <li><a href="#">BR</a>
-                        <ul>
-                            <li><a href="{{Request::url()}}?locale=en">BR</a></li>
-                            <li><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
-                            <li><a href="{{Request::url()}}?locale=es">ES</a></li>
-                        </ul>
-                    </li>
-                    @guest
-                        <li class="menu-active">
-                            <button class="btn btn-danger" style="margin-top: -10%;" data-toggle="modal" data-target="#login">{{ __('Login') }}</button>                            
-                        </li>
-                        @if (Route::has('register'))
-                            <!-- <li class="lista-item">
-                                <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li> -->
-                        @endif
-                    @else                        
-                        <li><a href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <ul>
-                                <li><a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a></li>
-                                <li><a href="{{ route('profile') }}" class="dropdown-item">Profile</a></li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form></li>                                                                        
+                    <div class="col col-11">
+                        
+                        <nav id="nav-menu-container ">
+                            <ul class="nav float-right">
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Match imóveis</a></li>
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Amigos</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou prestador de serviço</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{route('home')}}">Anunciar</a></li>
+                                    </ul>
+                                </li>
+                                @guest
+                                    <li class="nav-item menu-active">
+                                        <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('Entrar') }}</button>                            
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <!-- <li class="lista-item">
+                                            <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li> -->
+                                    @endif
+                                @else                        
+                                    <li>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('profile') }}">Perfil</a></li>
+                                            <li class="dropdown-item"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
+        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form></li>                                                                        
+                                        </ul>
+                                    </li>
+                                @endguest  
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=en">BR</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
+                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=es">ES</a></li>
+                                    </ul>
+                                </li>                  
                             </ul>
-                        </li>
-                    @endguest                    
-                </ul>
-            </nav><!-- #nav-menu-container -->
+                        </nav><!-- #nav-menu-container -->
+
+                    </div>
+                </div>
+            </div>
         </div>
     </header><!-- #header -->
 
@@ -123,7 +136,7 @@
         <main>
             @yield('content')
         </main>
-        <div class="fixed-footer">
+        {{-- <footer class="fixed-footer site-footer">
             <div class="container">
                 <section>
                     <!-- <div class="bs-example"> -->
@@ -156,10 +169,8 @@
                     <nav class="navbar navbar-expand-md">
                         <div class="collapse navbar-collapse" id="navbarCollapse">
                             <div class="navbar-nav">
-                                <a href="#" class="nav-item nav-link">Sobre</a>
-                                <a href="#" class="nav-item nav-link">Contato</a>
-                                <a href="#" class="nav-item nav-link">Termo</a>
-                                <a href="#" class="nav-item nav-link" style="margin-left: 15rem;"><i class="fa fa-copyright"></i> {{date('Y')}} @lang('general.terms')</a>
+                                <a href="#" class="nav-item nav-link">Termos de uso</a>
+                                <a href="#" class="nav-item nav-link" style="margin-left: 15rem;">&copy; {{date('Y')}} Todos os direitos reservados</a>
                             </div>
                             <div class="navbar-nav ml-auto">
                                 <a href="#" class="nav-item nav-link disabled">Follow</a>
@@ -170,18 +181,18 @@
                     </nav>
                 </section>
             </div>
-        </div>
-		<!-- <footer class="rodape">
+        </footer> --}}
+		<footer class="rodape">
 			<div class="centralizar">
 				<nav class="menu--rodape">
 					<section class="menu--linguagem" id="navbarSupportedContent">
 						<a class="logo" href="{{ url('/') }}">
 							<figure>
-								<img src="images/icones/logo_completa.png" alt="">
+                                <img src="{{ asset('images/logo-sheep-haus.png') }}" alt="{{ config('app.name', 'Sheep Haus') }}" class="img-fluid" />
 							</figure>
 						</a>
 						<div class="dropdown">
-							<div class="botao-dropdown">BR</div>
+							<div class="botao-dropdown">Brasil</div>
 							<input type="checkbox" id="dropdown">
 							<ul class="dropdown-menu">
 								<li><a href="">EN</a></li>
@@ -215,27 +226,40 @@
 								</ul>
 							</li>
 							<li class="lista-item">
-								<p>Prestador Serviços</p>
+								<p>Sou prestador de serviço</p>
 								<ul class="sub_menu--itens_lista">
 									<li class="sub-lista-item">
 										<a href="{{route('home')}}">Anunciar</a>
 									</li>
 								</ul>
 							</li>
-							<li class="lista-item">
-								<a href="{{route('home')}}">Procurar vaga</a>
-							</li>
-							<li class="lista-item">
-								<a href="{{route('home')}}">Anunciar Serviços</a>
-							</li>
-							<li class="lista-item">
-								<a href="{{route('home')}}">Anunciar vaga</a>
-							</li>
 						</ul>
 					</section>					
 				</nav>
-			</div>
-		</footer> -->
+            </div>
+            
+			<div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section>
+                            <nav class="navbar navbar-expand-md">
+                                <div class="collapse navbar-collapse" id="navbarCollapse">
+                                    <div class="navbar-nav">
+                                        <a href="/termos" class="nav-item nav-link">Termos de uso</a>
+                                        <a href="#" class="nav-item nav-link" style="margin-left: 10rem;">&copy; {{date('Y')}} Todos os direitos reservados</a>
+                                    </div>
+                                    <div class="navbar-nav ml-auto">
+                                        <a href="#" class="nav-item nav-link disabled" style="margin-left: 10rem;">Siga</a>
+                                        <a href="https://facebook.com" target="_blank" style="margin-top: 0.5rem;"><i class="fab fa-facebook"></i></a>
+                                        <a href="https://twitter.com" target="_blank" style="margin-top: 0.5rem; margin-left: 0.75rem;"><i class="fab fa-twitter"></i></a>
+                                    </div>
+                                </div>
+                            </nav>
+                        </section>
+                    </div>
+                </div>
+            </div>
+		</footer>
     </div>
 </body>
 </html>

@@ -1,0 +1,18 @@
+
+// Register SCSS
+
+.register-page {
+    padding-top: 140px;
+
+    .register-box {
+        .register-logo {
+            display: none;
+        }
+
+        .register-box-body {
+            max-width: 400px;
+            margin: 0 auto;
+            padding-bottom: 150px;
+        }
+    }
+}

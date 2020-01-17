@@ -1,0 +1,148 @@
+// Home SCSS
+
+.home-page {
+    .first-section {
+        background-image: url('/images/background/home-background.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        // height: 500px;
+        padding-bottom: 90px;
+        padding-top: 180px;
+
+        .logo-banner {
+            img {
+                height: 50px;
+            }
+        }
+
+        .card-title {
+            color: $text-cinza;
+            font-size: 3rem;
+            font-weight: 100;
+            line-height: 1.1;
+        }
+
+        input.form-control {
+            border: 0;
+            border-bottom: 2px solid #666666;
+            padding-left: 0;
+            font-size: 26px;
+            font-weight: bold;
+            outline: none;
+
+            &:focus {
+                background: transparent;
+                box-shadow: none;
+            }
+
+            &::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: $vermelho-site;
+                opacity: 1; /* Firefox */
+            }
+
+            &:-ms-input-placeholder { /* Internet Explorer 10-11 */
+                color: $vermelho-site;
+            }
+
+            &::-ms-input-placeholder { /* Microsoft Edge */
+                color: $vermelho-site;
+            }
+        }
+
+        .btn {
+            color: #fff;
+        }
+
+        .btn-announce {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 50px;
+            padding-left: 1px;
+            padding-right: 1px;
+            position: relative;
+
+            &:before {
+                background: #28a745;
+                height: 2px;
+                bottom: 5px;
+                content: ' ';
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    /*-- CHAMADA EXPLICATIVA PADRÃO --*/
+    section.bloco--monte{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background: $branco-padrao;
+        @include padding-bloco;
+
+        &--cinza {
+            background: $azul-gradiante;
+        }
+
+        .centralizar{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        header.titulo--padrao {
+            h1.titulo{
+                color: $vermelho-site;
+                font-weight: 100;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        .bloco-terco{
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            justify-content: center;
+            @include margem-padrao;
+        }
+
+        .bloco-terco figure{
+            @include margem-padrao;
+            @include bubble-grande;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bloco-terco figure div.bubble{
+            @include bubble-pequeno;
+            position: absolute;
+            right: 20px;
+            top: 105px;
+        }
+
+        .bloco-terco header.titulo--bloco{
+            width: 100%;
+            text-align: center;
+            @include margem-padrao-base;
+        }
+
+        .bloco-terco header.titulo--bloco h3.sub-titulo{
+            color: $azul-site;
+        }
+
+        .bloco-terco p.texto{
+            text-align: center;
+            color: $preto-padrao;
+        }
+    }
+    /*-- FINAL CHAMADA EXPLICATIVA PADRÃO --*/
+}

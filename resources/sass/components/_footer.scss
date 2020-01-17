@@ -1,0 +1,240 @@
+
+// Footer SCSS
+
+.site-footer {
+    
+}
+
+
+/*-- RODAPE --*/
+
+i.facebook,
+i.twitter{
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	color: $branco-padrao;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 5px;
+}
+
+i.facebook{
+	background: $facebook;
+}
+
+i.twitter{
+	background: $twitter;
+}
+
+footer.rodape{
+	position: relative;
+	width: 100%;
+	background: $branco-padrao;
+    min-height: 300px;
+    padding: 20px 0 50px 0;
+	border-top: 1px solid $cinza-site;
+
+	nav.menu--rodape{
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	nav.menu--rodape .menu--linguagem{
+		width: calc(40% - 140px);
+		@include margem-padrao;
+	}
+
+	nav.menu--rodape .menu--linguagem a.logo{
+		@include margem-padrao-base;
+	}
+
+	nav.menu--rodape .menu--linguagem a.logo figure{
+		@include margem-padrao-base;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown{
+		position: relative;
+		height: 45px;
+		width: 100%;
+		@include padrao-dropdown;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown div.botao-dropdown{
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		pointer-events: none;
+		width: 100%;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown input[type=checkbox]{
+		width: 100%;
+		height: 100%;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown ul.dropdown-menu{
+		display: none;
+		position: absolute;
+		top: 45px;
+		width: 100%;
+		background: $branco-padrao;
+		@include padrao-dropdown;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown ul.dropdown-menu li{
+		position: relative;
+		width: 100%;
+		padding: 5px;
+		&:hover{
+			background: darken($branco-padrao, 5%);
+		}
+	}
+	nav.menu--rodape .menu--linguagem div.dropdown ul.dropdown-menu li a{
+		position: relative;
+		display: block;
+		width: 100%;
+	}
+
+	nav.menu--rodape .menu--linguagem div.dropdown input[type=checkbox]:checked + ul.dropdown-menu{
+		display: block;
+	}
+
+	nav.menu--rodape .menu--itens{
+		width: 60%;
+		@include margem-padrao-base;
+		margin-left: 140px;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	nav.menu--rodape .menu--itens ul.menu--itens_lista{
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		align-content: flex-start;
+	}
+
+	nav.menu--rodape .menu--itens ul.menu--itens_lista li.lista-item{
+		width: calc(100% / 3);
+		color: $preto-padrao;
+		@include margem-padrao-topo;
+		&:nth-child(4) a,
+		&:nth-child(5) a,
+		&:nth-child(6) a{
+			font-weight: bold;
+		}
+	}
+
+	nav.menu--rodape .menu--itens ul.menu--itens_lista li.lista-item p{
+		color: #ccc;
+		font-weight: bold;
+		pointer-events: none;
+		margin-bottom: 5px;
+	}
+
+	nav.menu--rodape .menu--itens ul.menu--itens_lista li.lista-item a{
+		color: $azul-site;
+	}
+
+	nav.menu--rodape .menu--itens ul.menu--itens_lista li.lista-item ul li.sub-lista-item{
+		color: $azul-site;
+		height: 30px;
+	}
+
+	nav.menu--rodape .menu--base{
+		width: 100%;
+		display: flex;
+		@include margem-padrao-topo;
+	}
+
+	nav.menu--rodape .menu--base nav.base-menu{
+		display: flex;
+		width: 100%;
+	}
+
+	nav.menu--rodape .menu--base nav.base-menu ul.base-lista{
+		width: calc(40% - 140px);
+		@include margem-padrao;
+		display: flex;
+		justify-content: space-between;
+		color: $texto-destaque;
+	}
+
+	nav.menu--rodape .menu--base nav.base-menu div.copyright{
+		width: 30%;
+		@include margem-padrao;
+		margin-left: 140px;
+	}
+	nav.menu--rodape .menu--base nav.base-menu div.compartilhar{
+		width: 20%;
+		@include margem-padrao;
+		margin-left: 50px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+}
+
+@media screen and (max-width: 1000px){
+	footer.rodape nav.menu--rodape{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	footer.rodape nav.menu--rodape .menu--linguagem{
+		text-align: center;
+	}
+
+	footer.rodape nav.menu--rodape .menu--itens{
+		margin-left: 0px;
+		justify-content: center;
+	}
+
+	footer.rodape nav.menu--rodape .menu--itens ul.menu--itens_lista{
+		justify-content: space-between;
+	}
+
+	footer.rodape nav.menu--rodape .menu--itens ul.menu--itens_lista li.lista-item{
+		width: calc(50% - 10px);
+		padding-bottom: 10px;
+		text-align: center;
+		border-bottom: 1px solid $cinza-site;
+	}
+
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu{
+		flex-direction: none;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu ul.base-lista{
+		width: calc(50% - 10px);
+	}
+
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu div.copyright{
+		margin-left: 0px;
+	}
+
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu div.compartilhar{
+		width: 100%;
+		justify-content: center;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 500px){
+	footer.rodape nav.menu--rodape .menu--linguagem,
+	footer.rodape nav.menu--rodape .menu--itens,
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu ul.base-lista,
+	footer.rodape nav.menu--rodape .menu--base nav.base-menu div.copyright{
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/*-- FINAL RODAPE --*/

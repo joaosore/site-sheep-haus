@@ -1,0 +1,16 @@
+
+// ALL PAGES. SCSS
+
+.pt-page {
+    padding-top: 130px;
+}
+
+header {
+    &.titulo--padrao {
+        .titulo {
+            color: $facebook;
+            font-weight: 100;
+            text-align: left;
+        }
+    }
+}

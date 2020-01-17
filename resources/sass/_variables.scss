@@ -12,6 +12,7 @@ $font-roboto: 'Roboto', sans-serif;
 $vermelho-site: #d0021b;
 $verde-site: #00ac1c;
 $azul-site: #0051ac;
+$text-cinza: #504846;
 $texto-padrao: #666a70;
 $texto-destaque: #949fb7;
 $preto-padrao: #333;
@@ -22,6 +23,22 @@ $cinza-site: #c1c8d7;
 $cinza-icones: #8a94aa;
 $facebook: #3b5998;
 $twitter: #1dcaff;
+
+
+// Bootstrap Customize
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1220px
+);
+
+$theme-colors: (
+	"success": $verde-site,
+	"primary": $azul-site,
+	"danger": $vermelho-site
+);
+
 
 // MIXINS
 
