@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-<div class="panel panel-default col-md-8" style="float: left; margin-right: 2px;">
+<div class="panel panel-default col-md-8" style="float: left; margin-right: 15px;">
     <div class="row">
         <div class="box">
             <div class="box-header">
@@ -54,15 +54,12 @@
                                 </div>
 
                                 <div style="height: 10px;"></div>
-                                
-                                <a href="{{ route('match_property', [$property->id]) }}" class="btn btn-info">VER MATCHES</a>
-
-                                <div style="height: 20px;"></div>
 
                                 <a href="" class="btn btn-primary btn-lg btn-block">DESTACAR ANÚNCIO</a>
                             </div>
 
-                            <div class="box-footer">                        
+                            <div class="box-footer"> 
+                                <a href="{{ route('match_property', [$property->id]) }}" class="btn btn-info" style="float: left;">VER MATCHES</a>                       
                                 {{ Form::open(array('route' => 'property.destroy', 'method' => 'delete')) }}
                                     {{ Form::submit('APAGAR', ['class' => 'btn btn-danger pull-right']) }}
                                     {{ Form::hidden('property_id', $property->id) }}
