@@ -13,16 +13,14 @@ class MessageControllers extends Controller
 {
 
     public function index() {
-
+        return view('dashboard.chat.index ');
     }
 
-    public function create($recipient, $property) {
+    public function subject($recipient, $property) {
 
         $auth = Auth::user();
         $auth_login = $auth->id;
 
-        $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->get();
-        
         $subjects = Subject::where('from', '=', $auth_login)
                             ->where('to', '=', $recipient)
                             ->where('property_id', '=', $property)
@@ -31,14 +29,24 @@ class MessageControllers extends Controller
                             ->where('property_id', '=', $property)
                             ->get();
 
-        return view('dashboard.chat.create', [
+        return response()->json([
             'auth_login' => $auth_login,
             'recipient' => $recipient,
             'property' => $property,
             'subjects' => $subjects,
+        ]);
+    }
+
+    public function chat() {
+
+        $auth = Auth::user();
+        $auth_login = $auth->id;
+
+        $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->get();
+
+        return response()->json([
             'mensages' => $mensages
         ]);
-
     }
 
     public function store($recipient, $property, Request $request) {

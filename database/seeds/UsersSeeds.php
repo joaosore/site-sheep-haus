@@ -46,7 +46,7 @@ class UsersSeeds extends Seeder
                 'function' => 'S',
                 'telephone' => '+551111111111',
                 'cell_phone' => '+5511111111111',
-                'email' => 'prestadorserviço@teste.com.br',
+                'email' => 'prestadorservico@teste.com.br',
                 'gender' => 'M',
                 'birthday' => '11/11/1111',
                 'password' => bcrypt('12345678'),

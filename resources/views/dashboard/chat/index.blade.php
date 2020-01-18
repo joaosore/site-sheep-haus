@@ -1,4 +1,4 @@
-@foreach($emails as $key => $email)
+{{-- @foreach($emails as $key => $email)
   @php 
     if($email->to == $auth_login) {
       $user = $email->getUserFrom;
@@ -15,4 +15,5 @@
       Data: {{ $email->updated_at }}
     </div>
   </a>
-@endforeach
+@endforeach --}}
+
