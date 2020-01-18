@@ -1,10 +1,5 @@
 
-@extends('adminlte::page')
-
-@section('title', 'Dashboard')
-
-@section('content_header')
-@stop
+@extends('../layouts.app')
 
 @section('content')
 <div class="panel panel-default col-md-8" style="float: left; margin-right: 15px;">

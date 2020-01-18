@@ -87,27 +87,7 @@
 							<a href=""><i data-fonte="" class="icone-mensagens">3</i></a>
 						</header>
 						<ul class="lista-mensagens">
-							@foreach($mensages as $key => $mensage)
-								@php 
-									if($mensage->to == $auth_login) {
-										$item = $mensage->getUserFrom;
-									} else {
-										$item = $mensage->getUserTo;
-									}
-								@endphp
-								<li class="mensagens-item">
-									<a href="{{route('email.create', [$item->id, $mensage->property_id])}}">
-										<header class="item-titulo">
-											<h3 class="titulo-nome">{{ $item->name }}</h3>
-										</header>
-										<p class="texto">{{ $mensage->last_mensagem }}</p>
-										<footer class="item-rodape">
-											<p class="item-data">{{ date_format($mensage->updated_at, 'd/m/Y') }}</p>
-											<p class="item-hora">{{ date_format($mensage->updated_at, 'H:i') }}</p>
-										</footer>
-									</a>
-								</li>
-							@endforeach
+							
 						</ul>
 					</section>
 					<section class="anunciar-vaga">
