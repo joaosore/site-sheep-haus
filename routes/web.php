@@ -125,11 +125,11 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //Email
-    Route::get('chats','MessageControllers@index')->name('email');
+    Route::get('chats','MessageControllers@index')->name('chats');
 
     // Return JSON
-    Route::get('api/chats/{recipient}/{property}','MessageControllers@subject')->name('email.subject');
-    Route::get('api/chats','MessageControllers@chat')->name('email.chat');
+    Route::get('api/chats','MessageControllers@chat')->name('api.chats');
+    Route::get('api/chats/{recipient}/{property}','MessageControllers@subject')->name('api.subject');
 
     // Create Message
     Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('email.store');
