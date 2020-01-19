@@ -21,7 +21,15 @@ class PropertyController extends Controller
     public function index() {
 
         $user = Auth::user();
-        $properties = Property::where('user_id', $user->id)->get();
+        $properties = Property::where('user_id', $user->id)->get([
+            'id', 
+            'type', 
+            'name', 
+            'description', 
+            'number_of_bedrooms', 
+            'number_of_bathrooms',
+            'number_of_residents',
+            'property_size']);
 
         return response()->json([
             'properties' => $properties
@@ -43,7 +51,6 @@ class PropertyController extends Controller
 
     public function edit($id) {
 
-        
         $property = Property::where('id', $id)->first();
         $galleries = Gallery::where('property_id', $id)->get();
         $accounts = Account::where('property_id', $id)->get();
