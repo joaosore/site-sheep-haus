@@ -44,6 +44,25 @@ class MessageControllers extends Controller
 
         $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->get();
 
+        $men = [];
+        foreach($mensages as $key => $mensagem) {
+
+            if($mensagem->to == $auth_login) {
+                $user = $mensagem->getUserFrom;
+                $recipient = $mensagem->from;
+            } else {
+                $user = $mensagem->getUserTo;
+                $recipient = $mensagem->to;
+            }
+
+            $mensagem->user_name = $user->name . ' ' . $user->last_name;
+            $mensagem->recipient = $recipient;
+            
+            $men[$key] = $mensagem;
+        }
+
+        
+        
         return response()->json([
             'mensages' => $mensages
         ]);
