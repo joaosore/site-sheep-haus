@@ -6,11 +6,14 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<header class="titulo--padrao">
-					<h2 class="titulo">Perfil</h2>
+				<header class="titulo--padrao titulo--padrao--breadcrumb">
+					<h3 class="titulo">
+						<a href="{{route('dashboard')}}">Home</a> > 
+						<span class="bread-child">Perfil</a>
+          			</h3>
 				</header>
 			</div>
-		</div>
+    	</div>
 
 		<div class="flex-center position-ref full-height">
 			<div class="content centralizar bloco-adm">

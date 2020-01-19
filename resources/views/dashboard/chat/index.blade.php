@@ -32,8 +32,11 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<header class="titulo--padrao">
-					<h2 class="titulo">Home > Mensagens</h2>
+				<header class="titulo--padrao titulo--padrao--breadcrumb">
+					<h3 class="titulo">
+            <a href="{{route('dashboard')}}">Home</a> > 
+            <span class="bread-child">Mensagens</a>
+          </h3>
 				</header>
 			</div>
     </div>
@@ -41,7 +44,7 @@
 		<div class="row">
 			<div class="col-md-3 page_sidebar">
 				<header class="sidebar_header">
-					<h4 class="sidebar_header__titulo">Conversas</h4>
+					<h4 class="sidebar_header__titulo">Conversas <span id="chat_length"></span></h4>
 				</header>
 				<div class="sidebar_content">
             <div id="chat_list" class="chat_list">

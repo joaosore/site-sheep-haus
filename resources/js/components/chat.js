@@ -34,6 +34,9 @@ function loadChats() {
         let toFind = [];
         if (data.mensages) {
             if (data.mensages.length > 0) {
+
+                $('#chat_length').append(`<span class="badge badge-primary">${data.mensages.length}</span>`);
+
                 data.mensages.map((item, index) => {
                     if (index == 0) {
                         toFind = [item.from, item.property_id, item.id];

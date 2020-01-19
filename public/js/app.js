@@ -38231,6 +38231,7 @@ function loadChats() {
 
     if (data.mensages) {
       if (data.mensages.length > 0) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#chat_length').append("<span class=\"badge badge-primary\">".concat(data.mensages.length, "</span>"));
         data.mensages.map(function (item, index) {
           if (index == 0) {
             toFind = [item.from, item.property_id, item.id];

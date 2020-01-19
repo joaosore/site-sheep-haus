@@ -15786,6 +15786,14 @@ header.titulo--padrao .titulo {
   font-weight: 100;
   text-align: left;
 }
+header.titulo--padrao.titulo--padrao--breadcrumb .titulo {
+  font-size: 18px;
+  font-weight: 500;
+}
+header.titulo--padrao.titulo--padrao--breadcrumb .titulo .bread-child {
+  color: #666a70;
+  font-weight: 600;
+}
 
 .page_sidebar {
   background-color: #fff;
@@ -16031,6 +16039,15 @@ header.titulo--padrao .titulo {
   padding-bottom: 150px;
 }
 
+.chat-page {
+  padding-bottom: 20px;
+}
+
+.chat_list {
+  max-height: calc(100vh - 250px);
+  overflow: overlay;
+  padding-right: 20px;
+}
 .chat_list .message_item {
   border: 1px solid #c1c8d7;
   border-radius: 4px;
