@@ -1,0 +1,50 @@
+
+// Chat SCSS
+
+.chat-page {
+
+}
+
+.chat_list {
+    .message_item {
+        border: 1px solid $cinza-site;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        padding: 5px 10px;
+        transition: background 200ms ease;
+
+        &:hover {
+            background-color: rgba(0,0,0,.05);
+        }
+
+        &.message_item--active {
+            border-color: $texto-destaque;
+            border-width: 2px;
+
+            .m_person {
+                color: $preto-padrao;
+            }
+    
+            .m_message {
+                color: $text-cinza;
+            }
+    
+            .m_time {
+                color: $texto-destaque;
+            }
+        }
+
+        .m_person {
+            color: $texto-destaque;
+        }
+
+        .m_message {
+            color: $texto-destaque;
+        }
+
+        .m_time {
+            color: $texto-destaque;
+        }
+    }
+}

@@ -38118,9 +38118,11 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scripts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/scripts */ "./resources/js/components/scripts.js");
 /* harmony import */ var _components_masks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/masks */ "./resources/js/components/masks.js");
+/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/chat */ "./resources/js/components/chat.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! jquery-mask-plugin */ "./node_modules/jquery-mask-plugin/dist/jquery.mask.js");
+
 
 
 
@@ -38183,6 +38185,93 @@ window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/chat.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/chat.js ***!
+  \*****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+var chatContainer = '';
+var loadingChat = false;
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  // console.log(window.location.pathname);
+  if (window.location.pathname === '/chats') {
+    loadChats();
+    chatHandlers();
+  }
+});
+
+function loadChats() {
+  var url = jquery__WEBPACK_IMPORTED_MODULE_0___default()('input#api_chats_url').attr('value'); // console.log('URL URL ', url);
+
+  if (!url) {
+    return;
+  }
+
+  chatContainer = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#chat_list');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    method: "GET",
+    url: url,
+    beforeSend: function beforeSend() {
+      chatContainer.html("<p>Carregando conversas...</p>");
+    }
+  }).done(function (data) {
+    // console.log( "Data Loaded: ", data);
+    var html = '';
+    var toFind = [];
+
+    if (data.mensages) {
+      if (data.mensages.length > 0) {
+        data.mensages.map(function (item, index) {
+          if (index == 0) {
+            toFind = [item.from, item.property_id, item.id];
+          }
+
+          html += "\n                        <div\n                            class=\"message_item\"\n                            id=\"message_item_".concat(item.id, "\"\n                            data-from=\"").concat(item.from, "\"\n                            data-property=\"").concat(item.property_id, "\"\n                            data-id=\"").concat(item.id, "\"\n                            >\n                            <h4 class=\"m_person\">").concat(item.from, "</h4>\n                            <p class=\"m_message\">").concat(item.last_mensagem, "<p>\n                            <div class=\"m_time\">").concat(item.updated_at, "</div>\n                        </div>\n                    ");
+        });
+      } else {
+        html += "<p>0 conversas</p>";
+      }
+
+      chatContainer.html(html);
+      readChat(toFind[0], toFind[1], toFind[2]);
+    }
+  });
+}
+
+function readChat(recipient, property, message_id) {
+  console.log("#message_item_".concat(message_id)); // loadingChat = true;
+
+  chatContainer.find('.message_item').removeClass('message_item--active');
+  chatContainer.find("#message_item_".concat(message_id)).addClass('message_item--active');
+}
+
+function chatHandlers() {
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('click', '.message_item', function (e) {
+    e.preventDefault();
+
+    if (loadingChat) {
+      return;
+    }
+
+    var from = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('from'),
+        property = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('property'),
+        id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('id');
+
+    if (from != undefined && property != undefined && id != undefined) {
+      readChat(from, property, id);
+    }
+  });
+}
 
 /***/ }),
 
