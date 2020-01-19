@@ -18,6 +18,10 @@ use App\Http\Requests\StoreProperty;
 class PropertyController extends Controller
 {
 
+    public function view() {
+        
+    }
+
     public function index() {
 
         $user = Auth::user();
@@ -31,25 +35,11 @@ class PropertyController extends Controller
             'number_of_residents',
             'property_size']);
 
-        return response()->json([
-            'properties' => $properties
-        ]);
-    }
-
-    public function create() {
-        $characteristics = Characteristic::get();
-        $btn_characteristics = [];
+        return response()->json($properties);
         
-        foreach($characteristics as $characteristic){
-            $btn_characteristics[$characteristic->id] = $characteristic->name;
-        }
-
-        return view('dashboard.owner.property.create', [
-            'characteristics' => $btn_characteristics,
-        ]);
     }
-
-    public function edit($id) {
+    
+    public function show($id) {
 
         $property = Property::where('id', $id)->first();
         $galleries = Gallery::where('property_id', $id)->get();
@@ -76,6 +66,9 @@ class PropertyController extends Controller
         
     }
 
+    public function create() {
+        
+    }
 
     
     public function store(Request $request) {
