@@ -6,11 +6,36 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<header class="titulo--padrao">
-					<h2 class="titulo">Dashboard</h2>
+				<header class="titulo--padrao titulo--padrao--breadcrumb">
+					<h3 class="titulo">
+						<span class="bread-child">Dashboard</a>
+					</h3>
 				</header>
 			</div>
 		</div>
+
+		{{-- <div class="row">
+			<div class="col-md-6">
+			</div>
+
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">MENSAGENS <span class="badge badge-primary">5</span></h5>
+					</div>
+
+					<section class="mensagens">
+						<ul class="lista-mensagens"></ul>
+					</section>
+					<section class="anunciar-vaga">
+						<a href="" class="bt-anunciar"><i data-fonte="" class="icone-anunciar">M</i>ANUNCIAR VAGA</a>
+					</section>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+			</div>
+		</div> --}}
 
 		<div class="flex-center position-ref full-height">
 			<div class="content centralizar bloco-adm">
@@ -86,9 +111,10 @@
 							<h1 class="titulo">MENSAGENS</h1>
 							<a href=""><i data-fonte="" class="icone-mensagens">3</i></a>
 						</header>
-						<ul class="lista-mensagens">
-							
-						</ul>
+
+						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
+						
+						<a href="{{ route('chats') }}" class="btn btn-block btn-sm btn-info">Todas as mensagens</a>
 					</section>
 					<section class="anunciar-vaga">
 						<a href="" class="bt-anunciar"><i data-fonte="" class="icone-anunciar">M</i>ANUNCIAR VAGA</a>

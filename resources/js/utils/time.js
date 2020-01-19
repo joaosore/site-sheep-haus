@@ -1,0 +1,1 @@
+export const dateHourFormat = "DD/MM/YYYY - HH:mm";

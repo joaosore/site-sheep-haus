@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="api_chats_url" content="{{ route('api.chats') }}">
 
     <title>{{ config('app.name', 'Sheep Haus') }}</title>
 
@@ -107,7 +108,7 @@
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
                                             <li><a class="dropdown-item" href="{{ route('profile') }}">Perfil</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('chats') }}">Mensagens</a></li>
+                                            {{-- <li><a class="dropdown-item" href="{{ route('chats') }}">Mensagens</a></li> --}}
                                             <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
