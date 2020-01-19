@@ -55816,6 +55816,7 @@ var chatReading = {};
 var loadingChat = false;
 var sendingMessage = false;
 var chatApiUrl = '';
+var loop;
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   chatApiUrl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta[name="api_chats_url"]').attr('content');
 
@@ -55832,8 +55833,6 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 });
 
 function loadMiniChatList(container) {
-  // console.log('container', container);
-  // $(container).html('<p>Aqui vai entrar o item</p>');
   var url = chatApiUrl;
 
   if (!url) {
@@ -55848,11 +55847,9 @@ function loadMiniChatList(container) {
     }
   }).done(function (data) {
     var html = '';
-    var toFind = [];
 
     if (data.mensages) {
       if (data.mensages.length > 0) {
-        // $('#chat_length').append(`<span class="badge badge-primary">${data.mensages.length}</span>`);
         data.mensages.map(function (item, index) {
           html += "\n                        <div\n                            class=\"message_item\"\n                            id=\"message_item_".concat(item.id, "\"\n                            data-recipient=\"").concat(item.recipient, "\"\n                            data-property=\"").concat(item.property_id, "\"\n                            data-id=\"").concat(item.id, "\"\n                            >\n                            <h4 class=\"m_person\">").concat(item.user_name, "</h4>\n                            <p class=\"m_message\">").concat(item.last_mensagem, "</p>\n                            <div class=\"m_time\">").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(item.updated_at).format(_utils_time__WEBPACK_IMPORTED_MODULE_2__["dateHourFormat"]), "</div>\n                        </div>\n                    ");
         });
@@ -55906,6 +55903,14 @@ function loadChats() {
   });
 }
 
+function loopChat() {
+  console.log('loopChat', chatReading); // Reseta o loop que pega as mensagens
+
+  clearInterval(loop); // Chama o Read Chat
+
+  readChat(chatReading.recipient, chatReading.property);
+}
+
 function readChat(recipient, property, message_id) {
   var url = "/api/chats/".concat(recipient, "/").concat(property);
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
@@ -55920,7 +55925,8 @@ function readChat(recipient, property, message_id) {
     var html = '';
 
     if (data.subjects) {
-      chatReading = data;
+      // Seta o loop que pega as mensagens
+      loop = setInterval(loopChat, 1000);
 
       if (data.subjects.length > 0) {
         data.subjects.map(function (message) {
@@ -55931,6 +55937,7 @@ function readChat(recipient, property, message_id) {
         html += "<p>Nenhuma conversa</p>";
       }
 
+      chatReading = data;
       chatContainer.html(html);
       var objDiv = document.getElementById("chat_content");
       objDiv.scrollTop = objDiv.scrollHeight;
@@ -55975,8 +55982,10 @@ function chatHandlers() {
 
     if (loadingChat) {
       return;
-    }
+    } // Reseta o loop que pega as mensagens
 
+
+    clearInterval(loop);
     var recipient = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('recipient'),
         property = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('property'),
         id = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).data('id');
@@ -56000,8 +56009,10 @@ function chatHandlers() {
 
     if (sendingMessage || !chatReading) {
       return;
-    }
+    } // Reseta o loop que pega as mensagens
 
+
+    clearInterval(loop);
     var recipient = chatReading.recipient,
         property = chatReading.property,
         message = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#text_message').val();

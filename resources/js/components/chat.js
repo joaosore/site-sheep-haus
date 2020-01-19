@@ -9,6 +9,8 @@ var loadingChat = false;
 var sendingMessage = false;
 var chatApiUrl = '';
 
+var loop;
+
 $(document).ready(function() {
     chatApiUrl = $('meta[name="api_chats_url"]').attr('content');
 
@@ -25,9 +27,6 @@ $(document).ready(function() {
 });
 
 function loadMiniChatList(container) {
-    // console.log('container', container);
-    // $(container).html('<p>Aqui vai entrar o item</p>');
-
     const url = chatApiUrl;
 
     if (!url) {
@@ -43,11 +42,8 @@ function loadMiniChatList(container) {
     })
     .done(function( data ) {
         let html = '';
-        let toFind = [];
         if (data.mensages) {
             if (data.mensages.length > 0) {
-
-                // $('#chat_length').append(`<span class="badge badge-primary">${data.mensages.length}</span>`);
 
                 data.mensages.map((item, index) => {
                     html += `
@@ -130,6 +126,16 @@ function loadChats() {
     });
 }
 
+function loopChat() {
+    console.log('loopChat', chatReading);
+
+    // Reseta o loop que pega as mensagens
+    clearInterval(loop);
+
+    // Chama o Read Chat
+    readChat(chatReading.recipient, chatReading.property) ;
+}
+
 function readChat(recipient, property, message_id) {
 
     let url = `/api/chats/${recipient}/${property}`
@@ -147,7 +153,9 @@ function readChat(recipient, property, message_id) {
 
         let html = '';
         if (data.subjects) {
-            chatReading = data;
+
+            // Seta o loop que pega as mensagens
+            loop = setInterval(loopChat, 1000);
 
             if (data.subjects.length > 0) {
 
@@ -171,6 +179,8 @@ function readChat(recipient, property, message_id) {
             } else {
                 html += `<p>Nenhuma conversa</p>`;
             }
+
+            chatReading = data;
 
             chatContainer.html(html);
             let objDiv = document.getElementById("chat_content");
@@ -223,6 +233,9 @@ function chatHandlers() {
             return;
         }
 
+        // Reseta o loop que pega as mensagens
+        clearInterval(loop);
+
         var recipient = $(this).data('recipient'),
             property = $(this).data('property'),
             id = $(this).data('id');
@@ -249,6 +262,9 @@ function chatHandlers() {
         if (sendingMessage || !chatReading) {
             return;
         }
+
+        // Reseta o loop que pega as mensagens
+        clearInterval(loop);
 
         var recipient = chatReading.recipient,
             property = chatReading.property,
