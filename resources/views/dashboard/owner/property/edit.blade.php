@@ -25,7 +25,7 @@
 					{{ Form::text('description', $property->description, array('class' => 'input-padrao', 'placeholder' => 'DESCRIÇÂO')) }}
 				</div>
 				<div class="bloco-unico-formulario">
-					@if(is_array($property->characteristics_id))
+					@if()
 					@foreach ($characteristics as $valor)
 						@if(in_array($valor, $property->characteristics_id))
 							<label for="$valor" class="label-check-button">

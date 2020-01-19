@@ -47,7 +47,7 @@ class DashboardController extends Controller
             $properties = Property::whereIn('id', $imoveis)->get();
 
             $matches = Match::where('user_id', '=', $auth->id)->pluck('property_id')->toArray();
-
+            
             return view('dashboard.dweller.dashboard', [
                 'properties' => $properties,
                 'match' => $matches,

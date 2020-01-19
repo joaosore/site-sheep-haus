@@ -57,7 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('v_match', 'VMacthesController@store')->name('v_match');
 
     Route::group(['middleware' => ['checkproperty']], function () {
-
+        
         //Views Match Imovel
         Route::get('/match/property/{id}', 'PropertyMatchesController@show')->name('match_property');
 
@@ -79,8 +79,10 @@ Route::group(['middleware' => ['auth']], function () {
 
         // Get Property
         Route::get('/properties', 'PropertyController@index')->name('properties');
-        Route::get('/property/{id}/edit', 'PropertyController@edit')->name('property.edit');
+
+        Route::get('/property/{id}', 'PropertyController@edit')->name('property.edit');
         Route::get('/property/create', 'PropertyController@create')->name('property.create');
+
         Route::post('/property/create', 'PropertyController@store')->name('property.store');
         Route::delete('/property', 'PropertyController@destroy')->name('property.destroy');
         Route::put('/property/{id}', 'PropertyController@update')->name('property.update');
