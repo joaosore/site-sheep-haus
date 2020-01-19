@@ -77,13 +77,20 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('property-image', 'ImageUploadController@store')->name('property-image');
         Route::delete('property-image', 'ImageUploadController@delete')->name('property-image');
 
+        //Habits
+        Route::get('/api/habits', 'HabitsController@index')->name('habits');
+        
+        //Characteristic
+        Route::get('/api/characteristic', 'CharacteristicsController@index')->name('characteristic');
+            
         // Get Property
-        Route::get('/properties', 'PropertyController@index')->name('properties');
+        Route::get('/api/properties', 'PropertyController@index')->name('properties');
+        Route::get('/api/property/{id}', 'PropertyController@show')->name('property.edit');
 
-        Route::get('/property/{id}', 'PropertyController@edit')->name('property.edit');
-        Route::get('/property/create', 'PropertyController@create')->name('property.create');
+        Route::get('/properties', 'PropertyController@view')->name('properties');
+        Route::get('/property', 'PropertyController@create')->name('property.create');
 
-        Route::post('/property/create', 'PropertyController@store')->name('property.store');
+        Route::post('/property', 'PropertyController@store')->name('property.store');
         Route::delete('/property', 'PropertyController@destroy')->name('property.destroy');
         Route::put('/property/{id}', 'PropertyController@update')->name('property.update');
 
