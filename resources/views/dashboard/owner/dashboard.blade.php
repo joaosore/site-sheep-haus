@@ -91,7 +91,7 @@
             </div>
             <div class="box-body">
                 <ul class="list-group" style="max-height: 250px;overflow-y: scroll;">
-                    @foreach($mensages as $key => $mensage)
+                    {{-- @foreach($mensages as $key => $mensage)
                         @php 
                             if($mensage->to == $auth_login) {
                                 $item = $mensage->getUserFrom;
@@ -111,7 +111,7 @@
                                 </footer>
                             </a>
                         </li>
-                    @endforeach                   
+                    @endforeach                    --}}
                 </ul>     
             </div>
             <div class="box-footer">
