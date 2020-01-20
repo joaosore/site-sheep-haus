@@ -1,13 +1,13 @@
 <style type="text/css">
 </style>
-<div class="modal fade" id="login">
+<div class="modal fade modal-login" id="login">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Faça seu login ou cadastro</h4>
+                {{-- <h4 class="modal-title">Faça seu login ou cadastro</h4> --}}
                 <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
-                </button>                
+                </button>
             </div>
 
             <div class="modal-body">
@@ -15,10 +15,10 @@
                     <form method="POST" action="{{ route('login') }}">
 						@csrf                    
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="margin-top: 8px;"><i class="fa fa-user"></i></span>                                
-                                <input id="email" style="margin-left: 5px;" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="EMAIL" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                            </div>
+							{{-- <span class="input-group-addon" style="margin-top: 8px;"><i class="fa fa-user"></i></span>--}}
+							{{-- <label for="email">E-mail</label> --}}
+							<input id="email" style="margin-left: 5px;" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="E-MAIL" value="{{ old('email') }}" required autocomplete="email" autofocus />
+							
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -26,10 +26,9 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon" style="margin-top: 8px;"><i class="fa fa-lock"></i></span>                                
-                                <input id="password" style="margin-left: 5px;" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="SENHA" required autocomplete="current-password">
-                            </div>                            
+							{{-- <span class="input-group-addon" style="margin-top: 8px;"><i class="fa fa-lock"></i></span> --}}
+							{{-- <label for="email">Senha</label>--}}
+							<input id="password" style="margin-left: 5px;" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="SENHA" required autocomplete="current-password" />
 
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -51,7 +50,7 @@
 						</div> -->
 
                         <div class="form-group row mb-0 login">
-                            <div class="links" style="float: left; margin-left: 1.5rem;">
+                            <div class="links col-md-6">
                                 @if (Route::has('password.request'))
                                     <a class="esqueci btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Esqueci a senha') }}
@@ -59,17 +58,17 @@
                                 @endif
                             </div> 
 
-                            <div class="form-group col-md-7" style="margin-left: 2rem;">
-                                <button type="submit" class="btn btn-success btn-block login-btn">{{ __('Login') }}</button>                            
+                            <div class="form-group col-md-6">
+                                <button type="submit" class="btn btn-secondary btn-block login-btn">{{ __('ENTRAR') }}</button>                            
                             </div>                                                       
                         </div>
                         
                         <div class="or-seperator"><i>ou</i></div>
                         
                         <div class="text-center social-btn">
-                            <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary btn-block btn-font-color"><i class="fab fa-facebook"></i> Acessar com <b>Facebook</b></a>                           
-                            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Acessar com <b>Google</b></a>
-                            <a href="{{ route('register') }}" class="btn btn-info btn-block"><i class="fas fa-envelope"></i> Cadastro por e-mail</a>
+                            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-google btn-upp btn-block"><i class="fab fa-google"></i> Iniciar sessão com Google</a>
+                            <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-facebook btn-upp btn-block btn-font-color"><i class="fab fa-facebook"></i> Iniciar sessão com Facebook</a>
+                            <a href="{{ route('register') }}" class="btn btn-danger btn-upp btn-block">Cadastro por e-mail</a>
                         </div>
                     </form>
                 </div>

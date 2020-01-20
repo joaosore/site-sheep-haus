@@ -8,4 +8,28 @@
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+
+    &.btn-facebook {
+        background-color: $facebook;
+        color: #fff;
+
+        &:hover {
+            background-color: $facebook-hover;
+        }
+    }
+
+    &.btn-google {
+        background-color: #fff;
+        border-color: $cinza-site;
+        color: $text-cinza;
+        font-weight: 600;
+
+        &:hover {
+            background-color: rgb(231, 231, 231);
+        }
+    }
+
+    &.btn-upp {
+        text-transform: uppercase;
+    }
 }
