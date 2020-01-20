@@ -108,6 +108,17 @@ Route::group(['middleware' => ['auth']], function () {
         //Meu Imóvel
         Route::get('my_property', 'DwellerPropertyController@index')->name('property.index');
 
+        // Get Vagas
+        Route::get('/api/vacancies', 'VacancyController@index')->name('vacancies');
+        Route::get('/api/vacancy/{id}', 'VacancyController@show')->name('vacancies.edit');
+
+        Route::get('/vacancies', 'VacancyController@view')->name('vacancies.view');
+        // Route::get('/vacancy', 'VacancyController@create')->name('vacancy.create');
+
+        // Route::post('/vacancy', 'VacancyController@store')->name('vacancy.store');
+        // Route::delete('/vacancy', 'VacancyController@destroy')->name('vacancy.destroy');
+        // Route::put('/vacancy/{id}', 'VacancyController@update')->name('vacancy.update');
+
         //Minhas Vagas
         Route::get('my_vacancies', 'VacancyController@index')->name('vacancies');
         Route::get('my_vacancies/{id}/create', 'VacancyController@create')->name('vacancies.create');
@@ -141,6 +152,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('api/chats/{recipient}/{property}','MessageControllers@subject')->name('api.subject');
 
     // Create Message
-    Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('email.store');
+    Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('chat.store');
 
 });

@@ -90,7 +90,7 @@ class MacthController extends Controller
             // Mail::to($owner->email)
             // ->bcc('jaumcj@gmail.com')
             // ->send(new MatchMail($dados));
-            return redirect()->route('email.create', [$request->user_id, $request->property_id]);
+            return redirect()->route('chats');
             // return redirect()->back();
         }
     }

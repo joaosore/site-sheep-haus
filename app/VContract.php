@@ -9,4 +9,15 @@ class VContract extends Model
     protected $fillable = [
         'user_id', 'property_id', 'vacancy_id', 
     ];
+
+    public function user()
+    {
+        return $this->hasOne('App\User', 'id', 'user_id');
+    }
+
+    public function property()
+    {
+        return $this->hasOne('App\Property', 'id', 'property_id');
+    }
+
 }
