@@ -2,7 +2,8 @@ require("./bootstrap");
 require("jquery-mask-plugin");
 
 import "./components/scripts";
-import "./components/masks"
+import "./components/masks";
+import "./components/chat";
 
 $(function(){
 	$('.botao-formulario-padrao').click(function(){

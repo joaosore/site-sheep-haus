@@ -2,28 +2,41 @@
 // Login SCSS
 
 
+.modal-login {
+    .modal-header {
+        background: url('/images/header-login.jpg') no-repeat center center;
+        background-size: cover;
+        border-bottom: none;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        overflow: hidden;
+        height: 150px;
+
+        .close {
+            color: #fff;
+            font-size: 40px;
+            padding-top: 9px;
+        }
+    }
+}
+
 .login-form {
     /* width: 340px; */
     margin: 5px auto;
+    max-width: 300px;
+    padding-top: 30px;
+    
+    h2 {
+        margin: 0 0 15px;
+    }
+
+    .hint-text {
+        color: #777;
+        padding-bottom: 15px;
+        text-align: center;
+    }
 }
-.login-form form {
-    margin-bottom: 5px;
-    background: #f7f7f7;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-    padding: 30px;
-}
-.login-form h2 {
-    margin: 0 0 15px;
-}
-.login-form .hint-text {
-    color: #777;
-    padding-bottom: 15px;
-    text-align: center;
-}
-/* .form-control, .btn {
-    min-height: 38px;
-    border-radius: 2px;
-} */
+
 .login-btn {
     font-size: 15px;
     font-weight: bold;
@@ -37,25 +50,33 @@
     margin: 20px 0 10px;
     text-align: center;
     border-top: 1px solid #ccc;
+    
+    i {
+        padding: 0 10px;
+        background: #fff;
+        position: relative;
+        top: -11px;
+        z-index: 1;
+    }
 }
-.or-seperator i {
-    padding: 0 10px;
-    background: #f7f7f7;
-    position: relative;
-    top: -11px;
-    z-index: 1;
+
+.social-btn  {
+    .btn {
+        border-radius: 2px !important;
+        font-size: 13px;
+        margin: 15px 0;
+        padding: 13px 15px;
+        position: relative;
+
+        i {
+            left: 20px;
+            position: absolute;
+            top: calc(50% - 6px);
+            transform: scale(1.7);
+        }
+    }
 }
-.social-btn .btn {
-    margin: 10px 0;
-    font-size: 15px;
-    text-align: center; 
-    line-height: 24px;  
-    color: #f4f4f4;     
-}
-.social-btn .btn i {
-    margin: 4px 5px  0 5px;
-    /* min-width: 15px; */
-}
+
 .input-group-addon .fa{
     font-size: 18px;
 }

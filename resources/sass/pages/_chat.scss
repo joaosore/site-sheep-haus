@@ -1,0 +1,171 @@
+
+// Chat SCSS
+
+.chat-page {
+    padding-bottom: 20px;
+}
+
+.chat_content {
+    height: calc(100vh - 190px);
+
+    .chat_content__input {
+        background-color: #d9dee8;
+        height: 60px;
+        width: 100%;
+
+        .chat__input {
+            float: left;
+            height: 100%;
+            width: calc(100% - 120px);
+
+            .chat__input__field {
+                background: #fff;
+                height: calc(100% - 20px);
+                margin-left: 10px;
+                margin-top: 10px;
+                width: calc(100% - 20px);
+                border-radius: 100px;
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+        }
+
+        .chat__send {
+            align-items: center;
+            display: flex;
+            float: left;
+            height: 100%;
+            justify-content: center;
+            width: 120px;
+
+            .chat__send__button {
+                align-items: center;
+                background-color: $azul-site;
+                border-radius: 30px;
+                color: #fff;
+                cursor: pointer;
+                display: flex;
+                height: 85%;
+                justify-content: center;
+                transition: background 200ms ease;
+                width: 85%;
+
+                &:hover {
+                    background-color: $azul-claro;
+                }
+
+                svg {
+                    opacity: .6;
+                    height: auto;
+                    margin-left: 9px;
+                    width: 20%;
+    
+                    path {
+                        fill: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+
+    .chat_content__messages {
+        background-color: $cinza-site;
+        height: calc(100% - 60px);
+        overflow: overlay;
+        padding: 15px 30px 15px 20px;  
+        width: 100%;
+    
+        .message_line {
+            margin-bottom: 10px;
+            width: 100%;
+    
+            &.message_line--me {
+                text-align: right;
+    
+                .message_ballon {
+                    background-color: $azul-site;
+                    color: #fff;
+                }
+    
+                .m_time {
+                    font-size: 10px;
+                    text-align: right;
+                }
+            }
+    
+            .message_column {
+                display: inline-block;
+                width: 40%;
+            }
+    
+            .message_ballon {
+                background-color: $azul-gradiante;
+                border-radius: 10px;
+                padding: 15px 20px;
+                width: 100%;
+    
+                .m_message {}
+            }
+    
+            .m_time {
+                font-size: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        }
+    }
+}
+
+.chat_list {
+    height: calc(100vh - 250px);
+    overflow: overlay;
+    padding-right: 20px;
+}
+
+.message_item {
+    border: 1px solid $cinza-site;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px 10px;
+    transition: background 200ms ease;
+
+    &:hover {
+        background-color: rgba(0,0,0,.05);
+    }
+
+    &.message_item--active {
+        background-color: $azul-site;
+        border-color: $azul-site;
+        border-width: 2px;
+
+        .m_person {
+            // color: $preto-padrao;
+            color: #FFFFFF;
+        }
+
+        .m_message {
+            // color: $text-cinza;
+            color: #FFFFFF;
+        }
+
+        .m_time {
+            // color: $texto-destaque;
+            color: #FFFFFF;
+        }
+    }
+
+    .m_person {
+        color: $texto-destaque;
+        font-weight: 600;
+    }
+
+    .m_message {
+        color: $texto-destaque;
+    }
+
+    .m_time {
+        color: $texto-destaque;
+        font-size: 10px;
+    }
+}

@@ -27,6 +27,7 @@
         "bootstrap-3-typeahead": "^4.0.2",
         "jquery-mask-plugin": "1.14.16",
         "jquery-ui": "^1.12.1",
-        "jquery-validation": "1.19.1"
+        "jquery-validation": "1.19.1",
+        "moment": "2.24.0"
     }
 }

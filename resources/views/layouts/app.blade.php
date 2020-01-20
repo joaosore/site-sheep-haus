@@ -6,6 +6,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="api_chats_url" content="{{ route('api.chats') }}">
 
     <title>{{ config('app.name', 'Sheep Haus') }}</title>
 
@@ -75,21 +76,21 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a href="{{route('home')}}">Divulgar</a></li>
-                                        <li class="dropdown-item"><a href="{{route('home')}}">Match moradores</a></li>
+                                        <li><a class="dropdown-item" href="{{route('home')}}">Divulgar</a></li>
+                                        <li><a class="dropdown-item" href="{{route('home')}}">Match moradores</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a href="{{route('home')}}">Match imóveis</a></li>
-                                        <li class="dropdown-item"><a href="{{route('home')}}">Amigos</a></li>
+                                        <li><a class="dropdown-item" href="{{route('home')}}">Match imóveis</a></li>
+                                        <li><a class="dropdown-item" href="{{route('home')}}">Amigos</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou prestador de serviço</a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a href="{{route('home')}}">Anunciar</a></li>
+                                        <li><a class="dropdown-item" href="{{route('home')}}">Anunciar</a></li>
                                     </ul>
                                 </li>
                                 @guest
@@ -101,13 +102,14 @@
                                             <a class="registro" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li> -->
                                     @endif
-                                @else                        
+                                @else
                                     <li>
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li class="dropdown-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li class="dropdown-item"><a href="{{ route('profile') }}">Perfil</a></li>
-                                            <li class="dropdown-item"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
+                                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('profile') }}">Perfil</a></li>
+                                            {{-- <li><a class="dropdown-item" href="{{ route('chats') }}">Mensagens</a></li> --}}
+                                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
@@ -118,9 +120,9 @@
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
                                     <ul class="dropdown-menu">
-                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=en">BR</a></li>
-                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=pt-BR">EN</a></li>
-                                        <li class="dropdown-item"><a href="{{Request::url()}}?locale=es">ES</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">BR</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt-BR">EN</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">ES</a></li>
                                     </ul>
                                 </li>                  
                             </ul>

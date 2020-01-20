@@ -12,5 +12,36 @@ header {
             font-weight: 100;
             text-align: left;
         }
+
+        &.titulo--padrao--breadcrumb {
+            .titulo {
+                font-size: 18px;
+                font-weight: 500;
+
+                .bread-child {
+                    color: $texto-padrao;
+                    font-weight: 600;
+                }
+            }
+        }
     }
 }
+
+.page_sidebar {
+    background-color: #fff;
+
+    .sidebar_header {
+        padding: 15px 0;
+
+        .sidebar_header__titulo {
+            color: $text-cinza;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+
+    .sidebar_content {}
+}
+
+.page_content {}
