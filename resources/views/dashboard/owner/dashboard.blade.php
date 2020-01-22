@@ -2,6 +2,155 @@
 @extends('../layouts.app')
 
 @section('content')
+<div class="dashboard-page dashboard-proprietario-page pt-page">
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6">
+				<header class="titulo--padrao titulo--padrao--breadcrumb">
+					<div style="height: 10px;"></div>
+					<h3 class="titulo">
+						<a href="{{route('dashboard')}}">Home</a> > 
+						<span class="bread-child">Dashboard Proprietário</a>
+					</h3>
+				</header>
+			</div>
+			<div class="col-md-6">
+				<a href="{{ route('property.create') }}" class="btn btn-success float-right">Novo anúncio</a>
+				<a href="{{ route('properties') }}" class="btn btn-secondary float-right" style="margin-right: 10px;">Meus imóveis</a>
+				<div style="height: 10px;"></div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<!-- IMÓVEIS -->
+			<div class="col-md-6">
+
+				<div class="card">
+					<div class="card-body">
+						<p>Imóveis anunciados: <span class="badge badge-secondary">{{ count($properties) }}</span></p>
+
+						<div class="row">
+							@foreach ($properties as $property)
+								<div class="col-md-6 box-imovel box box-solid box-default">
+									<div class="box-header with-border">
+
+											@foreach ($property->galeries as $key => $item)
+												@if($key === 0)
+													<img class="image img-fluid" src="{{ asset('/images/'.$item->src) }}"></img>
+												@endif
+											@endforeach
+
+										<h3 class="box-title">{{ $property->name }}</h3>                        
+									</div>
+									<div class="box-body">
+										<span class="info-box-text info-box-text--resumo">{{ $property->description }}</span>
+										
+										<div class="more-info">
+											<b class="info-box-number">R$ {{ number_format($property->account->SUM('value'), 2, ',', '.') }}</b>
+											<b class="info-box-number"> - {{ $property->property_size }} m²</b>
+										</div>
+										<div style="height: 8px;"></div>
+									</div>
+
+									<div class="box-footer">
+										<div class="row">
+											<div class="col-md-3"></div>
+											<div class="col-md-6">
+												<a href="{{ route('match_property', [$property->id]) }}" class="btn btn-sm btn-secondary btn-block">Ver matches</a>
+											</div>
+										</div>
+
+										<div style="height: 10px;"></div>
+
+										<div class="row">
+											<div class="col-md-12">
+												<a href="#" class="btn btn-info btn-block">DESTACAR ANÚNCIO</a>
+											</div>
+										</div>
+
+										<div style="height: 10px;"></div>
+
+										<div class="row">
+											<div class="col-md-6">
+												<a href="{{ route('property.edit', $property->id ) }}" class="btn btn-sm btn-secondary btn-block">EDITAR</a>
+											</div>
+											<div class="col-md-6">
+												{{ Form::submit('APAGAR', ['class' => 'btn btn-sm btn-secondary btn-block']) }}
+											</div>
+										</div>
+
+										{{ Form::open(array('route' => 'property.destroy', 'method' => 'delete')) }}
+											{{ Form::hidden('property_id', $property->id) }}
+										{!! Form::close() !!}
+									</div>
+								</div>
+							@endforeach
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- IMÓVEIS -->
+
+			<!-- MENSAGENS -->
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-header">
+						<i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span>
+					</div>
+					<div class="card-body">
+						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
+						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">Todas as mensagens</a>
+					</div>
+				</div>
+			</div>
+			<!-- MENSAGENS -->
+
+			<!-- SERVIÇOS -->
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-header">
+						<i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+					</div>
+					<div class="card-body">
+
+						<ul class="lista-servicos">
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos" style=""></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- SERVIÇOS -->
+
+		</div>
+
+	</div>
+	<div style="height: 20px;"></div>
+
+</div>
+{{-- 
 <div class="panel panel-default col-md-8" style="float: left; margin-right: 15px;">
     <div class="row">
         <div class="box">
@@ -11,8 +160,8 @@
                         <h3 class="box-title">Dashboard Proprietário</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ route('property.create') }}" style="float: left;" class="btn btn-primary pull-right">Novo anuncio</a>
-                        <a href="{{ route('properties') }}" class="btn btn-info pull-right" style="margin-right: 5px;">Meus Imóveis</a>
+                        <a href="{{ route('property.create') }}" style="float: left;" class="btn btn-success pull-right">Novo anúncio</a>
+                        <a href="{{ route('properties') }}" class="btn btn-info pull-right" style="margin-right: 5px;">Meus imóveis</a>
                     </div>
                 </div>                        
             </div>
@@ -91,7 +240,7 @@
             </div>
             <div class="box-body">
                 <ul class="list-group" style="max-height: 250px;overflow-y: scroll;">
-                    {{-- @foreach($mensages as $key => $mensage)
+                    @foreach($mensages as $key => $mensage)
                         @php 
                             if($mensage->to == $auth_login) {
                                 $item = $mensage->getUserFrom;
@@ -111,7 +260,7 @@
                                 </footer>
                             </a>
                         </li>
-                    @endforeach                    --}}
+                    @endforeach
                 </ul>     
             </div>
             <div class="box-footer">
@@ -164,5 +313,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @stop

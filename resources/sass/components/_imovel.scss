@@ -1,0 +1,72 @@
+
+// Imovel SCSS
+
+.box-imovel {
+    margin: 20px 0;
+    padding: 15px 20px;
+    text-align: center;
+
+    &.box-imovel--remove {
+        position: relative;
+
+        *[type="submit"] {
+            background-color: #ccc;
+            border-radius: 3px;
+            color: #1f1f1f;
+            font-weight: bold;
+            height: 28px;
+            margin: 5px;
+            position: absolute;
+            right: 5px;
+            top: -3px;
+            transform: scaleX(1.2);
+            width: 24px;
+
+            &:hover {
+                background-color: #666;
+            }
+        }
+    }
+    
+    .box-title {
+        color: $text-cinza;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0;
+        text-transform: uppercase;
+    }
+
+    .info-box-text {
+        color: $text-cinza;
+        display: block;
+        font-size: 14px;
+        line-height: 1.2;
+
+        &.info-box-text--resumo {
+            height: 49px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre-wrap;
+        }
+    }
+
+    .more-info {
+        color: $texto-destaque;
+        font-weight: bold;
+        margin: 5px 0;
+    }
+
+    .specifications {
+        margin: 5px 0;
+
+        .texto {
+            margin: 0;
+        }
+    }
+
+    .btn-secondary {
+        background-color: $texto-destaque;
+        border-color: $texto-destaque;
+        font-weight: bold;
+    }
+}
