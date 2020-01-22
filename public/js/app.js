@@ -55807,20 +55807,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _utils_time__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/time */ "./resources/js/utils/time.js");
+/* harmony import */ var _utils_urls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/urls */ "./resources/js/utils/urls.js");
+
 
 
 
 var chatListContainer = '';
 var chatContainer = '';
-var chatReading = {};
+var chatReading = {
+  subjects: []
+};
 var loadingChat = false;
 var sendingMessage = false;
 var chatApiUrl = '';
+var urlRecipient = null;
+var urlProperty = null;
 var loop;
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   chatApiUrl = jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta[name="api_chats_url"]').attr('content');
 
   if (window.location.pathname === '/chats') {
+    receiveParameters();
     loadChats();
     chatHandlers();
   }
@@ -55831,6 +55838,12 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     loadMiniChatList(miniLists[0]);
   }
 });
+
+function receiveParameters() {
+  urlRecipient = Object(_utils_urls__WEBPACK_IMPORTED_MODULE_3__["getUrlParameter"])('recipient'); // if (urlRecipient) console.log(urlRecipient);
+
+  urlProperty = Object(_utils_urls__WEBPACK_IMPORTED_MODULE_3__["getUrlParameter"])('property'); // if (urlProperty) console.log(urlProperty);
+}
 
 function loadMiniChatList(container) {
   var url = chatApiUrl;
@@ -55851,7 +55864,7 @@ function loadMiniChatList(container) {
     if (data.mensages) {
       if (data.mensages.length > 0) {
         data.mensages.map(function (item, index) {
-          html += "\n                        <div\n                            class=\"message_item\"\n                            id=\"message_item_".concat(item.id, "\"\n                            data-recipient=\"").concat(item.recipient, "\"\n                            data-property=\"").concat(item.property_id, "\"\n                            data-id=\"").concat(item.id, "\"\n                            >\n                            <h4 class=\"m_person\">").concat(item.user_name, "</h4>\n                            <p class=\"m_message\">").concat(item.last_mensagem, "</p>\n                            <div class=\"m_time\">").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(item.updated_at).format(_utils_time__WEBPACK_IMPORTED_MODULE_2__["dateHourFormat"]), "</div>\n                        </div>\n                    ");
+          html += "\n                        <a\n                            href=\"/chats?recipient=".concat(item.recipient, "&property=").concat(item.property_id, "\"\n                            class=\"message_item\">\n                            <h4 class=\"m_person\">").concat(item.user_name, "</h4>\n                            <p class=\"m_message\">").concat(item.last_mensagem, "</p>\n                            <div class=\"m_time\">").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(item.updated_at).format(_utils_time__WEBPACK_IMPORTED_MODULE_2__["dateHourFormat"]), "</div>\n                        </a>\n                    ");
         });
       } else {
         html += "<p>0 conversas</p>";
@@ -55887,7 +55900,9 @@ function loadChats() {
       if (data.mensages.length > 0) {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#chat_length').append("<span class=\"badge badge-primary\">".concat(data.mensages.length, "</span>"));
         data.mensages.map(function (item, index) {
-          if (index == 0) {
+          if (index == 0 && urlRecipient == null && urlProperty == null) {
+            toFind = [item.recipient, item.property_id, item.id];
+          } else if (urlRecipient == item.recipient && urlProperty == item.property_id) {
             toFind = [item.recipient, item.property_id, item.id];
           }
 
@@ -55904,8 +55919,7 @@ function loadChats() {
 }
 
 function loopChat() {
-  console.log('loopChat', chatReading); // Reseta o loop que pega as mensagens
-
+  // Reseta o loop que pega as mensagens
   clearInterval(loop); // Chama o Read Chat
 
   readChat(chatReading.recipient, chatReading.property);
@@ -55917,14 +55931,12 @@ function readChat(recipient, property, message_id) {
     method: "GET",
     url: url,
     beforeSend: function beforeSend() {
-      loadingChat = true;
-      chatContainer.html("<p>Carregando conversa...</p>");
+      loadingChat = true; // chatContainer.html(`<p>Carregando conversa...</p>`)
     }
   }).done(function (data) {
-    console.log("Chat Loaded: ", data);
     var html = '';
 
-    if (data.subjects) {
+    if (data.subjects && chatReading.subjects.length !== data.subjects.length) {
       // Seta o loop que pega as mensagens
       loop = setInterval(loopChat, 1000);
 
@@ -55937,10 +55949,8 @@ function readChat(recipient, property, message_id) {
         html += "<p>Nenhuma conversa</p>";
       }
 
+      insertMessages(html);
       chatReading = data;
-      chatContainer.html(html);
-      var objDiv = document.getElementById("chat_content");
-      objDiv.scrollTop = objDiv.scrollHeight;
     }
 
     loadingChat = false;
@@ -55952,16 +55962,22 @@ function readChat(recipient, property, message_id) {
   }
 }
 
+function insertMessages(html) {
+  chatContainer.html(html);
+  var objDiv = document.getElementById("chat_content");
+  objDiv.scrollTop = objDiv.scrollHeight;
+}
+
 function sendMessage(recipient, property, message) {
-  console.log('recipient', recipient);
-  console.log('property', property);
-  console.log('message', message);
+  // console.log('recipient', recipient)
+  // console.log('property', property)
+  // console.log('message', message)
   var url = "/chats/".concat(recipient, "/").concat(property);
   var data = {
     mensagem: message,
     _token: jquery__WEBPACK_IMPORTED_MODULE_0___default()('meta[name="csrf-token"]').attr('content')
-  };
-  console.log('data', data);
+  }; // console.log('data', data)
+
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
     method: "POST",
     url: url,
@@ -55992,6 +56008,8 @@ function chatHandlers() {
 
     if (recipient != undefined && property != undefined && id != undefined) {
       readChat(recipient, property, id);
+      Object(_utils_urls__WEBPACK_IMPORTED_MODULE_3__["updateURLParameter"])('recipient', recipient);
+      Object(_utils_urls__WEBPACK_IMPORTED_MODULE_3__["updateURLParameter"])('property', property);
     }
   }); // Pega o enter para enviar a mensagem
 
@@ -56258,6 +56276,57 @@ function initMap(geolocation) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dateHourFormat", function() { return dateHourFormat; });
 var dateHourFormat = "DD/MM/YYYY - HH:mm";
+
+/***/ }),
+
+/***/ "./resources/js/utils/urls.js":
+/*!************************************!*\
+  !*** ./resources/js/utils/urls.js ***!
+  \************************************/
+/*! exports provided: getUrlParameter, updateURLParameter, updateUrl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUrlParameter", function() { return getUrlParameter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateURLParameter", function() { return updateURLParameter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUrl", function() { return updateUrl; });
+function getUrlParameter(name) {
+  name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+  var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+  var results = regex.exec(location.search);
+  return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+/**
+* http://stackoverflow.com/a/10997390/11236
+*/
+
+function updateURLParameter(param, paramVal) {
+  var url = window.location.href;
+  var newAdditionalURL = "";
+  var tempArray = url.split("?");
+  var baseURL = tempArray[0];
+  var additionalURL = tempArray[1];
+  var temp = "";
+
+  if (additionalURL) {
+    tempArray = additionalURL.split("&");
+
+    for (var i = 0; i < tempArray.length; i++) {
+      if (tempArray[i].split('=')[0] != param) {
+        newAdditionalURL += temp + tempArray[i];
+        temp = "&";
+      }
+    }
+  }
+
+  var rows_txt = temp + "" + param + "=" + paramVal; // return baseURL + "?" + newAdditionalURL + rows_txt;
+
+  updateUrl(baseURL + "?" + newAdditionalURL + rows_txt);
+}
+function updateUrl(newUrl) {
+  window.history.replaceState('', '', newUrl);
+}
 
 /***/ }),
 

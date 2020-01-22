@@ -1,13 +1,18 @@
 import $ from "jquery";
 import moment from "moment";
 import { dateHourFormat } from "../utils/time";
+import { getUrlParameter, updateURLParameter } from "../utils/urls";
 
 let chatListContainer = '';
 let chatContainer = '';
-let chatReading = {};
+let chatReading = {
+    subjects: []
+};
 var loadingChat = false;
 var sendingMessage = false;
 var chatApiUrl = '';
+var urlRecipient = null;
+var urlProperty = null;
 
 var loop;
 
@@ -15,6 +20,7 @@ $(document).ready(function() {
     chatApiUrl = $('meta[name="api_chats_url"]').attr('content');
 
     if (window.location.pathname === '/chats') {
+        receiveParameters();
         loadChats();
         chatHandlers();
     }
@@ -25,6 +31,13 @@ $(document).ready(function() {
         loadMiniChatList(miniLists[0]);
     }
 });
+
+function receiveParameters() {
+    urlRecipient = getUrlParameter('recipient');
+    // if (urlRecipient) console.log(urlRecipient);
+    urlProperty = getUrlParameter('property');
+    // if (urlProperty) console.log(urlProperty);
+}
 
 function loadMiniChatList(container) {
     const url = chatApiUrl;
@@ -47,17 +60,13 @@ function loadMiniChatList(container) {
 
                 data.mensages.map((item, index) => {
                     html += `
-                        <div
-                            class="message_item"
-                            id="message_item_${item.id}"
-                            data-recipient="${item.recipient}"
-                            data-property="${item.property_id}"
-                            data-id="${item.id}"
-                            >
+                        <a
+                            href="/chats?recipient=${item.recipient}&property=${item.property_id}"
+                            class="message_item">
                             <h4 class="m_person">${item.user_name}</h4>
                             <p class="m_message">${item.last_mensagem}</p>
                             <div class="m_time">${moment(item.updated_at).format(dateHourFormat)}</div>
-                        </div>
+                        </a>
                     `;
                 })
                 
@@ -98,9 +107,14 @@ function loadChats() {
                 $('#chat_length').append(`<span class="badge badge-primary">${data.mensages.length}</span>`);
 
                 data.mensages.map((item, index) => {
-                    if (index == 0) {
+                    if (index == 0 && (urlRecipient == null && urlProperty == null)) {
                         toFind = [item.recipient, item.property_id, item.id];
+
+                    } else if (urlRecipient == item.recipient && urlProperty == item.property_id) {
+                        toFind = [item.recipient, item.property_id, item.id];
+
                     }
+                    
                     html += `
                         <div
                             class="message_item"
@@ -127,8 +141,6 @@ function loadChats() {
 }
 
 function loopChat() {
-    console.log('loopChat', chatReading);
-
     // Reseta o loop que pega as mensagens
     clearInterval(loop);
 
@@ -145,14 +157,13 @@ function readChat(recipient, property, message_id) {
         url: url,
         beforeSend: function() {
             loadingChat = true;
-            chatContainer.html(`<p>Carregando conversa...</p>`)
+            // chatContainer.html(`<p>Carregando conversa...</p>`)
         }
     })
     .done(function(data) {
-        console.log( "Chat Loaded: ", data);
 
         let html = '';
-        if (data.subjects) {
+        if (data.subjects && chatReading.subjects.length !== data.subjects.length) {
 
             // Seta o loop que pega as mensagens
             loop = setInterval(loopChat, 1000);
@@ -180,11 +191,9 @@ function readChat(recipient, property, message_id) {
                 html += `<p>Nenhuma conversa</p>`;
             }
 
-            chatReading = data;
+            insertMessages(html);
 
-            chatContainer.html(html);
-            let objDiv = document.getElementById("chat_content");
-            objDiv.scrollTop = objDiv.scrollHeight;
+            chatReading = data;
         }
 
         loadingChat = false;
@@ -196,11 +205,17 @@ function readChat(recipient, property, message_id) {
     }
 }
 
+function insertMessages(html) {
+    chatContainer.html(html);
+    let objDiv = document.getElementById("chat_content");
+    objDiv.scrollTop = objDiv.scrollHeight;
+}
+
 function sendMessage(recipient, property, message) {
 
-    console.log('recipient', recipient)
-    console.log('property', property)
-    console.log('message', message)
+    // console.log('recipient', recipient)
+    // console.log('property', property)
+    // console.log('message', message)
 
     let url = `/chats/${recipient}/${property}`
 
@@ -208,7 +223,7 @@ function sendMessage(recipient, property, message) {
         mensagem: message,
         _token: $('meta[name="csrf-token"]').attr('content')
     }
-    console.log('data', data)
+    // console.log('data', data)
 
     $.ajax({
         method: "POST",
@@ -242,6 +257,9 @@ function chatHandlers() {
         
         if (recipient != undefined && property != undefined && id != undefined) {
             readChat(recipient, property, id);
+
+            updateURLParameter('recipient', recipient);
+            updateURLParameter('property', property);
         }
     })
 
