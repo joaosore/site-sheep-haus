@@ -3,6 +3,19 @@
 
 .pt-page {
     padding-top: 130px;
+
+    .card {
+        .card-header {
+            background-color: #fff;
+            border-bottom-color: transparent;
+
+            .fa {
+                margin: 10px;
+                opacity: .7;
+                transform: scale(1.2);
+            }
+        }
+    }
 }
 
 header {
