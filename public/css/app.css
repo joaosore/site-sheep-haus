@@ -16230,39 +16230,50 @@ header.titulo--padrao.titulo--padrao--breadcrumb .titulo .bread-child {
   padding-right: 20px;
 }
 
-.message_item {
+.message_item,
+a.message_item {
   border: 1px solid #c1c8d7;
   border-radius: 4px;
   cursor: pointer;
+  display: block;
   margin: 5px;
   padding: 5px 10px;
   transition: background 200ms ease;
 }
-.message_item:hover {
+.message_item:hover,
+a.message_item:hover {
   background-color: rgba(0, 0, 0, 0.05);
+  text-decoration: none;
 }
-.message_item.message_item--active {
+.message_item.message_item--active,
+a.message_item.message_item--active {
   background-color: #0051ac;
   border-color: #0051ac;
   border-width: 2px;
 }
-.message_item.message_item--active .m_person {
+.message_item.message_item--active .m_person,
+a.message_item.message_item--active .m_person {
   color: #FFFFFF;
 }
-.message_item.message_item--active .m_message {
+.message_item.message_item--active .m_message,
+a.message_item.message_item--active .m_message {
   color: #FFFFFF;
 }
-.message_item.message_item--active .m_time {
+.message_item.message_item--active .m_time,
+a.message_item.message_item--active .m_time {
   color: #FFFFFF;
 }
-.message_item .m_person {
+.message_item .m_person,
+a.message_item .m_person {
   color: #949fb7;
   font-weight: 600;
 }
-.message_item .m_message {
+.message_item .m_message,
+a.message_item .m_message {
   color: #949fb7;
 }
-.message_item .m_time {
+.message_item .m_time,
+a.message_item .m_time {
   color: #949fb7;
   font-size: 10px;
 }
