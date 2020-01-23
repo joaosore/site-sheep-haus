@@ -224,6 +224,13 @@ header.banner figure img{
 .card{
 	border: none;
 
+	.card-header {
+		.card-title {
+			font-weight: 600;
+			margin: .6rem 0 .3rem;
+		}
+	}
+
 	.card-body{
 		
 		form{

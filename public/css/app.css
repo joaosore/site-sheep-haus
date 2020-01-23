@@ -11659,6 +11659,10 @@ header.banner figure img {
 .card {
   border: none;
 }
+.card .card-header .card-title {
+  font-weight: 600;
+  margin: 0.6rem 0 0.3rem;
+}
 .card .card-body form input.campo_login {
   width: 100%;
   margin: 10px 0 0 0;
@@ -15483,7 +15487,7 @@ section.bloco-contato div.contato a.botao-padrao i {
 }
 
 .site-header {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.8);
   left: 0;
   position: fixed;
   width: 100%;
@@ -15520,7 +15524,7 @@ section.bloco-contato div.contato a.botao-padrao i {
 }
 
 .site-header {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.8);
   left: 0;
   position: fixed;
   width: 100%;
@@ -15793,7 +15797,7 @@ footer.rodape nav.menu--rodape .menu--base nav.base-menu div.copyright {
 }
 
 .box-imovel {
-  margin: 20px 0;
+  margin: 0 0 20px;
   padding: 15px 20px;
   text-align: center;
 }

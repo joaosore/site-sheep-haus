@@ -12,7 +12,7 @@
 					<div style="height: 10px;"></div>
 					<h3 class="titulo">
 						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Dashboard Proprietário</a>
+						<span class="bread-child">Painel do proprietário</a>
 					</h3>
 				</header>
 			</div>

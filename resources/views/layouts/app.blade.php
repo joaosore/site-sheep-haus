@@ -73,27 +73,28 @@
                         
                         <nav id="nav-menu-container ">
                             <ul class="nav float-right">
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{route('home')}}">Divulgar</a></li>
-                                        <li><a class="dropdown-item" href="{{route('home')}}">Match moradores</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{route('home')}}">Match imóveis</a></li>
-                                        <li><a class="dropdown-item" href="{{route('home')}}">Amigos</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou prestador de serviço</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{route('home')}}">Anunciar</a></li>
-                                    </ul>
-                                </li>
+
                                 @guest
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{route('home')}}">Divulgar</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">Match moradores</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{route('home')}}">Match imóveis</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">Amigos</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou prestador de serviço</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="{{route('home')}}">Anunciar</a></li>
+                                        </ul>
+                                    </li>
                                     <li class="nav-item menu-active">
                                         <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('Entrar') }}</button>                            
                                     </li>
@@ -103,7 +104,20 @@
                                         </li> -->
                                     @endif
                                 @else
-                                    <li>
+
+                                    @if(Auth::user()->function == 'M')
+                                        <li class="nav-item">
+                                            <a href="{{ route('SeggestedProperties') }}" class="nav-link">Imóveis sugeridos</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('SuggestedVacancies') }}" class="nav-link">Vagas sugeridas</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('property.index') }}" class="nav-link">Meu imóvel</a>
+                                        </li>
+                                    @endif
+
+                                    <li class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
