@@ -82,17 +82,12 @@ Route::group(['middleware' => ['auth']], function () {
         
         //Characteristic
         Route::get('/api/characteristic', 'CharacteristicsController@index')->name('characteristic');
-            
-        // Get Property
-        Route::get('/api/properties', 'PropertyController@index')->name('properties');
-        Route::get('/api/property/{id}', 'PropertyController@show')->name('property.edit');
 
-        Route::get('/properties', 'PropertyController@view')->name('properties');
-        Route::get('/property', 'PropertyController@create')->name('property.create');
-
-        Route::post('/property', 'PropertyController@store')->name('property.store');
+        Route::get('/properties', 'PropertyController@index')->name('properties');
+        Route::get('/property/{id}', 'PropertyController@edit')->name('property.edit');
+        Route::get('/property/create', 'PropertyController@create')->name('property.create');
+        Route::post('/property/create', 'PropertyController@store')->name('property.store');
         Route::delete('/property', 'PropertyController@destroy')->name('property.destroy');
-        Route::put('/property/{id}', 'PropertyController@update')->name('property.update');
 
     });
 

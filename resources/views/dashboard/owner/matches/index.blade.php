@@ -9,7 +9,7 @@
 			</section>
 			<section class="adm-unico-bloco">
 				<section class="adm-matches">
-					<a href="{{ route('property.update', [$property->id.'/edit/#perfil-macth']) }}" class="link">Configurações do macth</a>
+					<a href="{{ route('property.edit', [$property->id]) }}" class="link">Configurações do macth</a>
 					<header class="titulo-matches">
 						<h1 class="titulo">Matches Sugeridos</h1>
 					</header>

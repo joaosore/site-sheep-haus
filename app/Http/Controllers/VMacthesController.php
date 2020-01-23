@@ -8,6 +8,9 @@ use App\VMatch;
 use App\Vacancy;
 use App\User;
 use App\Message;
+use App\Contract;
+use App\Property;
+use App\Subject;
 
 use App\Mail\VMatchMail;
 use Illuminate\Support\Facades\Mail;
@@ -18,6 +21,7 @@ class VMacthesController extends Controller
     public function store(Request $request) {
 
         $auth = Auth::user();
+        $auth_login = $auth->id;
         
         $user = [
             'user_id' => $auth->id
@@ -25,16 +29,52 @@ class VMacthesController extends Controller
 
         $dados = array_merge($user, $request->except('_token'));
 
-        $get = VMatch::where('user_id', '=', $auth->id)->where('vacancy_id', '=', $request->vacancy_id)->first();
-        $owner_id = Vacancy::where('property_id', '=',  $request->property_id)->pluck('user_id')->first();
+        $vmatch = VMatch::where('vacancy_id', '=', $request->vacancy_id)->first();
 
-        if(empty($get)) {
+        if(empty($vmatch)) {
+            
+            $vacancy = Vacancy::where('id', '=',  $request->vacancy_id)->first();
+            $contract = Contract::where('property_id', '=', $vacancy->property_id)->first();
+            $property = Property::where('id', '=', $contract->property_id)->first();
+
             VMatch::create($dados);
-            Message::create([
-                'property_id' => (int) $request->property_id,
+
+            $message = Message::where('from', '=', $auth_login)
+                            ->where('to', '=', $request->user_id)
+                            ->where('property_id', '=', $request->property_id)
+                            ->orWhere('from', '=', $request->user_id)
+                            ->where('to', '=', $auth_login)
+                            ->where('property_id', '=', $request->property_id)
+                            ->first();
+            if(empty($message)) {
+                Message::create([
+                    'property_id' => (int) $contract->property_id,
+                    'from' => (int) $auth->id,
+                    'to' => (int) $contract->user_id,
+                    'last_mensagem' => 'Macth na Vaga ' . $property->name
+                ]);
+            } else {
+
+                $last_mensagem = [
+                    'last_mensagem' => 'Macth na Vaga ' . $property->name
+                ];
+
+                Message::where('from', '=', $auth_login)
+                    ->where('to', '=', $contract->user_id)
+                    ->where('property_id', '=', $contract->property_id)
+                    ->orWhere('from', '=', $contract->user_id)
+                    ->where('to', '=', $auth_login)
+                    ->where('property_id', '=', $contract->property_id)
+                    ->update($last_mensagem);
+            }
+
+            Subject::create([
+                'property_id' => (int) $contract->property_id,
                 'from' => (int) $auth->id,
-                'to' => (int) $owner_id
+                'to' => (int) $contract->user_id,
+                'mensagem' => 'Macth na Vaga ' . $property->name
             ]);
+
         }
 
         $vacancy = Vacancy::where('id', '=', $request->vacancy_id)->first();
@@ -45,11 +85,6 @@ class VMacthesController extends Controller
             'owner' => (object) $owner
         );
 
-        if($auth->function === 'M') {
-            Mail::to($owner->email)
-            ->bcc('jaumcj@gmail.com')
-            ->send(new VMatchMail($dados));
-            return redirect()->back();
-        }
+        return redirect()->route('chats');
     }
 }

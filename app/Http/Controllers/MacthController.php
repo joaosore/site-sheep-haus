@@ -77,7 +77,6 @@ class MacthController extends Controller
 
         }
 
-        
         $owner = User::where('id', '=', $property->user_id)->first();
 
         $dados = array(
@@ -86,12 +85,6 @@ class MacthController extends Controller
             'owner' => $owner
         );
 
-        if($auth->function === 'M') {
-            // Mail::to($owner->email)
-            // ->bcc('jaumcj@gmail.com')
-            // ->send(new MatchMail($dados));
-            return redirect()->route('email.create', [$request->user_id, $request->property_id]);
-            // return redirect()->back();
-        }
+        return redirect()->route('chats');
     }
 }
