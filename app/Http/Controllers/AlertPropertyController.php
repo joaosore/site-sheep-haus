@@ -95,10 +95,6 @@ class AlertPropertyController extends Controller
             'property' => $property,
         );
 
-        //Mail::to($dweller->email)
-        // ->bcc('jaumcj@gmail.com')
-        // ->send(new AlertMail($dados));
-        return redirect()->route('email.create', [$request->user_id, $request->property_id]);
-        // return redirect()->back();
+        return redirect()->route('chats',);
     }
 }

@@ -42,7 +42,7 @@ class MessageControllers extends Controller
         $auth = Auth::user();
         $auth_login = $auth->id;
 
-        $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->get();
+        $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->orderBy('updated_at', 'desc')->get();
 
         $men = [];
         foreach($mensages as $key => $mensagem) {
@@ -60,8 +60,6 @@ class MessageControllers extends Controller
             
             $men[$key] = $mensagem;
         }
-
-        
         
         return response()->json([
             'mensages' => $mensages
