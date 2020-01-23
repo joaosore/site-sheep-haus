@@ -117,6 +117,15 @@
                                         </li>
                                     @endif
 
+                                    @if(Auth::user()->function == 'P')
+                                        <li class="nav-item">
+                                            <a href="{{ route('property.create') }}" class="nav-link"><i class="fa fa-plus"></i> Novo imóvel</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="{{ route('properties') }}" class="nav-link">Meus imóveis</a>
+                                        </li>
+                                    @endif
+
                                     <li class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
