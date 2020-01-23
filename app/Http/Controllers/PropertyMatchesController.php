@@ -9,6 +9,7 @@ use App\Contract;
 use App\IHabit;
 use App\MHabit;
 use App\Alert;
+use App\Property;
 
 class PropertyMatchesController extends Controller
 {
@@ -38,10 +39,12 @@ class PropertyMatchesController extends Controller
 
         $Alerts = Alert::where('property_id', '=', $id)->pluck('user_id')->toArray();
 
+        $Property = Property::find($id);
+
         return view('dashboard.owner.matches.index', [
             'matchs' => $Users_macth,
             'contract' => $contract,
-            'property' => (object) array('id' => $id),
+            'property' => $Property,
             'alerts' => $Users_alerts,
             'create_alerts' => $Alerts
         ]);

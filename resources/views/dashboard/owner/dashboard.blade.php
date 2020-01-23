@@ -29,8 +29,10 @@
 			<div class="col-md-6">
 
 				<div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title"><i class="fa fa-home"></i> Imóveis anunciados: <span class="badge badge-secondary">{{ count($properties) }}</span></h4>
+                    </div>
 					<div class="card-body">
-						<p>Imóveis anunciados: <span class="badge badge-secondary">{{ count($properties) }}</span></p>
 
 						<div class="row">
 							@foreach ($properties as $property)
@@ -98,9 +100,9 @@
 			<!-- MENSAGENS -->
 			<div class="col-md-3">
 				<div class="card">
-					<div class="card-header">
-						<i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span>
-					</div>
+                    <div class="card-header">
+                        <h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
+                    </div>
 					<div class="card-body">
 						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
 						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">Todas as mensagens</a>
@@ -112,9 +114,11 @@
 			<!-- SERVIÇOS -->
 			<div class="col-md-3">
 				<div class="card">
-					<div class="card-header">
-						<i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
-					</div>
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            <i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+                        </h4>
+                    </div>
 					<div class="card-body">
 
 						<ul class="lista-servicos">
