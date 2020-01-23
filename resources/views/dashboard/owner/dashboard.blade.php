@@ -17,7 +17,7 @@
 				</header>
 			</div>
 			<div class="col-md-6">
-				<a href="{{ route('property.create') }}" class="btn btn-success float-right">Novo anúncio</a>
+				<a href="{{ route('property.create') }}" class="btn btn-success float-right">Novo imóvel</a>
 				<a href="{{ route('properties') }}" class="btn btn-secondary float-right" style="margin-right: 10px;">Meus imóveis</a>
 				<div style="height: 10px;"></div>
 			</div>
