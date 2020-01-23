@@ -55724,9 +55724,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scripts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/scripts */ "./resources/js/components/scripts.js");
 /* harmony import */ var _components_masks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/masks */ "./resources/js/components/masks.js");
 /* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/chat */ "./resources/js/components/chat.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login */ "./resources/js/login.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! jquery-mask-plugin */ "./node_modules/jquery-mask-plugin/dist/jquery.mask.js");
+
 
 
 
@@ -56262,6 +56264,27 @@ function initMap(geolocation) {
     map: map
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/login.js":
+/*!*******************************!*\
+  !*** ./resources/js/login.js ***!
+  \*******************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  var loginErrors = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.login-form').find('.invalid-feedback'); // alert(`has ${loginErrors.length}`);
+  // if (loginErrors.length > 0) {
+  //     @foreach ($vacancies as $vacancy)
+  // }
+});
 
 /***/ }),
 

@@ -4,6 +4,7 @@ require("jquery-mask-plugin");
 import "./components/scripts";
 import "./components/masks";
 import "./components/chat";
+import "./login";
 
 $(function(){
 	$('.botao-formulario-padrao').click(function(){

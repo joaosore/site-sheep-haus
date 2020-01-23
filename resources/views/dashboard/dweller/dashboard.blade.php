@@ -21,7 +21,9 @@
 			<div class="col-md-6">
 
 				<div class="card">
-					<div class="card-header">Imóveis</div>
+					<div class="card-header">
+						<h4 class="card-title"><i class="fa fa-home"></i> Imóveis</h4>
+					</div>
 					<div class="card-body">
 						<div class="row">
 					
@@ -55,7 +57,9 @@
 
 				<!-- VAGAS -->
 				<div class="card">
-					<div class="card-header">Vagas</div>
+					<div class="card-header">
+						<h4 class="card-title"><i class="fa fa-home"></i> Vagas</h4>
+					</div>
 					<div class="card-body">
 					</div>
 				</div>
@@ -68,7 +72,7 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-header">
-						<i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span>
+						<h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
 					</div>
 					<div class="card-body">
 						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
@@ -88,7 +92,9 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-header">
-						<i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+						<h4 class="card-title">
+							<i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+						</h4>
 					</div>
 					<div class="card-body">
 

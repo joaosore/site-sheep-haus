@@ -11659,6 +11659,10 @@ header.banner figure img {
 .card {
   border: none;
 }
+.card .card-header .card-title {
+  font-weight: 600;
+  margin: 0.6rem 0 0.3rem;
+}
 .card .card-body form input.campo_login {
   width: 100%;
   margin: 10px 0 0 0;
