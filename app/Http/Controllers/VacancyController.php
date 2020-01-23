@@ -42,8 +42,6 @@ class VacancyController extends Controller
     public function edit($id) {
         
         $vaga = Vacancy::where('id', '=', $id)->first();
-        
-        return $id;
 
         $ihabits = IHabit::where('property_id', '=', $vaga->property_id)->pluck('habit_id')->toArray();
         $habits = Habit::whereNotIn('id', $ihabits)->get();

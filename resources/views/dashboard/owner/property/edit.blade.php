@@ -15,7 +15,7 @@
 				</header>
 				
 				<div class="bloco-meio-formulario">
-					{{ Form::open(array('route' => ['property.update', $property->id], 'method' => 'PUT')) }}
+					{{ Form::open(array('route' => ['property.edit', $property->id], 'method' => 'PUT')) }}
 					{{ Form::text('name', $property->name, array('class' => 'input-padrao','placeholder' => 'NOME')) }}
 				</div>
 				<div class="bloco-meio-formulario">
@@ -25,7 +25,7 @@
 					{{ Form::text('description', $property->description, array('class' => 'input-padrao', 'placeholder' => 'DESCRIÇÂO')) }}
 				</div>
 				<div class="bloco-unico-formulario">
-					@if()
+					@if(is_array($property->characteristics_id))
 					@foreach ($characteristics as $valor)
 						@if(in_array($valor, $property->characteristics_id))
 							<label for="$valor" class="label-check-button">
@@ -77,7 +77,7 @@
 					<div id="map" style="width: 100%; height: 280px"></div>
 				</div>
 				<div class="bloco-meio-formulario localizacao">
-					{{ Form::open(array('route' => ['property.update', $property->id], 'method' => 'put')) }}
+					{{ Form::open(array('route' => ['property.edit', $property->id], 'method' => 'put')) }}
 					{{ Form::hidden('lng', $property->lng, array('id' => 'lng')) }}
 			        {{ Form::hidden('lat', $property->lat, array('id' => 'lat')) }}
 					{{ Form::text('address', $property->address, array('class'=>'input-padrao','placeholder'=>'ENDEREÇO','id' => 'autocomplete')) }}
