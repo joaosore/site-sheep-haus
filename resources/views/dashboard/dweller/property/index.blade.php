@@ -39,7 +39,7 @@
 									</header>
 								<p class="texto">{{ $property->description }}</p>
 								<footer class="info-item">
-										<a href="{{ route('vacancies') }}" class="botao-padrao">Administrar vagas</a>
+										<a href="{{ route('vacancies') }}" class="botao-padrao">{{ __('general.administrar_vagas') }}</a>
 									</footer>
 								</div>
 							@endif

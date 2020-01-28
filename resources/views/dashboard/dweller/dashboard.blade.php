@@ -8,8 +8,8 @@
 			<div class="col-md-12">
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Painel do morador</a>
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.painel_morador') }}</a>
 					</h3>
 				</header>
 			</div>
@@ -22,7 +22,7 @@
 
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title"><i class="fa fa-home"></i> Imóveis</h4>
+						<h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.properties') }}</h4>
 					</div>
 					<div class="card-body">
 						<div class="row">
@@ -58,7 +58,7 @@
 				<!-- VAGAS -->
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title"><i class="fa fa-home"></i> Vagas</h4>
+						<h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.vagas') }}</h4>
 					</div>
 					<div class="card-body">
 					</div>
@@ -72,18 +72,18 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
+						<h4 class="card-title"><i class="fa fa-envelope"></i> {{ __('general.mensagens') }} <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
 					</div>
 					<div class="card-body">
 						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
-						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">TODAS AS MENSAGENS</a>
+						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">{{ __('general.todas_mensagens') }}</a>
 					</div>
 				</div>
 
 				<div style="height: 20px;"></div>
 
 				<div>
-					<a href="#" class="btn btn-block btn-lg btn-primary"><i class="far fa-star"></i> ANUNCIAR VAGA</a>
+					<a href="#" class="btn btn-block btn-lg btn-primary"><i class="far fa-star"></i> {{ __('general.anunciar_vaga') }}</a>
 				</div>
 			</div>
 			<!-- MENSAGENS -->
@@ -93,7 +93,7 @@
 				<div class="card">
 					<div class="card-header">
 						<h4 class="card-title">
-							<i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+							<i class="fa fa-cog"></i> {{ __('general.servicos_uteis') }} <span class="badge badge-secondary">x</span>
 						</h4>
 					</div>
 					<div class="card-body">
@@ -123,7 +123,7 @@
 
 						<div class="row">
 							<div class="col-md-7">
-								<a href="#" class="btn btn-sm btn-block btn-secondary">MAIS SERVIÇOS</a>
+								<a href="#" class="btn btn-sm btn-block btn-secondary">{{ __('general.mais_servicos') }}</a>
 							</div>
 						</div>
 					</div>
