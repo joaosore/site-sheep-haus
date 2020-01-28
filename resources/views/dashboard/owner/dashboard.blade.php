@@ -11,8 +11,8 @@
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					{{-- <div style="height: 10px;"></div> --}}
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Painel do proprietário</a>
+                        <a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.painel_proprietario') }}</a>
 					</h3>
 				</header>
 			</div>
@@ -30,7 +30,7 @@
 
 				<div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"><i class="fa fa-home"></i> Imóveis anunciados: <span class="badge badge-secondary">{{ count($properties) }}</span></h4>
+                        <h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.imoveis_anunciados') }} <span class="badge badge-secondary">{{ count($properties) }}</span></h4>
                     </div>
 					<div class="card-body">
 
@@ -69,7 +69,7 @@
 
 										<div class="row">
 											<div class="col-md-12">
-												<a href="#" class="btn btn-info btn-block">DESTACAR ANÚNCIO</a>
+												<a href="#" class="btn btn-info btn-block">{{ __('general.destacar_anuncio') }}</a>
 											</div>
 										</div>
 
@@ -77,7 +77,7 @@
 
 										<div class="row">
 											<div class="col-md-6">
-												<a href="{{ route('property.edit', $property->id ) }}" class="btn btn-sm btn-secondary btn-block">EDITAR</a>
+												<a href="{{ route('property.edit', $property->id ) }}" class="btn btn-sm btn-secondary btn-block">{{ __('general.editar') }}</a>
 											</div>
 											<div class="col-md-6">
 												{{ Form::submit('APAGAR', ['class' => 'btn btn-sm btn-secondary btn-block']) }}
@@ -101,11 +101,11 @@
 			<div class="col-md-3">
 				<div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
+                        <h4 class="card-title"><i class="fa fa-envelope"></i> {{ __('general.mensagens') }} <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
                     </div>
 					<div class="card-body">
 						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
-						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">Todas as mensagens</a>
+						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">{{ __('general.todas_mensagens') }}</a>
 					</div>
 				</div>
 			</div>
@@ -116,7 +116,7 @@
 				<div class="card">
                     <div class="card-header">
                         <h4 class="card-title">
-                            <i class="fa fa-cog"></i> Serviços úteis <span class="badge badge-secondary">x</span>
+                            <i class="fa fa-cog"></i> {{ __('general.servicos_uteis') }} <span class="badge badge-secondary">x</span>
                         </h4>
                     </div>
 					<div class="card-body">
