@@ -75,7 +75,7 @@
 						<h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
 					</div>
 					<div class="card-body">
-						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
+						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
 						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">TODAS AS MENSAGENS</a>
 					</div>
 				</div>
@@ -227,7 +227,7 @@
 							<a href=""><i data-fonte="" class="icone-mensagens">3</i></a>
 						</header>
 
-						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
+						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
 						
 						<a href="{{ route('chats') }}" class="btn btn-block btn-sm btn-info">Todas as mensagens</a>
 					</section>

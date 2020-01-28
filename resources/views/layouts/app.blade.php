@@ -76,27 +76,27 @@
 
                                 @guest
                                     <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Tenho imóvel</a>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('general.tenho_imovel') }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{{route('home')}}">Divulgar</a></li>
-                                            <li><a class="dropdown-item" href="{{route('home')}}">Match moradores</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">{{ __('general.divulgar') }}</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">{{ __('general.match_moradores') }}</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou aluno</a>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('general.sou_aluno') }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{{route('home')}}">Match imóveis</a></li>
-                                            <li><a class="dropdown-item" href="{{route('home')}}">Amigos</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">{{ __('general.match_imoveis') }}</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">{{ __('general.amigos') }}</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Sou prestador de serviço</a>
+                                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ __('general.sou_prestador_servico') }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{{route('home')}}">Anunciar</a></li>
+                                            <li><a class="dropdown-item" href="{{route('home')}}">{{ __('general.anunciar') }}</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item menu-active">
-                                        <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('Entrar') }}</button>                            
+                                        <button class="btn btn-success btn-sm btn-padding" data-toggle="modal" data-target="#login">{{ __('general.entrar') }}</button>                            
                                     </li>
                                     @if (Route::has('register'))
                                         <!-- <li class="lista-item">
@@ -107,32 +107,32 @@
 
                                     @if(Auth::user()->function == 'M')
                                         <li class="nav-item">
-                                            <a href="{{ route('SeggestedProperties') }}" class="nav-link">Imóveis sugeridos</a>
+                                            <a href="{{ route('SeggestedProperties') }}" class="nav-link">{{ __('general.imoveis_sugeridos') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('SuggestedVacancies') }}" class="nav-link">Vagas sugeridas</a>
+                                            <a href="{{ route('SuggestedVacancies') }}" class="nav-link">{{ __('general.vagas_sugeridas') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('property.index') }}" class="nav-link">Meu imóvel</a>
+                                            <a href="{{ route('property.index') }}" class="nav-link">{{ __('general.meu_imovel') }}</a>
                                         </li>
                                     @endif
 
                                     @if(Auth::user()->function == 'P')
                                         <li class="nav-item">
-                                            <a href="{{ route('property.create') }}" class="nav-link"><i class="fa fa-plus"></i> Novo imóvel</a>
+                                            <a href="{{ route('property.create') }}" class="nav-link"><i class="fa fa-plus"></i> {{ __('general.novo_imovel') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('properties') }}" class="nav-link">Meus imóveis</a>
+                                            <a href="{{ route('properties') }}" class="nav-link">{{ __('general.meus_imoveis') }}</a>
                                         </li>
                                     @endif
 
                                     <li class="nav-item dropdown">
                                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            <li><a class="dropdown-item" href="{{ route('profile') }}">Perfil</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('general.dashboard') }}</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('profile') }}">{{ __('general.perfil') }}</a></li>
                                             {{-- <li><a class="dropdown-item" href="{{ route('chats') }}">Mensagens</a></li> --}}
-                                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Sair') }}</a>
+                                            <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('general.sair') }}</a>
         
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                 @csrf
@@ -141,11 +141,11 @@
                                     </li>
                                 @endguest  
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ App::getLocale() }}</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">BR</a></li>
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt-BR">EN</a></li>
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">ES</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt">pt</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">en</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">es</a></li>
                                     </ul>
                                 </li>                  
                             </ul>
@@ -217,44 +217,44 @@
 							</figure>
 						</a>
 						<div class="dropdown">
-							<div class="botao-dropdown">Brasil</div>
+							<div class="botao-dropdown">{{ __('general.idioma') }}</div>
 							<input type="checkbox" id="dropdown">
 							<ul class="dropdown-menu">
-								<li><a href="">EN</a></li>
-								<li><a href="">BR</a></li>
-								<li><a href="">ES</a></li>
+                                <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt">pt</a></li>
+                                <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">en</a></li>
+                                <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">es</a></li>
 							</ul>
 						</div>
 					</section>
 					<section class="menu--itens" id="navbarSupportedContent">
 						<ul class="menu--itens_lista">
 							<li class="lista-item">
-								<p>Tenho imóvel</p>
+								<p>{{ __('general.tenho_imovel') }}</p>
 								<ul class="sub_menu--itens_lista">
 									<li class="sub-lista-item">
-										<a href="{{route('home')}}">Divulgar</a>
+										<a href="{{route('home')}}">{{ __('general.anunciar') }}</a>
 									</li>
 									<li class="sub-lista-item">
-										<a href="{{route('home')}}">Match moradores</a>
+										<a href="{{route('home')}}">{{ __('general.match_moradores') }}</a>
 									</li>
 								</ul>
 							</li>
 							<li class="lista-item">
-								<p>Sou aluno</p>
+								<p>{{ __('general.sou_aluno') }}</p>
 								<ul class="sub_menu--itens_lista">
 									<li class="sub-lista-item">
-										<a href="{{route('home')}}">Match imóveis</a>
+										<a href="{{route('home')}}">{{ __('general.match_imoveis') }}</a>
 									</li>
 									<li class="sub-lista-item">
-										<a href="{{route('home')}}">Amigos</a>
+										<a href="{{route('home')}}">{{ __('general.amigos') }}</a>
 									</li>
 								</ul>
 							</li>
 							<li class="lista-item">
-								<p>Sou prestador de serviço</p>
+								<p>{{ __('general.sou_prestador_servico') }}</p>
 								<ul class="sub_menu--itens_lista">
 									<li class="sub-lista-item">
-										<a href="{{route('home')}}">Anunciar</a>
+										<a href="{{route('home')}}">{{ __('general.anunciar') }}</a>
 									</li>
 								</ul>
 							</li>
@@ -270,11 +270,11 @@
                             <nav class="navbar navbar-expand-md">
                                 <div class="collapse navbar-collapse" id="navbarCollapse">
                                     <div class="navbar-nav">
-                                        <a href="/termos" class="nav-item nav-link">Termos de uso</a>
-                                        <a href="#" class="nav-item nav-link" style="margin-left: 10rem;">&copy; {{date('Y')}} Todos os direitos reservados</a>
+                                        <a href="/termos" class="nav-item nav-link">{{ __('general.termos_uso') }}</a>
+                                        <a href="#" class="nav-item nav-link" style="margin-left: 10rem;">&copy; {{date('Y')}} {{ __('general.direitos_reservados') }}</a>
                                     </div>
                                     <div class="navbar-nav ml-auto">
-                                        <a href="#" class="nav-item nav-link disabled" style="margin-left: 10rem;">Siga</a>
+                                        <a href="#" class="nav-item nav-link disabled" style="margin-left: 10rem;">{{ __('general.siga') }}</a>
                                         <a href="https://facebook.com" target="_blank" style="margin-top: 0.5rem;"><i class="fab fa-facebook"></i></a>
                                         <a href="https://twitter.com" target="_blank" style="margin-top: 0.5rem; margin-left: 0.75rem;"><i class="fab fa-twitter"></i></a>
                                     </div>

@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-md-6">
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
-					<div style="height: 10px;"></div>
+					{{-- <div style="height: 10px;"></div> --}}
 					<h3 class="titulo">
 						<a href="{{route('dashboard')}}">Home</a> > 
 						<span class="bread-child">Painel do proprietário</a>
@@ -17,9 +17,9 @@
 				</header>
 			</div>
 			<div class="col-md-6">
-				<a href="{{ route('property.create') }}" class="btn btn-success float-right">Novo imóvel</a>
+				{{-- <a href="{{ route('property.create') }}" class="btn btn-success float-right">Novo imóvel</a>
 				<a href="{{ route('properties') }}" class="btn btn-secondary float-right" style="margin-right: 10px;">Meus imóveis</a>
-				<div style="height: 10px;"></div>
+				<div style="height: 10px;"></div> --}}
 			</div>
 		</div>
 
@@ -104,7 +104,7 @@
                         <h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens <span class="badge badge-secondary">{{ count($mensages) }}</span></h4>
                     </div>
 					<div class="card-body">
-						<div id="mini-message-list" style="max-height: 300px; overflow: overlay; padding-right: 20px;"></div>
+						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
 						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">Todas as mensagens</a>
 					</div>
 				</div>

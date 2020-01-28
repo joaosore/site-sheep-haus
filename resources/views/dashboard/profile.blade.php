@@ -2,69 +2,79 @@
 
 @section('content')
 <div class="dashboard-page pt-page">
+
 	<div class="container">
 
 		<div class="row">
 			<div class="col-md-12">
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Perfil</a>
-          			</h3>
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.perfil') }}</a>
+					</h3>
 				</header>
 			</div>
-    	</div>
+		</div>
 
-		<div class="flex-center position-ref full-height">
-			<div class="content centralizar bloco-adm">
+		<div class="row">
 
-				<section class="adm-primeiro-bloco">
-					<section class="adm-republica">
-						<section class="bloco-meio">
-								{{ Form::open(array('route' => 'profile', 'method' => 'put', 'enctype' => 'multipart/form-data')) }}
-							<header class="adm-republica_topo">
-								<figure style="background-image: url('/avatar/{{ $user->avatar }}')"></figure>
-								<div class="separador-texto">
-									<h1 class="titulo">{{ $user->name }}</h1>
-									<h2 class="subtitulo">({{ $user->gender }})</h2>
-								</div>
-							</header>
-								<section class="formulario--cadastro adm">
+			<!-- perfil -->
+			<div class="col-md-3">
+
+				<div class="card">
+					<div class="card-header">
+							<h4 class="card-title"><i class="fa fa-user"></i> {{ __('general.meu_perfil') }}</h4>
+					</div>
+					<div class="card-body">
+
+						<div class="row">
+							<div class="col-md-12">
+
+							{{ Form::open(array('route' => 'profile', 'method' => 'put', 'enctype' => 'multipart/form-data')) }}
+								<header>
+									<figure style="background-image: url('/avatar/{{ $user->avatar }}')"></figure>
+									<h3>{{ $user->name }}</h3>
+									<h4>{{ __('general.genero') }}: {{ $user->gender }}</h4>
+									<br />
+								</header>
+								<section>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('name', $user->name, array('class' => 'input-padrao','placeholder' => 'NOME')) }}
+										{{ Form::text('name', $user->name, array('class' => 'form-control','placeholder' => 'NOME')) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('last_name', $user->last_name, array('class' => 'input-padrao','placeholder' => 'SOBRENOME')) }}
+										{{ Form::text('last_name', $user->last_name, array('class' => 'form-control','placeholder' => 'SOBRENOME')) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('email', $user->email, array('class' => 'input-padrao','placeholder' => 'E-MAIL'), ['readonly']) }}
+										{{ Form::text('email', $user->email, array('class' => 'form-control','placeholder' => 'E-MAIL'), ['readonly']) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('university_id', $user->university_id, array('class'=> 'input-padrao','placeholder' => 'UNIVERSIDADE', 'id' => 'college_id', 'data-route' => route('CollegeAutocomplete'))) }}
+										{{ Form::text('university_id', $user->university_id, array('class'=> 'form-control','placeholder' => 'UNIVERSIDADE', 'id' => 'college_id', 'data-route' => route('CollegeAutocomplete'))) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('course_id', $user->course_id, array('class'=> 'input-padrao', 'placeholder'=> 'CURSO', 'id' => 'course_id', 'data-route' => route('CourseAutocomplete'))) }}
+										{{ Form::text('course_id', $user->course_id, array('class'=> 'form-control', 'placeholder'=> 'CURSO', 'id' => 'course_id', 'data-route' => route('CourseAutocomplete'))) }}
 									</div>
 									@if($user->function === null)
 									<div class="bloco-unico-formulario">
-										{{ Form::select('function', array('class'=> 'select-padrao', null => 'Selecione', 'M' => 'Morador', 'P' => 'Proprietário', 'S' => 'Prestador de serviços')) }}
+										{{ Form::select('function', array('class'=> 'custom-select', null => 'Selecione', 'M' => 'Morador', 'P' => 'Proprietário', 'S' => 'Prestador de serviços')) }}
 									</div>
 									@endif
 									@if($user->gender === null)
 									<div class="bloco-unico-formulario">
-										{{ Form::select('gender', array('class'=> 'select-padrao',null => 'Selecione', 'M' => 'Masculino', 'F' => 'Feminino', 'O' => 'Outros'), $user->gender) }}
+										{{ Form::select('gender', array('class'=> 'custom-select', null => 'Selecione', 'M' => 'Masculino', 'F' => 'Feminino', 'O' => 'Outros'), $user->gender) }}
 									</div>
 									@endif
 									<div class="bloco-unico-formulario">
-										{{ Form::text('telephone', $user->telephone, array('class' => 'input-padrao','placeholder' => 'TELEFONE')) }}
+										{{ Form::text('telephone', $user->telephone, array('class' => 'form-control m_phone_with_ddd','placeholder' => 'TELEFONE')) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('cell_phone', $user->cell_phone, array('class' => 'input-padrao','placeholder' => 'CELULAR')) }}
+										{{ Form::text('cell_phone', $user->cell_phone, array('class' => 'form-control m_sp_celphones','placeholder' => 'CELULAR')) }}
 									</div>
 									<div class="bloco-unico-formulario">
-										{{ Form::text('birthday', $user->birthday, array('class' => 'input-padrao')) }}
+										{{ Form::text('birthday', $user->birthday, array('class' => 'form-control m_date')) }}
 									</div>
-									{{ Form::file('image') }}
+									
+									{{ Form::file('image', ['class'=>'form-control-file']) }}
+
 									@if ($errors->any())
 									<div class="alert alert-danger">
 										<ul>
@@ -76,143 +86,115 @@
 									@endif
 
 									<br />
-									{{ Form::submit('Salvar') }}
-									{{ Form::close() }}
-								</section>
-						</section>
-						<section class="bloco-meio">
-							<div class="preferencias">
-								<header>
-									<h1 class="titulo">PREFERÊNCIAS</h1>
-								</header>
-								<ul class="lista-preferencias">
-									@foreach ($habits as $habit)
-										@if(!in_array($habit->id, $mhabits_id))
-											{{ Form::open(array('route' => 'm_habit.store', 'method' => 'post')) }}
+									<br />
+									
+									{{ Form::submit('Salvar', ['class'=>'btn btn-success']) }}
+								{{ Form::close() }}
 
-											{{ Form::hidden('user_id', $user->id) }}
-											{{ Form::hidden('habit_id', $habit->id) }}
-
-											{{ Form::label('name', $habit->name) }}
-
-											{{ Form::submit('+') }}
-
-											{{ Form::close() }}
-										@else
-											{{ Form::open(array('route' => 'm_habit.destroy', 'method' => 'delete')) }}
-
-											{{ Form::hidden('user_id', $user->id) }}
-											{{ Form::hidden('habit_id', $habit->id) }}
-
-											{{ Form::label('name', $habit->name) }}
-
-											{{ Form::submit('x') }}
-
-											{{ Form::close() }}
-										@endif
-									@endforeach
-								</ul>
 							</div>
-
-						</section>
-					</section>
-				</section>
-				<section class="adm-segundo-bloco">
-					<!-- aqui vem as mini mensagems -->
-					<section class="mensagens">
-						<header class="titulo-mensagens">
-							<i data-fonte="" class="icone-mensagens">M</i>
-							<h1 class="titulo">MENSAGENS</h1>
-							<a href=""><i data-fonte="" class="icone-mensagens">3</i></a>
-						</header>
-						<ul class="lista-mensagens">
-							<li class="mensagens-item">
-								<a href="">
-									<header class="item-titulo">
-										<h3 class="titulo-nome">Adriano</h3>
-									</header>
-									<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam?</p>
-									<footer class="item-rodape">
-										<p class="item-data">10/10/10</p>
-										<p class="item-hora">10:10</p>
-									</footer>
-								</a>
-							</li>
-							<li class="mensagens-item">
-								<a href="">
-									<header class="item-titulo">
-										<h3 class="titulo-nome">Adriano</h3>
-									</header>
-									<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam?</p>
-									<footer class="item-rodape">
-										<p class="item-data">10/10/10</p>
-										<p class="item-hora">10:10</p>
-									</footer>
-								</a>
-							</li>
-							<li class="mensagens-item">
-								<a href="">
-									<header class="item-titulo">
-										<h3 class="titulo-nome">Adriano</h3>
-									</header>
-									<p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam?</p>
-									<footer class="item-rodape">
-										<p class="item-data">10/10/10</p>
-										<p class="item-hora">10:10</p>
-									</footer>
-								</a>
-							</li>
-						</ul>
-						<div class="links">
-							<a href=""><i data-fonte="" class="icone-links">M</i><p>MENSAGEM NOVA</p></a>
-							<a href=""><i data-fonte="" class="icone-links">M</i><p>ME ALERTE</p></a>
 						</div>
-					</section>
-					<section class="anunciar-vaga">
-						<a href="" class="bt-anunciar"><i data-fonte="" class="icone-anunciar">M</i>ANUNCIAR VAGA</a>
-					</section>
 
-					<!-- Aqui vem as mini mensagem -->
-				</section>
-				<section class="adm-terceiro-bloco">
-					<!-- aqui vem os serviços -->
-					<section class="servicos">
-						<header class="titulo-servicos">
-							<i data-fonte="" class="icone-servicos">M</i>
-							<h1 class="titulo">SERVIÇOS ÚTEIS</h1>
-						</header>
-						<ul class="lista-servicos">
-							<li class="servicos-item">
-								<a href="" class="link-servicos">
-									<figure class="baner-servicos" style=""></figure>
-								</a>
-							</li>
-							<li class="servicos-item">
-								<a href="" class="link-servicos">
-									<figure class="baner-servicos"></figure>
-								</a>
-							</li>
-							<li class="servicos-item">
-								<a href="" class="link-servicos">
-									<figure class="baner-servicos"></figure>
-								</a>
-							</li>
-							<li class="servicos-item">
-								<a href="" class="link-servicos">
-									<figure class="baner-servicos"></figure>
-								</a>
-							</li>
-						</ul>
-						<div class="links">
-							<a href="">MAIS SERVIÇOS</a>
-							<a href="">ANUCIAR</a>
-						</div>
-					</section>
-
-					<!-- Aqui vem os serviços -->
-				</section>
+					</div>
+				</div>
 			</div>
+			<!-- perfil -->
+
+			<!-- PREFERENCIAS -->
+			@if(Auth::user()->function != 'P')
+				<div class="col-md-3">
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title"><i class="fa fa-asterisk"></i> Preferências</h4>
+						</div>
+						<div class="card-body">
+							<ul class="lista-preferencias">
+								@foreach ($habits as $habit)
+									@if(!in_array($habit->id, $mhabits_id))
+										{{ Form::open(array('route' => 'm_habit.store', 'method' => 'post')) }}
+
+										{{ Form::hidden('user_id', $user->id) }}
+										{{ Form::hidden('habit_id', $habit->id) }}
+
+										{{ Form::label('name', $habit->name) }}
+
+										{{ Form::submit('+', ['class'=>'btn btn-success btn-sm']) }}
+
+										{{ Form::close() }}
+									@else
+										{{ Form::open(array('route' => 'm_habit.destroy', 'method' => 'delete')) }}
+
+										{{ Form::hidden('user_id', $user->id) }}
+										{{ Form::hidden('habit_id', $habit->id) }}
+
+										{{ Form::label('name', $habit->name) }} &#10004;
+
+										{{ Form::submit('x', ['class'=>'btn btn-danger btn-sm']) }}
+
+										{{ Form::close() }}
+									@endif
+								@endforeach
+							</ul>
+						</div>
+					</div>
+				</div>
+			@endif
+			<!-- PREFERENCIAS -->
+
+			<!-- MENSAGENS -->
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens</h4>
+					</div>
+					<div class="card-body">
+						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
+						<a href="{{ route('chats') }}" class="btn btn-sm btn-secondary">Todas as mensagens</a>
+					</div>
+				</div>
+			</div>
+			<!-- MENSAGENS -->
+
+			<!-- SERVIÇOS -->
+			<div class="col-md-3">
+				<div class="card">
+					<div class="card-header">
+						<h4 class="card-title">
+							<i class="fa fa-cog"></i> Serviços úteis {{-- <span class="badge badge-secondary">x</span> --}}
+						</h4>
+					</div>
+					<div class="card-body">
+
+						<ul class="lista-servicos">
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos" style=""></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+								<li class="servicos-item">
+										<a href="" class="link-servicos">
+												<figure class="baner-servicos"></figure>
+										</a>
+								</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<!-- SERVIÇOS -->
+
 		</div>
+
+		<div style="height: 20px;"></div>
+
 	</div>
 </div>
 @endsection

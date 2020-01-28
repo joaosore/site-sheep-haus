@@ -2,44 +2,58 @@
 
 @section('content')
 <div class="dashboard-page pt-page">
+
 	<div class="container">
 
 		<div class="row">
 			<div class="col-md-12">
-				<header class="titulo--padrao">
-					<h2 class="titulo">Lista de imóveis</h2>
+				<header class="titulo--padrao titulo--padrao--breadcrumb">
+					<h3 class="titulo">
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.meu_imovel') }}</a>
+					</h3>
 				</header>
 			</div>
 		</div>
-		
-		<section class="bloco-lista">
-			<div class="centralizar">
-				<section class="lista-linha">
-					<header class="linha--topo">
-						<p class="topo--info">Lista de imóveis</p>
-					</header>
-					@if(!empty($property))
-					<div href="" class="bloco-quarto item-imovel">
-						@foreach ($property->galeries as $key => $item)
-						@if($key === 0)
-						<figure  class="img-imovel">
-							<img src="/images/{{ $item->src }}" alt="" style="width: 100px; height: 100px">
-						</figure>
-						@endif
-						@endforeach
-						<header class="titulo-imovel">
-							<h2>{{ $property->name }}</h2>
-						</header>
-					<p class="texto">{{ $property->description }}</p>
-					<footer class="info-item">
-							<a href="{{ route('vacancies') }}" class="botao-padrao">Administrar vagas</a>
-						</footer>
+
+		<div class="row">
+			<div class="col-md-12">
+
+					<div class="card">
+						<div class="card-header">
+							<h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.lista_imoveis') }}</h4>
+						</div>
+						<div class="card-body">
+
+							@if(!empty($property))
+								<div class="item-imovel">
+									@foreach ($property->galeries as $key => $item)
+									@if($key === 0)
+									<figure  class="img-imovel">
+										<img src="/images/{{ $item->src }}" alt="" style="width: 100px; height: 100px">
+									</figure>
+									@endif
+									@endforeach
+									<header class="titulo-imovel">
+										<h2>{{ $property->name }}</h2>
+									</header>
+								<p class="texto">{{ $property->description }}</p>
+								<footer class="info-item">
+										<a href="{{ route('vacancies') }}" class="botao-padrao">Administrar vagas</a>
+									</footer>
+								</div>
+							@endif
+
+						</div>
 					</div>
-					@endif
-				</section>
+
+				</div>
 			</div>
-		</section>
+		</div>
+
+		<div style="height: 20px;"></div>
 	</div>
+
 </div>
 
 @endsection

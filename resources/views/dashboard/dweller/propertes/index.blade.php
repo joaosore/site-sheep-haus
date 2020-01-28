@@ -11,7 +11,7 @@
 					<h3 class="titulo">
 						<a href="{{route('dashboard')}}">Home</a> > 
 						<span class="bread-child">Matches</a> > 
-						<span class="bread-child">Imóveis sugeridos</a>
+						<span class="bread-child">{{ __('general.imoveis_sugeridos') }}</a>
 					</h3>
 				</header>
 			</div>
@@ -24,8 +24,7 @@
 
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title"><i class="fa fa-home"></i> Imóveis sugeridos</h4>
-						{{-- <p>Imóveis sugeridos com base no seu perfil</p> --}}
+						<h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.imoveis_sugeridos') }}</h4>
 					</div>
 					<div class="card-body">
 						<div class="row">
