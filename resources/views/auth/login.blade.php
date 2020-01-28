@@ -53,22 +53,22 @@
                             <div class="links col-md-6">
                                 @if (Route::has('password.request'))
                                     <a class="esqueci btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Esqueci a senha') }}
+										{{ __('general.esqueci_senha') }}
                                     </a>
                                 @endif
                             </div> 
 
                             <div class="form-group col-md-6">
-                                <button type="submit" class="btn btn-secondary btn-block login-btn">{{ __('ENTRAR') }}</button>                            
+                                <button type="submit" class="btn btn-secondary btn-block login-btn" style="text-transform: uppercase;">{{ __('general.entrar') }}</button>
                             </div>                                                       
                         </div>
                         
-                        <div class="or-seperator"><i>ou</i></div>
+                        <div class="or-seperator"><i>{{ __('general.ou') }}</i></div>
                         
                         <div class="text-center social-btn">
-                            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-google btn-upp btn-block"><i class="fab fa-google"></i> Iniciar sessão com Google</a>
-                            <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-facebook btn-upp btn-block btn-font-color"><i class="fab fa-facebook"></i> Iniciar sessão com Facebook</a>
-                            <a href="{{ route('register') }}" class="btn btn-danger btn-upp btn-block">Cadastro por e-mail</a>
+                            <a href="{{ url('/auth/redirect/google') }}" class="btn btn-google btn-upp btn-block"><i class="fab fa-google"></i> {{ __('general.login_com') }} Google</a>
+                            <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-facebook btn-upp btn-block btn-font-color"><i class="fab fa-facebook"></i> {{ __('general.login_com') }} Facebook</a>
+                            <a href="{{ route('register') }}" class="btn btn-danger btn-upp btn-block">{{ __('general.cadastro_com_email') }}</a>
                         </div>
                     </form>
                 </div>

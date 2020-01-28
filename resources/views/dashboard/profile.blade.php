@@ -9,8 +9,8 @@
 			<div class="col-md-12">
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Perfil</a>
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.perfil') }}</a>
 					</h3>
 				</header>
 			</div>
@@ -23,7 +23,7 @@
 
 				<div class="card">
 					<div class="card-header">
-							<h4 class="card-title"><i class="fa fa-user"></i> Meu perfil:</h4>
+							<h4 class="card-title"><i class="fa fa-user"></i> {{ __('general.meu_perfil') }}</h4>
 					</div>
 					<div class="card-body">
 
@@ -34,7 +34,7 @@
 								<header>
 									<figure style="background-image: url('/avatar/{{ $user->avatar }}')"></figure>
 									<h3>{{ $user->name }}</h3>
-									<h4>Gênero: {{ $user->gender }}</h4>
+									<h4>{{ __('general.genero') }}: {{ $user->gender }}</h4>
 									<br />
 								</header>
 								<section>

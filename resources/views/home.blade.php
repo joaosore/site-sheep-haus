@@ -12,9 +12,9 @@
                             <figure class="logo-banner">
                                 <img src="{{ asset('images/logo-sheep-haus-text.png') }}" alt="Sheep Haus">
                             </figure>
-                            <h2 class="card-title">Dê match e more com quem<br/>combina com você</h2>
+                            <h2 class="card-title">{{ __('home.titulo_linha_1') }}<br/>{{ __('home.titulo_linha_2') }}</h2>
                             <br />
-                            <a href="#" class="btn btn-lg btn-danger btn-padding" data-toggle="modal" data-target="#login">Acesse para encontrar repúblicas</a>
+                            <a href="#" class="btn btn-lg btn-danger btn-padding" data-toggle="modal" data-target="#login">{{ __('home.cta_button') }}</a>
                             {{-- <form action="" class="form-inline">
                                 <input class="form-control col-md-9" style="margin-right: 5px;" type="text" name="q" value="" placeholder="(__) _____-____">
                                 <button type="submit" class="btn btn-danger btn-padding">Buscar</button>
@@ -29,7 +29,7 @@
             <section class="bloco--monte">
                 <div class="centralizar">
                     <header class="titulo--padrao">
-                        <h1 class="titulo">Monte e gerencie sua própria república</h1>
+                        <h1 class="titulo">{{ __('home.monte') }}</h1>
                     </header>
                     <div class="bloco-terco">
                         <figure class="icone--monte">
@@ -37,9 +37,9 @@
                             <div class="bubble"></div>
                         </figure>
                         <header class="titulo--bloco">
-                            <h3 class="sub-titulo">Encontre o melhor lugar com o filtro inteligente</h3>
+                            <h3 class="sub-titulo">{{ __('home.encontre_lugar') }}</h3>
                         </header>
-                        <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis delectus fuga ducimus error eveniet.</p>
+                        <p class="texto">{{ __('home.encontre_lugar_text') }}</p>
                     </div>
                     <div class="bloco-terco">
                         <figure class="icone--monte">
@@ -47,9 +47,9 @@
                             <div class="bubble"></div>
                         </figure>
                         <header class="titulo--bloco">
-                            <h3 class="sub-titulo">Envie mensagens para os moradores</h3>
+                            <h3 class="sub-titulo">{{ __('home.envie_mensagens') }}</h3>
                         </header>
-                        <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis delectus fuga ducimus error eveniet.</p>
+                        <p class="texto">{{ __('home.envie_mensagens_text') }}</p>
                     </div>
                     <div class="bloco-terco">
                         <figure class="icone--monte">
@@ -57,9 +57,9 @@
                             <div class="bubble"></div>
                         </figure>
                         <header class="titulo--bloco">
-                            <h3 class="sub-titulo">Ache moradores com o melhor perfil para a casa</h3>
+                            <h3 class="sub-titulo">{{ __('home.ache_moradores') }}</h3>
                         </header>
-                        <p class="texto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis delectus fuga ducimus error eveniet.</p>
+                        <p class="texto">{{ __('home.ache_moradores_text') }}</p>
                     </div>
                 </div>
             </section>
