@@ -87,8 +87,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/property/{id}', 'PropertyController@edit')->name('property.edit');
         Route::get('/property/create', 'PropertyController@create')->name('property.create');
         Route::post('/property/create', 'PropertyController@store')->name('property.store');
+        Route::put('/property/{id}', 'PropertyController@update')->name('property.store');
         Route::delete('/property', 'PropertyController@destroy')->name('property.destroy');
-
+        
     });
 
     Route::group(['middleware' => ['checkdweller']], function () {
@@ -104,18 +105,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('my_property', 'DwellerPropertyController@index')->name('property.index');
 
         // Get Vagas
-        Route::get('/api/vacancies', 'VacancyController@index')->name('vacancies');
-        Route::get('/api/vacancy/{id}', 'VacancyController@show')->name('vacancies.edit');
+        Route::get('/vacancy', 'VacancyController@create')->name('vacancy.create');
 
-        Route::get('/vacancies', 'VacancyController@view')->name('vacancies.view');
-        // Route::get('/vacancy', 'VacancyController@create')->name('vacancy.create');
-
-        // Route::post('/vacancy', 'VacancyController@store')->name('vacancy.store');
-        // Route::delete('/vacancy', 'VacancyController@destroy')->name('vacancy.destroy');
-        // Route::put('/vacancy/{id}', 'VacancyController@update')->name('vacancy.update');
+        Route::post('/vacancy', 'VacancyController@store')->name('vacancy.store');
+        Route::delete('/vacancy', 'VacancyController@destroy')->name('vacancy.destroy');
+        Route::put('/vacancy/{id}', 'VacancyController@update')->name('vacancy.update');
 
         //Minhas Vagas
-        Route::get('my_vacancies', 'VacancyController@index')->name('vacancies');
+        Route::get('my_vacancies', 'VacancyController@view')->name('vacancies');
+        Route::get('/api/my_vacancies', 'VacancyController@index')->name('vacancies');
         Route::get('my_vacancies/{id}/create', 'VacancyController@create')->name('vacancies.create');
         Route::get('my_vacancies/{id}/edit', 'VacancyController@edit')->name('vacancies.edit');
         Route::post('my_vacancies', 'VacancyController@store')->name('vacancy');
@@ -137,6 +135,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::get('suggested_properties', 'SuggestedPropertiesController@index')->name('SeggestedProperties');
 
+        
     });
 
     //Email
@@ -148,5 +147,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Create Message
     Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('chat.store');
+
+    Route::get('/immobile/{id}', 'ImmobileController@show')->name('immobile');
 
 });

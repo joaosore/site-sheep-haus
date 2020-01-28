@@ -9,4 +9,6 @@ class VMatch extends Model
     protected $fillable = [
         'id', 'vacancy_id', 'user_id'
     ];
+
+    
 }

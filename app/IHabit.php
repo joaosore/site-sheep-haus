@@ -10,4 +10,8 @@ class IHabit extends Model
         'id', 'property_id', 'habit_id'
     ];
 
+    public function habit()
+    {
+        return $this->hasOne('App\Habit', 'id', 'habit_id');
+    }
 }

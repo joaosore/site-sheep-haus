@@ -84,17 +84,6 @@ class MacthController extends Controller
             'property' => $property,
             'owner' => $owner
         );
-
-<<<<<<< HEAD
         return redirect()->route('chats');
-=======
-        if($auth->function === 'M') {
-            // Mail::to($owner->email)
-            // ->bcc('jaumcj@gmail.com')
-            // ->send(new MatchMail($dados));
-            return redirect()->route('chats');
-            // return redirect()->back();
-        }
->>>>>>> 9deeded3c77e72cd90a61a4d96d6b39192bc9253
     }
 }

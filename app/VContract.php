@@ -20,4 +20,9 @@ class VContract extends Model
         return $this->hasOne('App\Property', 'id', 'property_id');
     }
 
+    public function vacancy()
+    {
+        return $this->hasOne('App\Vacancy', 'id', 'vacancy_id');
+    }
+
 }

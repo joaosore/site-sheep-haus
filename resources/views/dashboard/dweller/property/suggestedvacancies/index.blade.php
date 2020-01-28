@@ -33,7 +33,7 @@
 								<header class="titulo-matches">
 									<h1 class="titulo">{{ $vacancy->title }}</h1>
 								</header>
-									@foreach ($vacancy->galeries as $key => $item)
+									@foreach ($vacancy->property->galeries as $key => $item)
 									@if($key === 0)
 										<img src="/images/{{ $item->src }}" alt="" style="width: 100px; height: 100px">
 									@endif
