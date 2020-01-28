@@ -107,22 +107,22 @@
 
                                     @if(Auth::user()->function == 'M')
                                         <li class="nav-item">
-                                            <a href="{{ route('SeggestedProperties') }}" class="nav-link">Imóveis sugeridos</a>
+                                            <a href="{{ route('SeggestedProperties') }}" class="nav-link">{{ __('general.imoveis_sugeridos') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('SuggestedVacancies') }}" class="nav-link">Vagas sugeridas</a>
+                                            <a href="{{ route('SuggestedVacancies') }}" class="nav-link">{{ __('general.vagas_sugeridas') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('property.index') }}" class="nav-link">Meu imóvel</a>
+                                            <a href="{{ route('property.index') }}" class="nav-link">{{ __('general.meu_imovel') }}</a>
                                         </li>
                                     @endif
 
                                     @if(Auth::user()->function == 'P')
                                         <li class="nav-item">
-                                            <a href="{{ route('property.create') }}" class="nav-link"><i class="fa fa-plus"></i> Novo imóvel</a>
+                                            <a href="{{ route('property.create') }}" class="nav-link"><i class="fa fa-plus"></i> {{ __('general.novo_imovel') }}</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="{{ route('properties') }}" class="nav-link">Meus imóveis</a>
+                                            <a href="{{ route('properties') }}" class="nav-link">{{ __('general.meus_imoveis') }}</a>
                                         </li>
                                     @endif
 
@@ -141,11 +141,11 @@
                                     </li>
                                 @endguest  
                                 <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">BR</a>
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ App::getLocale() }}</a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">BR</a></li>
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt-BR">EN</a></li>
-                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">ES</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=pt">br</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=en">en</a></li>
+                                        <li><a class="dropdown-item" href="{{Request::url()}}?locale=es">es</a></li>
                                     </ul>
                                 </li>                  
                             </ul>
