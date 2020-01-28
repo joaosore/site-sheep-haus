@@ -16281,3 +16281,18 @@ a.message_item .m_time {
   color: #949fb7;
   font-size: 10px;
 }
+
+.lista-preferencias form {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 5px 0;
+}
+.lista-preferencias form label {
+  margin-top: 0.5rem;
+}
+.lista-preferencias form b label {
+  font-weight: bold;
+}
+.lista-preferencias form .btn {
+  float: right;
+  margin-top: 0.25rem;
+}
