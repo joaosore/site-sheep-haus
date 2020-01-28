@@ -9,8 +9,8 @@
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					<div style="height: 10px;"></div>
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Matches</a> > 
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.matches') }}</a> > 
 						<span class="bread-child">{{ __('general.imoveis_sugeridos') }}</a>
 					</h3>
 				</header>
@@ -51,7 +51,7 @@
 
 									<div class="box-footer">
 										@if(in_array($property->id ,$match))
-											<span class="badge badge-success">Match enviado!</span>
+											<span class="badge badge-success">Match {{ __('general.enviado') }}!</span>
 										@endif
 										@if(!in_array($property->id ,$match))
 											{{ Form::open(array('route' => 'match', 'method' => 'post')) }}
@@ -69,7 +69,7 @@
 							@if(sizeof($properties) == 0)
 								<div class="col-md-12">
 									<br />
-									<p>Nenhum imóvel sugerido por enquanto...</p>
+									<p>{{ __('general.nenhum_imovel_sugerido') }}</p>
 									<br /><br /><br />
 								</div>
 							@endif

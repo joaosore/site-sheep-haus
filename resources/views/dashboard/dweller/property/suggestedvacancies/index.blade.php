@@ -9,8 +9,8 @@
 				<header class="titulo--padrao titulo--padrao--breadcrumb">
 					<div style="height: 10px;"></div>
 					<h3 class="titulo">
-						<a href="{{route('dashboard')}}">Home</a> > 
-						<span class="bread-child">Matches</a> > 
+						<a href="{{route('dashboard')}}">{{ __('general.home') }}</a> > 
+						<span class="bread-child">{{ __('general.matches') }}</a> > 
 						<span class="bread-child">{{ __('general.vagas_sugeridas') }}</a>
 					</h3>
 				</header>
@@ -56,7 +56,7 @@
 							@if(sizeof($vacancies) == 0)
 								<div class="col-md-12">
 									<br />
-									<p>Nenhuma vaga sugerida por enquanto...</p>
+									<p>{{ __('general.nenhuma_vaga_sugerida') }}</p>
 									<br /><br /><br />
 								</div>
 							@endif
