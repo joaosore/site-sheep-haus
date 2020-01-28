@@ -14,4 +14,5 @@ class Vacancy extends Model
     {
         return $this->hasOne('App\Property', 'id', 'property_id');
     }
+    
 }

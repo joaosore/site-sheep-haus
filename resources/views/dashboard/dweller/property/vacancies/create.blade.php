@@ -16,19 +16,19 @@
 				<h1 class="titulo">Como é sua vaga</h1>
 			</header>
 			<div class="bloco-unico-formulario">
-				{{ Form::text('title',null, array('class' => 'input-padrao','placeholder' => 'TITULO DA VAGA')) }}
+				{{ Form::text('title',null, array('class' => 'input-padrao','placeholder' => 'Titulo da Vaga')) }}
 			</div>
 			<div class="bloco-unico-formulario">
-				{{ Form::text('description',null, array('class' => 'input-padrao','placeholder' => 'TITULO DA VAGA')) }}
+				{{ Form::text('description',null, array('class' => 'input-padrao','placeholder' => 'Descrição da Vaga')) }}
 			</div>
 			<div class="bloco-terco-formulario">
 				{{ Form::text('value',null, array('class' => 'input-padrao','placeholder' => 'VALOR ALUGUEL')) }}
 			</div>
 			<div class="bloco-terco-formulario">
-				{{ Form::text('entrance',null, array('class' => 'input-padrao','placeholder' => 'VALOR ALUGUEL')) }}
+				{{ Form::text('entrance',null, array('class' => 'input-padrao','placeholder' => 'Data da entrada')) }}
 			</div>
 			<div class="bloco-terco-formulario">
-				 {{ Form::text('exit',null,array('class' => 'input-padrao','placeholder' => 'DATA DE SAIDA')) }}
+				 {{ Form::text('exit',null,array('class' => 'input-padrao','placeholder' => 'Data de saida')) }}
 			</div>
 			<div class="bloco-unico-formulario">
 				{{ Form::submit('Salvar',['class'=>'botao-formulario-padrao']) }}

@@ -25,9 +25,9 @@
 						</div>
 						<div class="card-body">
 
-							@if(!empty($property))
+							@if(!empty($contract))
 								<div class="item-imovel">
-									@foreach ($property->galeries as $key => $item)
+									@foreach ($contract->property->galeries as $key => $item)
 									@if($key === 0)
 									<figure  class="img-imovel">
 										<img src="/images/{{ $item->src }}" alt="" style="width: 100px; height: 100px">
@@ -35,14 +35,27 @@
 									@endif
 									@endforeach
 									<header class="titulo-imovel">
-										<h2>{{ $property->name }}</h2>
+										<h2>{{ $contract->property->name }}</h2>
 									</header>
-								<p class="texto">{{ $property->description }}</p>
-								<footer class="info-item">
+								<p class="texto">{{ $contract->property->description }}</p>
+								@if($type)
+									<footer class="info-item">
 										<a href="{{ route('vacancies') }}" class="botao-padrao">{{ __('general.administrar_vagas') }}</a>
 									</footer>
+								@endif
 								</div>
 							@endif
+			
+							@if(!empty($contract->vacancy))
+								<div class="item-imovel">
+									<h1>Vaga</h1>
+									<header class="titulo-imovel">
+										<h2>{{ $contract->vacancy->title }}</h2>
+									</header>
+								<p class="texto">{{ $contract->vacancy->description }}</p>
+								</div>
+							@endif
+
 
 						</div>
 					</div>

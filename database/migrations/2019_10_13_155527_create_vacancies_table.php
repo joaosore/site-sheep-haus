@@ -24,7 +24,7 @@ class CreateVacanciesTable extends Migration
             $table->string('entrance')->nullable();
             $table->string('exit')->nullable();
             $table->string('title')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }
