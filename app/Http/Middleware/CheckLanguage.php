@@ -16,7 +16,7 @@ class CheckLanguage
     public function handle($request, Closure $next)
     {
         $URLlocale = $request->input('locale');
-        $COOKIElocale = $_COOKIE["user_locale"];
+        $COOKIElocale = (isset($_COOKIE["user_locale"])) ? $_COOKIE["user_locale"] : null;
         $BROWSERlocale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
         if ($URLlocale) {
@@ -27,7 +27,10 @@ class CheckLanguage
             \App::setLocale($COOKIElocale);
 
         } else if ($BROWSERlocale) {
+            $acceptLang = ['pt', 'en', 'es'];
+            $BROWSERlocale = in_array($BROWSERlocale, $acceptLang) ? $BROWSERlocale : 'pt';
             \App::setLocale($BROWSERlocale);
+            setcookie("user_locale", $BROWSERlocale, time()+3600*100);
         } 
 
         return $next($request);
