@@ -28,7 +28,6 @@
 					</div>
 					<div class="card-body">
 						<div class="row">
-a
 							@foreach ($vacancies as $vacancy)
 								<section class="bloco-quarto">
 								<header class="titulo-matches">

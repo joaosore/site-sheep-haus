@@ -10,8 +10,8 @@ class Vacancy extends Model
         'id', 'property_id', 'user_id', 'value', 'expenses_id', 'details_id', 'type', 'entrance', 'exit', 'title', 'description'
     ];
 
-    public function galeries()
+    public function property()
     {
-        return $this->hasMany('App\Gallery', 'property_id', 'property_id');
+        return $this->hasOne('App\Property', 'id', 'property_id');
     }
 }
