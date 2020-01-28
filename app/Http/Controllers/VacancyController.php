@@ -15,28 +15,46 @@ use Illuminate\Support\Facades\Auth;
 
 class VacancyController extends Controller
 {
-    public function index() {
-        $user = Auth::user();
-        $property = Contract::where('user_id', '=', $user->id)->first('property_id');
 
-        $vcontract = VContract::where('property_id', '=', $property->property_id)->pluck('vacancy_id')->toArray();
-
-        $vagas = Vacancy::where('user_id', '=', $user->id)->get();
-
-        return view('dashboard.dweller.property.vacancies.index', [
-            'property' => $property,
-            'vagas' => $vagas,
-            'vcontract' => $vcontract
-        ]);
+    public function view() {
+        
     }
 
-    public function create($id) {
+    public function index() {
+
+        $user = Auth::user();
+        $vagas = Vacancy::where('user_id', '=', $user->id)->get();
+
+        $property_id = [];
+        foreach($vagas as $key => $vaga) {
+            $vagas[$key]->property;
+            $vagas[$key]->property->galeries;
+            $property_id[] = $vaga->property_id;
+        }
+
+        return response()->json($vagas);
+
+    }
+
+    public function show($id) {
+
         $user = Auth::user();
 
-        return view('dashboard.dweller.property.vacancies.create', [
-            'user' => $user,
-            'property' => $id,
-        ]);
+        $vagas = Vacancy::where('user_id', '=', $user->id)->where('id', '=', $id)->first();
+
+        $vagas->property;
+        $vagas->property->galeries;
+        $property_id[] = $vagas->property_id;
+        
+        $vcontracts = VContract::whereIn('property_id', $property_id)->first();
+
+        $vcontracts->user;
+        $vcontracts->property;
+
+        $vagas->vcontracts = $vcontracts;
+
+        return response()->json($vagas);
+        
     }
 
     public function edit($id) {
