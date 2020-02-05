@@ -134,6 +134,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('m_habit', 'MHabitsController@destroy')->name('m_habit.destroy');
 
         Route::get('suggested_properties', 'SuggestedPropertiesController@index')->name('SeggestedProperties');
+        Route::get('suggested_properties/map', 'SuggestedPropertiesController@map')->name('SeggestedPropertiesMap');
+        Route::get('suggested_properties/settings', 'SuggestedPropertiesController@settings')->name('SeggestedPropertiesSettings');
+        Route::post('suggested_properties/settings/save', 'SuggestedPropertiesController@save')->name('SeggestedPropertiesSettingsSave');
 
         
     });

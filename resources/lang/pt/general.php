@@ -53,4 +53,16 @@ return [
     'imoveis_anunciados' => 'Imóveis anunciados',
     'destacar_anuncio' => 'Destacar anúncio',
     'editar' => 'Editar',
+    'mapa' => 'Mapa',
+    'ajustes' => 'Ajustes',
+    'curtido' => 'Curtido',
+    'imovel' => 'Imóvel',
+    'buscar' => 'Buscar',
+    'local' => 'Local',
+    'endereco' => 'Endereço',
+    'raio' => 'Raio',
+    'lista' => 'Lista',
+    'config' => 'Config',
+    'mapa_intro' => 'Selecione a localização para buscar imóveis no mapa',
+    'caracteristicas' => 'Características'
 ];

@@ -104,7 +104,7 @@
 				<div class="col-md-3">
 					<div class="card">
 						<div class="card-header">
-							<h4 class="card-title"><i class="fa fa-asterisk"></i> Preferências</h4>
+							<h4 class="card-title"><i class="fa fa-asterisk"></i> {{ __('general.caracteristicas') }}</h4>
 						</div>
 						<div class="card-body">
 							<ul class="lista-preferencias">
@@ -144,7 +144,7 @@
 			<div class="col-md-3">
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title"><i class="fa fa-envelope"></i> Mensagens</h4>
+						<h4 class="card-title"><i class="fa fa-envelope"></i> {{ __('general.mensagens') }}</h4>
 					</div>
 					<div class="card-body">
 						<div id="mini-message-list" style="max-height: 460px; overflow: overlay; padding-right: 20px;"></div>
@@ -159,7 +159,7 @@
 				<div class="card">
 					<div class="card-header">
 						<h4 class="card-title">
-							<i class="fa fa-cog"></i> Serviços úteis {{-- <span class="badge badge-secondary">x</span> --}}
+							<i class="fa fa-cog"></i> {{ __('general.servicos_uteis') }}
 						</h4>
 					</div>
 					<div class="card-body">
