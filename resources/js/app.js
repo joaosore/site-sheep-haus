@@ -4,6 +4,8 @@ require("jquery-mask-plugin");
 import "./components/scripts";
 import "./components/masks";
 import "./components/chat";
+import "./components/tabs";
+import "./components/map-imoveis";
 import "./login";
 
 $(function(){

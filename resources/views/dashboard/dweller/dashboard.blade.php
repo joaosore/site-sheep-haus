@@ -82,9 +82,9 @@
 
 				<div style="height: 20px;"></div>
 
-				<div>
+				{{-- <div>
 					<a href="#" class="btn btn-block btn-lg btn-primary"><i class="far fa-star"></i> {{ __('general.anunciar_vaga') }}</a>
-				</div>
+				</div> --}}
 			</div>
 			<!-- MENSAGENS -->
 

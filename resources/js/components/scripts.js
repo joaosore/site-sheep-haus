@@ -1,5 +1,7 @@
 import $ from "jquery";
 import "bootstrap-3-typeahead";
+import { mapImoveis } from "./map-imoveis";
+import { settings } from "../utils/settings";
 
 var course = $("#course_id").data("route");
 $("#course_id").typeahead({
@@ -22,10 +24,11 @@ $("#college_id").typeahead({
 var placeSearch, autocomplete;
 
 $.getScript(
-  "https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fbc-0RtZt7NykoGjCR22fkQffbPKpCo&libraries=places",
+  `https://maps.googleapis.com/maps/api/js?key=${settings.mapsApiKey}&libraries=places`,
   function(data, textStatus, jqxhr) {
     initAutocomplete();
     geolocate();
+    mapImoveis.initMap();
   }
 );
 

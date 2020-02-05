@@ -1634,9 +1634,6 @@ button {
   resize: none;
   border-radius: 0;
   background: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 }
 
 input:focus,
@@ -11675,16 +11672,6 @@ header.banner figure img {
   display: flex;
   flex-wrap: wrap;
 }
-.card .card-body form .form-group input,
-.card .card-body form .form-group select {
-  border: 1px solid #000;
-  color: #000;
-  padding: 5px;
-  border-radius: 2px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  margin: 10px 0;
-}
 .card .card-body form .form-group.login {
   width: 100%;
   display: flex;
@@ -15854,6 +15841,27 @@ footer.rodape nav.menu--rodape .menu--base nav.base-menu div.copyright {
   background-color: #949fb7;
   border-color: #949fb7;
   font-weight: bold;
+}
+
+#map-imoveis {
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 350px;
+  width: 100%;
+}
+
+.tab-content .tab-pane {
+  padding: 20px 12px 5px;
+}
+
+.nav.nav-upper a.nav-link {
+  color: #adadad;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}
+.nav.nav-upper a.nav-link.active {
+  color: #1f1f1f;
 }
 
 .pt-page {

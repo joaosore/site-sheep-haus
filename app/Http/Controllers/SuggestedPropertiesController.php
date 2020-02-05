@@ -40,4 +40,14 @@ class SuggestedPropertiesController extends Controller
             'match' => $matches
         ]);
     }
+
+    public function map()
+    {
+        return view('dashboard.dweller.propertes.map');
+    }
+
+    public function settings()
+    {
+        return view('dashboard.dweller.propertes.settings');
+    }
 }

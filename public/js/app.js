@@ -55724,10 +55724,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_scripts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/scripts */ "./resources/js/components/scripts.js");
 /* harmony import */ var _components_masks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/masks */ "./resources/js/components/masks.js");
 /* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/chat */ "./resources/js/components/chat.js");
-/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login */ "./resources/js/login.js");
+/* harmony import */ var _components_tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/tabs */ "./resources/js/components/tabs.js");
+/* harmony import */ var _components_map_imoveis__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/map-imoveis */ "./resources/js/components/map-imoveis.js");
+/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./login */ "./resources/js/login.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! jquery-mask-plugin */ "./node_modules/jquery-mask-plugin/dist/jquery.mask.js");
+
+
 
 
 
@@ -56045,6 +56049,63 @@ function chatHandlers() {
 
 /***/ }),
 
+/***/ "./resources/js/components/map-imoveis.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/map-imoveis.js ***!
+  \************************************************/
+/*! exports provided: mapImoveis */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapImoveis", function() { return mapImoveis; });
+/* harmony import */ var _utils_colors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/colors */ "./resources/js/utils/colors.js");
+/* harmony import */ var _utils_geolocation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/geolocation */ "./resources/js/utils/geolocation.js");
+
+
+var mapImoveis = {
+  $map: null,
+  you: null,
+  map: null,
+  latLng: null,
+  initMap: function initMap() {
+    this.setPosition = this.setPosition.bind(this);
+    this.$map = document.getElementById("map-imoveis");
+    this.verifyLocation();
+
+    if (this.$map) {
+      this.map = new google.maps.Map(this.$map, {
+        zoom: 15,
+        options: {
+          styles: _utils_colors__WEBPACK_IMPORTED_MODULE_0__["colors"].mapStyles
+        }
+      });
+    }
+  },
+  setPosition: function setPosition(position) {
+    if (position) {
+      this.map.setCenter({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      });
+      this.you = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      new google.maps.Marker({
+        position: this.you,
+        map: this.map
+      });
+    }
+  },
+  verifyLocation: function verifyLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setPosition);
+    } else {
+      console.warning("não foi possível pegar a localização");
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/masks.js":
 /*!******************************************!*\
   !*** ./resources/js/components/masks.js ***!
@@ -56138,6 +56199,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var bootstrap_3_typeahead__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap-3-typeahead */ "./node_modules/bootstrap-3-typeahead/bootstrap3-typeahead.js");
 /* harmony import */ var bootstrap_3_typeahead__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bootstrap_3_typeahead__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _map_imoveis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./map-imoveis */ "./resources/js/components/map-imoveis.js");
+/* harmony import */ var _utils_settings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/settings */ "./resources/js/utils/settings.js");
+
+
 
 
 var course = jquery__WEBPACK_IMPORTED_MODULE_0___default()("#course_id").data("route");
@@ -56161,9 +56226,10 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()("#college_id").typeahead({
   }
 });
 var placeSearch, autocomplete;
-jquery__WEBPACK_IMPORTED_MODULE_0___default.a.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyD7fbc-0RtZt7NykoGjCR22fkQffbPKpCo&libraries=places", function (data, textStatus, jqxhr) {
+jquery__WEBPACK_IMPORTED_MODULE_0___default.a.getScript("https://maps.googleapis.com/maps/api/js?key=".concat(_utils_settings__WEBPACK_IMPORTED_MODULE_3__["settings"].mapsApiKey, "&libraries=places"), function (data, textStatus, jqxhr) {
   initAutocomplete();
   geolocate();
+  _map_imoveis__WEBPACK_IMPORTED_MODULE_2__["mapImoveis"].initMap();
 });
 var componentForm = {
   street_number: "short_name",
@@ -56267,6 +56333,31 @@ function initMap(geolocation) {
 
 /***/ }),
 
+/***/ "./resources/js/components/tabs.js":
+/*!*****************************************!*\
+  !*** ./resources/js/components/tabs.js ***!
+  \*****************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+
+jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
+  var hash = window.location.hash;
+  hash && jquery__WEBPACK_IMPORTED_MODULE_0___default()('ul.nav a[href="' + hash + '"]').tab('show');
+  jquery__WEBPACK_IMPORTED_MODULE_0___default()('.nav-pills a').click(function (e) {
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).tab('show');
+    var scrollmem = jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').scrollTop();
+    window.location.hash = this.hash;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('html,body').scrollTop(scrollmem);
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/login.js":
 /*!*******************************!*\
   !*** ./resources/js/login.js ***!
@@ -56285,6 +56376,166 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
   //     @foreach ($vacancies as $vacancy)
   // }
 });
+
+/***/ }),
+
+/***/ "./resources/js/utils/colors.js":
+/*!**************************************!*\
+  !*** ./resources/js/utils/colors.js ***!
+  \**************************************/
+/*! exports provided: colors */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
+var colors = {
+  mapStyles: [{
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#f5f5f5"
+    }]
+  }, {
+    "elementType": "labels.icon",
+    "stylers": [{
+      "visibility": "off"
+    }]
+  }, {
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#616161"
+    }]
+  }, {
+    "elementType": "labels.text.stroke",
+    "stylers": [{
+      "color": "#f5f5f5"
+    }]
+  }, {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#bdbdbd"
+    }]
+  }, {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#eeeeee"
+    }]
+  }, {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#e5e5e5"
+    }]
+  }, {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#9e9e9e"
+    }]
+  }, {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#ffffff"
+    }]
+  }, {
+    "featureType": "road.arterial",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#757575"
+    }]
+  }, {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#dadada"
+    }]
+  }, {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#616161"
+    }]
+  }, {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#9e9e9e"
+    }]
+  }, {
+    "featureType": "transit.line",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#e5e5e5"
+    }]
+  }, {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#eeeeee"
+    }]
+  }, {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [{
+      "color": "#c9c9c9"
+    }]
+  }, {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [{
+      "color": "#9e9e9e"
+    }]
+  }]
+};
+
+
+/***/ }),
+
+/***/ "./resources/js/utils/geolocation.js":
+/*!*******************************************!*\
+  !*** ./resources/js/utils/geolocation.js ***!
+  \*******************************************/
+/*! exports provided: getLocation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLocation", function() { return getLocation; });
+function getLocation() {
+  if (navigator.geolocation) {
+    return navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    //   x.innerHTML = "Geolocation is not supported by this browser.";
+    return null;
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/utils/settings.js":
+/*!****************************************!*\
+  !*** ./resources/js/utils/settings.js ***!
+  \****************************************/
+/*! exports provided: settings */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
+var settings = {
+  mapsApiKey: "AIzaSyD7fbc-0RtZt7NykoGjCR22fkQffbPKpCo" // mapsApiKey: "AIzaSyCoYlYpNMG9HHHa0bar_pOPjbNak7ScOic"
+
+};
+
 
 /***/ }),
 
