@@ -108,6 +108,8 @@ class PropertyController extends Controller
         $characteristics = Characteristic::get();
         $btn_characteristics = [];
 
+        
+
         foreach($characteristics as $characteristic){
             $btn_characteristics[$characteristic->id] = $characteristic->name;
         }
