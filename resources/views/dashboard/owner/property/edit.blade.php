@@ -21,9 +21,26 @@
 				<div class="bloco-meio-formulario">
 					{{ Form::select('type', array(null => 'Tipo de imovel', 'A' => 'Apartamento', 'C' => 'Casa'),$property->type,['class'=>'select-padrao']) }}
 				</div>
+
 				<div class="bloco-unico-formulario">
 					{{ Form::text('description', $property->description, array('class' => 'input-padrao', 'placeholder' => 'DESCRIÇÂO')) }}
 				</div>
+
+				<div class="bloco-quarto-formulario">
+					{{ Form::label('data_vencimento', 'Data de vecimento',['class'=>'label-texto']) }}
+					{{ Form::text('data_vencimento',$property->data_vencimento,['class'=>'input-data','placeholder'=>'Data de vecimento']) }}
+				</div>
+				<div class="bloco-quarto-formulario">
+					{{ Form::label('caucao', 'Valor do Caução',['class'=>'label-texto']) }}
+					{{ Form::text('caucao',$property->caucao,['class'=>'input-data','placeholder'=>'Valor do Caução']) }}
+				</div>
+				<div class="bloco-quarto-formulario">
+					{{ Form::label('mensalidade', 'Valor da Mensalidade',['class'=>'label-texto']) }}
+					{{ Form::text('mensalidade',$property->mensalidade,['class'=>'input-data','placeholder'=>'Valor do Mensalidade']) }}
+				</div>
+				<div class="bloco-quarto-formulario">
+				</div>
+
 				<div class="bloco-unico-formulario">
 					@if(is_array($property->characteristics_id))
 					@foreach ($characteristics as $valor)
@@ -167,7 +184,11 @@
 					{{ Form::submit('Salvar',['class'=>'botao-formulario-padrao']) }}
 				</div>
 			</section>
+
+			
 		<section class="formulario--cadastro">
+
+
 				<header class="cadastro-titulo">
 					<div class="icones">
 						<i data-font="" class="icone-formulario">M</i>
@@ -178,7 +199,8 @@
 					<h1 class="titulo">Contas do imóvel</h1>
 				</header>
 				<div class="bloco-terco-formulario">
-					{{ Form::open(array('route' => 'property-account', 'method' => 'post')) }}
+
+				{{ Form::open(array('route' => 'property-account', 'method' => 'post')) }}
 
 					{{ Form::hidden('property_id', $property->id) }}
 					<div class="pos-span">

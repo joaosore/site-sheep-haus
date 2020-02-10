@@ -17,6 +17,8 @@ class CreateContractsTable extends Migration
             $table->bigIncrements('id');
             $table->string('user_id');
             $table->string('property_id');
+            $table->string('owner')->nullable();
+            $table->string('dweller')->nullable();
             $table->timestamps();
         });
     }

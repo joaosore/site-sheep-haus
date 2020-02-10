@@ -39,6 +39,10 @@ class CreatePropertiesTable extends Migration
             $table->string('habits_id')->nullable();
             $table->string('user_id')->nullable();
 
+            $table->string('caucao')->nullable();
+            $table->string('mensalidade')->nullable();
+            $table->string('data_vencimento')->nullable();
+
             $table->timestamps();
         });
     }

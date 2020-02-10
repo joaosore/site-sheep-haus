@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Contas
     Route::post('property-account', 'AccountController@store')->name('property-account');
     Route::delete('property-account', 'AccountController@delete')->name('property-account');
+    
 
     // Get colleges
     Route::get('colleges_autocomplete', 'CollegeController@search')->name('CollegeAutocomplete');
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/property/create', 'PropertyController@create')->name('property.create');
         Route::post('/property/store', 'PropertyController@store')->name('property.store');
         Route::put('/property/update/{id}', 'PropertyController@update')->name('property.put');
+
         Route::delete('/property', 'PropertyController@destroy')->name('property.destroy');
         
     });
@@ -152,5 +154,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('chat.store');
 
     Route::get('/immobile/{id}', 'ImmobileController@show')->name('immobile');
+
+    Route::get('/contracts', 'ContractController@index')->name('contracts');
+    Route::get('/contracts/{id}', 'ContractController@show')->name('page-contracts');
+    Route::post('/contracts/{id}/pdf', 'ContractController@contract')->name('contract.upload.file');
+
+
+    // Route::get('/api/contracts/{id}', 'ContractController@show')->name('contracts');
 
 });
