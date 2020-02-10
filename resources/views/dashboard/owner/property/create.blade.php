@@ -24,9 +24,23 @@
 			<div class="bloco-unico-formulario">
 				{{ Form::text('description', null, array('class' => 'input-padrao', 'placeholder' => 'DESCRIÇÂO')) }}
 			</div>
-			<div class="bloco-unico-formulario">
-				
+
+			<div class="bloco-quarto-formulario">
+				{{ Form::label('data_vencimento', 'Data de vecimento',['class'=>'label-texto']) }}
+				{{ Form::text('data_vencimento',null,['class'=>'input-data','placeholder'=>'Data de vecimento']) }}
 			</div>
+			<div class="bloco-quarto-formulario">
+				{{ Form::label('caucao', 'Valor do Caução',['class'=>'label-texto']) }}
+				{{ Form::text('caucao',null,['class'=>'input-data','placeholder'=>'Valor do Caução']) }}
+			</div>
+			<div class="bloco-quarto-formulario">
+				{{ Form::label('mensalidade', 'Valor da Mensalidade',['class'=>'label-texto']) }}
+				{{ Form::text('mensalidade',null,['class'=>'input-data','placeholder'=>'Valor do Mensalidade']) }}
+			</div>
+			<div class="bloco-quarto-formulario">
+			
+			</div>
+
 			<div class="bloco-quarto-formulario">
 					{{ Form::text('number_of_bedrooms',null,array('class'=>'input-padrao','placeholder'=>'Nº DE QUARTOS')) }}
 			</div>
