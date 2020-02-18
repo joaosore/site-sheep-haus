@@ -30,7 +30,7 @@ $.getScript(
     initAutocomplete();
     geolocate();
     mapImoveis.initMap();
-    // maps.parseMaps();
+    maps.parseMaps();
   }
 );
 
