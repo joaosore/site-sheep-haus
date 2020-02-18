@@ -78,3 +78,14 @@
     min-height: 350px;
     width: 100%;
 }
+
+ul.list-three-columns {
+    color: #666;
+    padding-left: 40px;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30%;
+    }
+}

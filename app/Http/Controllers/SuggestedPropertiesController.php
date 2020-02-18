@@ -34,10 +34,14 @@ class SuggestedPropertiesController extends Controller
         $properties = Property::whereIn('id', $imoveis)->get();
 
         $matches = Match::where('user_id', '=', $auth->id)->pluck('property_id')->toArray();
+       
+        $likes = Property::whereIn('id', $matches)->get();
 
         return view('dashboard.dweller.propertes.index', [
             'properties' => $properties,
-            'match' => $matches
+            'match' => $matches,
+            'likes' => $likes,
+            'matches' => []
         ]);
     }
 

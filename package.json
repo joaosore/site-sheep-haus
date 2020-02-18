@@ -28,6 +28,9 @@
         "jquery-mask-plugin": "1.14.16",
         "jquery-ui": "^1.12.1",
         "jquery-validation": "1.19.1",
-        "moment": "2.24.0"
+        "moment": "2.24.0",
+        "owl.carousel": "2.3.4",
+        "owl.carousel2.thumbs": "0.1.8",
+        "photoswipe": "4.1.3"
     }
 }
