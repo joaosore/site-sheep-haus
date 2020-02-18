@@ -94,6 +94,6 @@ class AlertPropertyController extends Controller
             'usuario' => $dweller,
             'property' => $property,
         );
-        return redirect()->route('chats',);
+        return redirect()->route('chats', $dados);
     }
 }
