@@ -64,5 +64,21 @@ return [
     'lista' => 'Lista',
     'config' => 'Config',
     'mapa_intro' => 'Selecione a localização para buscar imóveis no mapa',
-    'caracteristicas' => 'Características'
+    'caracteristicas' => 'Características',
+    'nenhum_match' => 'Nenhum match por enquanto...',
+    'detalhes' => 'Detalhes',
+    'apresentacao' => 'Apresentação',
+    'sobre' => 'Sobre',
+    'moradores' => 'Moradores',
+    'sobre_moradores' => 'Sobre os moradores',
+    'numero_moradores' => 'Número de moradores',
+    'quartos' => 'Quartos',
+    'numero_quartos' => 'Número de quartos',
+    'fotos' => 'Fotos',
+    'localizacao' => 'Localização',
+    'banheiros' => 'Banheiros',
+    'valor' => 'Valor',
+    'caucao' => 'Caução',
+    'despesas_extras' => 'Despesas extras',
+    'total' => 'Total'
 ];

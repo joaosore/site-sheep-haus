@@ -1,8 +1,13 @@
 require("./bootstrap");
 require("jquery-mask-plugin");
+require("owl.carousel");
+require("photoswipe/dist/photoswipe-ui-default");
+// require("photoswipe/dist/default-skin");
+require("photoswipe");
 
 import "./components/scripts";
 import "./components/masks";
+import "./components/carousel";
 import "./components/chat";
 import "./components/tabs";
 import "./components/map-imoveis";

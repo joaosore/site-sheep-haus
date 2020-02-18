@@ -106,7 +106,10 @@
 																{{ Form::hidden('property_id', $property->id) }}
 																{{ Form::hidden('user_id', $property->user_id) }}
 																<div class="links">
-																	{{ Form::submit('CURTIR', ['class' => 'btn btn-sm btn-secondary btn-block']) }}
+																	<a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
+																		{{__('general.detalhes')}}
+																	</a>
+																	{{ Form::submit('Curtir', ['class' => 'btn btn-secondary btn-block']) }}
 																</div>
 															{{ Form::close() }}
 														@endif
@@ -129,32 +132,33 @@
 								<!-- CURTIDOS TAB -->
 								<div class="tab-pane show fade" id="curtidos" role="tabpanel">
 									<div class="row">
-										@foreach ($properties as $property)
-											@if(in_array($property->id ,$match))
-												<div class="col-md-3 box-imovel box box-solid box-default">
-													<div class="box-header with-border">
-														@foreach ($property->galeries as $key => $item)
-															@if($key === 0)
-																<img class="image img-fluid" src="{{ asset('/images/'.$item->src) }}"></img>
-															@endif
-														@endforeach
-														<h3 class="box-title">{{ $property->name }}</h3>                        
-													</div>
-
-													<div class="box-body">
-														<span class="info-box-text info-box-text--resumo">{{ $property->description }}</span>
-														<div class="more-info">
-															<b class="info-box-number">R$ {{ number_format($property->account->SUM('value'), 2, ',', '.') }}</b>
-															<b class="info-box-number"> - {{ $property->property_size }} m²</b>
-														</div>
-														<div style="height: 8px;"></div>
-													</div>
-
-													<div class="box-footer">
-															<span class="badge badge-success">{{ __('general.imovel') }} {{ __('general.curtido') }}</span>
-													</div>
+										@foreach ($likes as $property)
+											<div class="col-md-3 box-imovel box box-solid box-default">
+												<div class="box-header with-border">
+													@foreach ($property->galeries as $key => $item)
+														@if($key === 0)
+															<img class="image img-fluid" src="{{ asset('/images/'.$item->src) }}"></img>
+														@endif
+													@endforeach
+													<h3 class="box-title">{{ $property->name }}</h3>                        
 												</div>
-											@endif
+
+												<div class="box-body">
+													<span class="info-box-text info-box-text--resumo">{{ $property->description }}</span>
+													<div class="more-info">
+														<b class="info-box-number">R$ {{ number_format($property->account->SUM('value'), 2, ',', '.') }}</b>
+														<b class="info-box-number"> - {{ $property->property_size }} m²</b>
+													</div>
+													<div style="height: 8px;"></div>
+												</div>
+
+												<div class="box-footer">
+													<a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
+														{{__('general.detalhes')}}
+													</a>
+													<span class="badge badge-success">{{ __('general.imovel') }} {{ __('general.curtido') }}</span>
+												</div>
+											</div>
 										@endforeach
 
 										@if(sizeof($properties) == 0)
@@ -171,15 +175,13 @@
 								<!-- MATCHES TAB -->
 								<div class="tab-pane show fade" id="matches" role="tabpanel">
 									<div class="row">
-										<div class="col-md-12">
-											<p>Matches aba</p>
-										</div>
-
-										@if(sizeof($properties) == 0)
+										@if(sizeof($matches) == 0)
 											<div class="col-md-12">
-												<br />
-												<p>{{ __('general.nenhum_imovel_sugerido') }}</p>
-												<br /><br /><br />
+												<div class="col-md-12">
+													<br />
+													<p>{{ __('general.nenhum_match') }}</p>
+													<br /><br /><br />
+												</div>
 											</div>
 										@endif
 									</div>

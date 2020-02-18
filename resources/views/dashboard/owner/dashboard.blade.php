@@ -62,6 +62,9 @@
 											<div class="col-md-3"></div>
 											<div class="col-md-6">
 												<a href="{{ route('match_property', [$property->id]) }}" class="btn btn-sm btn-secondary btn-block">Ver matches</a>
+                                                <a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
+                                                    {{__('general.detalhes')}}
+                                                </a>
 											</div>
 										</div>
 
