@@ -16270,6 +16270,35 @@ ul.list-three-columns li {
   width: 30%;
 }
 
+.area-imovel-fotos .owl-carousel .owl-item .item {
+  height: 317px;
+}
+.area-imovel-fotos .owl-carousel .owl-item .item img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+
+.area-imovel-mapa .card .card-header .card-title p {
+  font-size: 14px;
+}
+.area-imovel-mapa .card .card-body {
+  padding-top: 0 !important;
+}
+.area-imovel-mapa .card .card-body .latlng-map {
+  background-color: rgba(0, 0, 0, 0.1);
+  min-height: 204px;
+  position: relative;
+  width: 100%;
+}
+.area-imovel-mapa .card .card-body .latlng-map:before {
+  content: " Carregando mapa... ";
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 65px);
+}
+
 .tab-content .tab-pane {
   padding: 20px 12px 5px;
 }

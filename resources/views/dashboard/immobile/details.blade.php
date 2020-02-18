@@ -29,16 +29,9 @@
 		<div class="row">
 
 			<!-- FOTOS -->
-			<div class="col-md-7">
+			<div class="col-md-7 area-imovel-fotos">
 
 				<div class="card">
-					{{-- <div class="card-header">
-						<div class="row">
-							<div class="col-md-6">
-								<h4 class="card-title"><i class="fa fa-info"></i> {{ __('general.fotos') }}</h4>
-							</div>
-						</div>
-                    </div> --}}
                     
 					<div class="card-body">
                         <div class="owl-carousel owl-theme" data-slider-id="1" id="imovel-photos">
@@ -58,7 +51,7 @@
 			<!-- FOTOS -->
 
 			<!-- MAPA -->
-			<div class="col-md-5">
+			<div class="col-md-5 area-imovel-mapa">
 
 				<div class="card">
 					<div class="card-header">
@@ -71,8 +64,6 @@
                     </div>
                     
 					<div class="card-body">
-                        {{-- {{$immobile->lat}}<br/>
-                        {{$immobile->lng}}<br /> --}}
 					    <div class="latlng-map" data-lat="{{$immobile->lat}}" data-lng="{{$immobile->lng}}"></div>
                     </div>
 				</div>

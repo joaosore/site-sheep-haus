@@ -64263,47 +64263,108 @@ var mapImoveis = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapImovel", function() { return mapImovel; });
 /* harmony import */ var _utils_colors__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/colors */ "./resources/js/utils/colors.js");
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var mapImovel = {
-  $map: null,
-  you: null,
-  map: null,
-  latLng: null,
-  initMap: function initMap(el) {
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+
+var mapImovel =
+/*#__PURE__*/
+function () {
+  function mapImovel() {
+    _classCallCheck(this, mapImovel);
+
+    this.$map = null;
+    this.you = null;
+    this.map = null;
+    this.latLng = null;
     this.setPosition = this.setPosition.bind(this);
-    this.$map = el;
-    this.verifyLocation();
-
-    if (this.$map) {
-      this.map = new google.maps.Map(this.$map, {
-        zoom: 15,
-        options: {
-          styles: _utils_colors__WEBPACK_IMPORTED_MODULE_0__["colors"].mapStyles
-        }
-      });
-    }
-  },
-  setPosition: function setPosition(position) {
-    if (position) {
-      this.map.setCenter({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      });
-      this.you = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      new google.maps.Marker({
-        position: this.you,
-        map: this.map
-      });
-    }
-  },
-  verifyLocation: function verifyLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setPosition);
-    } else {
-      console.warning("não foi possível pegar a localização");
-    }
+    this.verifyLocation = this.verifyLocation.bind(this);
   }
-};
+
+  _createClass(mapImovel, [{
+    key: "initMap",
+    value: function initMap(el) {
+      this.$map = el;
+
+      if (this.$map) {
+        this.map = new google.maps.Map(this.$map, {
+          zoom: 16,
+          options: {
+            styles: _utils_colors__WEBPACK_IMPORTED_MODULE_0__["colors"].mapStyles
+          }
+        });
+      }
+    }
+  }, {
+    key: "setPosition",
+    value: function setPosition(position) {
+      if (position) {
+        this.map.setCenter({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        this.you = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        new google.maps.Marker({
+          position: this.you,
+          map: this.map
+        });
+      }
+    }
+  }, {
+    key: "verifyLocation",
+    value: function verifyLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(this.setPosition);
+      } else {
+        console.warning("não foi possível pegar a localização");
+      }
+    }
+  }]);
+
+  return mapImovel;
+}(); // export const mapImovel = {
+//     $map: null,
+//     you: null,
+//     map: null,
+//     latLng: null,
+//     initMap: function(el) {
+//         this.setPosition = this.setPosition.bind(this);
+//         // console.log('ELEMENT', el);
+//         this.$map = el;
+//         this.verifyLocation();
+//         if (this.$map) {
+//             this.map = new google.maps.Map(this.$map, {
+//                 zoom: 15,
+//                 options: {
+//                     styles: colors.mapStyles
+//                 }
+//             });
+//         }
+//     },
+//     setPosition: function(position) {
+//         if (position) {
+//             this.map.setCenter({
+//                 lat: position.coords.latitude,
+//                 lng: position.coords.longitude
+//             })
+//             this.you = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+//             new google.maps.Marker({
+//                 position: this.you,
+//                 map: this.map
+//             });
+//         }
+//     },
+//     verifyLocation: function() {
+//         if (navigator.geolocation) {
+//             navigator.geolocation.getCurrentPosition(this.setPosition);
+//         } else {
+//             console.warning("não foi possível pegar a localização");
+//         }
+//     },
+// }
 
 /***/ }),
 
@@ -64325,16 +64386,18 @@ __webpack_require__.r(__webpack_exports__);
 var maps = {
   parseMaps: function parseMaps() {
     var imovelMap = document.querySelector('.latlng-map');
-    console.log(imovelMap);
 
     if (imovelMap) {
       var mapJ = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.latlng-map');
-      _map_imovel__WEBPACK_IMPORTED_MODULE_1__["mapImovel"].initMap(imovelMap); // mapImovel.setPosition({
-      //     coords:{
-      //         latitude: mapJ.data('lat'),
-      //         longitude: mapJ.data('lng')
-      //     }
-      // });
+      var map = new _map_imovel__WEBPACK_IMPORTED_MODULE_1__["mapImovel"](); // inicializa o mapa e seta a posição
+
+      map.initMap(imovelMap);
+      map.setPosition({
+        coords: {
+          latitude: mapJ.data('lat'),
+          longitude: mapJ.data('lng')
+        }
+      });
     }
   }
 };
@@ -64466,7 +64529,8 @@ var placeSearch, autocomplete;
 jquery__WEBPACK_IMPORTED_MODULE_0___default.a.getScript("https://maps.googleapis.com/maps/api/js?key=".concat(_utils_settings__WEBPACK_IMPORTED_MODULE_4__["settings"].mapsApiKey, "&libraries=places"), function (data, textStatus, jqxhr) {
   initAutocomplete();
   geolocate();
-  _map_imoveis__WEBPACK_IMPORTED_MODULE_2__["mapImoveis"].initMap(); // maps.parseMaps();
+  _map_imoveis__WEBPACK_IMPORTED_MODULE_2__["mapImoveis"].initMap();
+  _maps__WEBPACK_IMPORTED_MODULE_3__["maps"].parseMaps();
 });
 var componentForm = {
   street_number: "short_name",
@@ -64769,7 +64833,7 @@ function getLocation() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
 var settings = {
-  mapsApiKey: "AIzaSyD7fbc-0RtZt7NykoGjCR22fkQffbPKpCo" // mapsApiKey: "AIzaSyCoYlYpNMG9HHHa0bar_pOPjbNak7ScOic"
+  mapsApiKey: "AIzaSyBl5Al2LRtJfrtCMOTt2HCXpGBdvBh2ATU" // mapsApiKey: "AIzaSyCoYlYpNMG9HHHa0bar_pOPjbNak7ScOic"
 
 };
 
