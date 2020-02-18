@@ -80,5 +80,10 @@ return [
     'valor' => 'Valor',
     'caucao' => 'Caução',
     'despesas_extras' => 'Despesas extras',
-    'total' => 'Total'
+    'total' => 'Total',
+    'novo' => 'Novo',
+    'como_e_seu_imovel' => 'Como é seu imóvel',
+    'editar_informacoes_imovel' => 'Editar informações do imóvel',
+    'perfil_desejado_moradores' => 'Perfil desejado para moradores',
+    'contas_imovel' => 'Contas do imóvel'
 ];

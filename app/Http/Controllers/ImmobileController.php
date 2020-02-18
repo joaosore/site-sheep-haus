@@ -56,10 +56,12 @@ class ImmobileController extends Controller
 
       $characteristics = [];
 
-      foreach($immobile->characteristics_id as $key => $value) {
-          $characteristic = Characteristic::where('id', '=', $value)->first();
-          $characteristics[$key]['id'] = (int) $value;
-          $characteristics[$key]['name'] = $characteristic->name;
+      if ($immobile->characteristics_id) {
+        foreach($immobile->characteristics_id as $key => $value) {
+            $characteristic = Characteristic::where('id', '=', $value)->first();
+            $characteristics[$key]['id'] = (int) $value;
+            $characteristics[$key]['name'] = $characteristic->name;
+        }
       }
 
       $immobile->characteristics = $characteristics;

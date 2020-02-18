@@ -42,11 +42,14 @@
                     
 					<div class="card-body">
                         <div class="owl-carousel owl-theme" data-slider-id="1" id="imovel-photos">
-                            @foreach ($immobile->galeries as $photo)
-                                <div class="item">
-                                    <img class="img-fluid" src="{{ asset('/images/'.$photo->src) }}" />
-                                </div>
-                            @endforeach
+
+							@if (sizeof($immobile->galeries) > 0)
+								@foreach ($immobile->galeries as $photo)
+									<div class="item">
+										<img class="img-fluid" src="{{ asset('/images/'.$photo->src) }}" />
+									</div>
+								@endforeach
+							@endif
                         </div>
                     </div>
 				</div>
@@ -134,9 +137,11 @@
 							<div class="col-md-12">
                                 <h4 class="card-title"><i class="fa fa-home"></i> {{ __('general.sobre') }} <span class="badge badge-secondary">{{ sizeof($immobile->characteristics) }}</span></h4>
                                 <ul class="list-three-columns">
-                                    @foreach ($immobile->characteristics as $characteristic)
-                                        <li>{{$characteristic['name']}}</li>
-                                    @endforeach
+									@if (sizeof($immobile->characteristics) > 0)
+										@foreach ($immobile->characteristics as $characteristic)
+											<li>{{$characteristic['name']}}</li>
+										@endforeach
+									@endif
                                 </ul>
 							</div>
 						</div>
@@ -151,9 +156,11 @@
 							<div class="col-md-12">
                                 <h4 class="card-title"><i class="fa fa-user"></i> {{ __('general.sobre_moradores') }}</h4>
                                 <ul class="list-three-columns">
-                                    @foreach ($immobile->habit as $habit)
-                                        <li>{{$habit}}</li>
-                                    @endforeach
+									@if (sizeof($immobile->habit) > 0)
+										@foreach ($immobile->habit as $habit)
+											<li>{{$habit}}</li>
+										@endforeach
+									@endif
                                 </ul>
 							</div>
 						</div>
