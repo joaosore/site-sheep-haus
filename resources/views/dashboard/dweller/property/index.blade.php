@@ -39,10 +39,13 @@
 									</header>
 								<p class="texto">{{ $contract->property->description }}</p>
 								@if($type)
-									<footer class="info-item">
-										<a href="{{ route('vacancies') }}" class="botao-padrao">{{ __('general.administrar_vagas') }}</a>
-									</footer>
+									@if($contrato_assing)
+										<footer class="info-item">
+											<a href="{{ route('vacancies') }}" class="botao-padrao">{{ __('general.administrar_vagas') }}</a>
+										</footer>
+									@endif
 								@endif
+								<a href="{{ route('page-contracts', [$contract->id]) }}">Ver contrato</a>
 								</div>
 							@endif
 			

@@ -151,12 +151,15 @@
 													</div>
 													<div style="height: 8px;"></div>
 												</div>
-
-												<div class="box-footer">
-													<a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
-														{{__('general.detalhes')}}
-													</a>
-													<span class="badge badge-success">{{ __('general.imovel') }} {{ __('general.curtido') }}</span>
+													<div class="box-footer">
+															<span class="badge badge-success">{{ __('general.imovel') }} {{ __('general.curtido') }}</span>
+															{{ Form::open(array('route' => 'contract', 'method' => 'post')) }}
+																{{ Form::hidden('property_id', $property->id) }}
+																<div class="links">
+																	{{ Form::submit('FECHAR CONTRATO', ['class' => 'btn btn-sm btn-secondary btn-block']) }}
+																</div>
+															{{ Form::close() }}
+													</div>
 												</div>
 											</div>
 										@endforeach

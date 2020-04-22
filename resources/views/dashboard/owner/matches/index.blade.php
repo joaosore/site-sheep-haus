@@ -89,21 +89,26 @@
 							@if(empty($contract))
 								{{ Form::open(array('route' => 'contract', 'method' => 'post')) }}
 		
-								{{ Form::hidden('user_id', $macth->id) }}
+								{{ Form::hidden('locator_id', $macth->id) }}
 								{{ Form::hidden('property_id', $property->id) }}
 								<div class="links">
+									@if($tenant_interest)
 									{{ Form::submit('Assinar', ['class'=>'btn btn-secondary btn-sm']) }}
+									@else
+									{{ Form::button('Aguardando confirmação', ['class'=>'btn btn-secondary btn-sm']) }}
+									@endif
 								</div>
 								{{ Form::close() }}
 							@else
 								{{ Form::open(array('route' => 'contract', 'method' => 'delete')) }}
 		
-								{{ Form::hidden('user_id', $macth->id) }}
+								{{ Form::hidden('locator_id', $macth->id) }}
 								{{ Form::hidden('property_id', $property->id) }}
 								<div class="links">
 								{{ Form::submit('Cancelar', ['class'=>'btn btn-danger btn-sm']) }}
 								</div>
 								{{ Form::close() }}
+								<a href="{{ route('page-contracts', [$contract_id]) }}">Ver contrato</a>
 							@endif
 							
 							</section>

@@ -57,14 +57,15 @@ Route::group(['middleware' => ['auth']], function () {
     //VMatch
     Route::post('v_match', 'VMacthesController@store')->name('v_match');
 
+    //Close contract
+    Route::post('/contract', 'ContractController@store')->name('contract');
+    Route::put('/contract', 'ContractController@update')->name('contract');
+    Route::delete('/contract', 'ContractController@destroy')->name('contract');
+
     Route::group(['middleware' => ['checkproperty']], function () {
         
         //Views Match Imovel
         Route::get('/match/property/{id}', 'PropertyMatchesController@show')->name('match_property');
-
-        //Close contract
-        Route::post('/contract', 'ContractController@store')->name('contract');
-        Route::delete('/contract', 'ContractController@destroy')->name('contract');
 
         // Alert
         Route::get('/alert/property/{id}', 'AlertPropertyController@index')->name('alert.index');

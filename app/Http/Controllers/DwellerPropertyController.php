@@ -17,21 +17,26 @@ class DwellerPropertyController extends Controller
 
         $type = true;
 
-        $contract = Contract::where('user_id', '=', $auth->id)->first();
+        $contract = Contract::where('tenant_id', '=', $auth->id)->first();
 
-        if(empty($contract)){
-            $contract = VContract::where('user_id', '=', $auth->id)->first();
-            $contract->vacancy;
-            $type = false;
+        if($contract) { 
+            $contrato_assing = true;
+            if($contract->locator_pdf === null || $contract->tenant_pdf === null) {
+                $contrato_assing = false;
+            }
+        } else {
+            $contrato_assing = true;
         }
 
         if(!empty($contract)){
             $contract->property;
         }
         
+
         return view('dashboard.dweller.property.index', [
             'contract' => $contract,
-            'type' => $type
+            'type' => $type,
+            'contrato_assing' => $contrato_assing
         ]);
     }
 }

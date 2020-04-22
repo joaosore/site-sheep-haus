@@ -46,6 +46,7 @@ class MacthController extends Controller
                             ->where('to', '=', $auth_login)
                             ->where('property_id', '=', $request->property_id)
                             ->first();
+                            
             if(empty($message)) {
                 Message::create([
                     'property_id' => (int) $request->property_id,

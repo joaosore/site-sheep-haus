@@ -45,8 +45,9 @@
 									@if(!in_array($vacancy->id, $matches))
 									{{ Form::open(array('route' => 'v_match', 'method' => 'post')) }}
 										{{ Form::hidden('vacancy_id', $vacancy->id) }}
+										{{ Form::hidden('user_id', $vacancy->user_id) }}
 										<div class="links">
-											{{ Form::submit('Match') }}
+											{{ Form::submit('CURTIR') }}
 										</div>
 									{{ Form::close() }}
 									@endif

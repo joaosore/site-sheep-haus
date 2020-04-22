@@ -13,7 +13,7 @@ class MessageControllers extends Controller
 {
 
     public function index() {
-        return view('dashboard.chat.index ');
+        return view('dashboard.chat.index');
     }
 
     public function subject($recipient, $property) {
