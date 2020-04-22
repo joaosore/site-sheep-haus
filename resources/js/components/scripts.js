@@ -1,6 +1,7 @@
 import $ from "jquery";
 import "bootstrap-3-typeahead";
 import { mapImoveis } from "./map-imoveis";
+import { maps } from "./maps";
 import { settings } from "../utils/settings";
 
 var course = $("#course_id").data("route");
@@ -29,6 +30,7 @@ $.getScript(
     initAutocomplete();
     geolocate();
     mapImoveis.initMap();
+    maps.parseMaps();
   }
 );
 

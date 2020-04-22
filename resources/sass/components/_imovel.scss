@@ -78,3 +78,62 @@
     min-height: 350px;
     width: 100%;
 }
+
+// DETALHES imovel
+
+ul.list-three-columns {
+    color: #666;
+    padding-left: 40px;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        width: 30%;
+    }
+}
+
+.area-imovel-fotos {
+    .owl-carousel {
+        .owl-item {
+            .item {
+                height: 317px;
+
+                img {
+                    height: 100%;
+                    object-fit: cover;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+.area-imovel-mapa {
+    .card {
+        .card-header {
+            .card-title {
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        .card-body {
+            padding-top: 0 !important;
+
+            .latlng-map {
+                background-color: rgba(0,0,0,.1);
+                min-height: 204px;
+                position: relative;
+                width: 100%;
+            
+                &:before {
+                    content: " Carregando mapa... ";
+                    position: absolute;
+                    top: calc(50% - 11px);
+                    left: calc(50% - 65px);
+                }
+            }
+        }
+    }
+}

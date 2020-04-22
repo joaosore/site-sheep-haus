@@ -59,6 +59,10 @@
 										<div class="row">
 											<div class="col-md-12">
 												<a href="#" class="btn btn-info btn-block">DESTACAR ANÚNCIO</a>
+												
+                                                <a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
+                                                    {{__('general.detalhes')}}
+                                                </a>
 											</div>
 										</div>
 

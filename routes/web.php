@@ -155,6 +155,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('chats/{recipient}/{property}','MessageControllers@store')->name('chat.store');
 
     Route::get('/immobile/{id}', 'ImmobileController@show')->name('immobile');
+    Route::get('/immobile/{id}/details', 'ImmobileController@details')->name('immobile.details');
 
     Route::get('/contracts', 'ContractController@index')->name('contracts');
     Route::get('/contracts/{id}', 'ContractController@show')->name('page-contracts');

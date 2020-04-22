@@ -44,6 +44,9 @@
 											<b class="info-box-number">R$ {{ number_format($property->account->SUM('value'), 2, ',', '.') }}</b>
 											<b class="info-box-number"> - {{ $property->property_size }} m²</b>
 										</div>
+										<a href="{{route('immobile.details', ['id'=> $property->id])}}" class="btn btn-sm btn-link btn-block">
+											{{__('general.detalhes')}}
+										</a>
 										<div style="height: 8px;"></div>
 									</div>
 								</div>
