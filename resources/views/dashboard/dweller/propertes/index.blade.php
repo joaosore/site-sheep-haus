@@ -152,6 +152,12 @@
 
 													<div class="box-footer">
 															<span class="badge badge-success">{{ __('general.imovel') }} {{ __('general.curtido') }}</span>
+															{{ Form::open(array('route' => 'contract', 'method' => 'post')) }}
+																{{ Form::hidden('property_id', $property->id) }}
+																<div class="links">
+																	{{ Form::submit('FECHAR CONTRATO', ['class' => 'btn btn-sm btn-secondary btn-block']) }}
+																</div>
+															{{ Form::close() }}
 													</div>
 												</div>
 											@endif

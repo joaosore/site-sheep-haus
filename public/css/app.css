@@ -12699,20 +12699,16 @@ section.formulario--cadastro textarea.input-padrao {
   box-shadow: -1px 1px 3px #c1c8d7;
   margin: 5px 0;
 }
-section.formulario--cadastro input.input-padrao::-webkit-input-placeholder,
-section.formulario--cadastro textarea.input-padrao::-webkit-input-placeholder {
+section.formulario--cadastro input.input-padrao::-webkit-input-placeholder, section.formulario--cadastro textarea.input-padrao::-webkit-input-placeholder {
   color: #c1c8d7;
 }
-section.formulario--cadastro input.input-padrao::-moz-placeholder,
-section.formulario--cadastro textarea.input-padrao::-moz-placeholder {
+section.formulario--cadastro input.input-padrao::-moz-placeholder, section.formulario--cadastro textarea.input-padrao::-moz-placeholder {
   color: #c1c8d7;
 }
-section.formulario--cadastro input.input-padrao:-ms-input-placeholder,
-section.formulario--cadastro textarea.input-padrao:-ms-input-placeholder {
+section.formulario--cadastro input.input-padrao:-ms-input-placeholder, section.formulario--cadastro textarea.input-padrao:-ms-input-placeholder {
   color: #c1c8d7;
 }
-section.formulario--cadastro input.input-padrao::-ms-input-placeholder,
-section.formulario--cadastro textarea.input-padrao::-ms-input-placeholder {
+section.formulario--cadastro input.input-padrao::-ms-input-placeholder, section.formulario--cadastro textarea.input-padrao::-ms-input-placeholder {
   color: #c1c8d7;
 }
 section.formulario--cadastro input.input-padrao::placeholder,

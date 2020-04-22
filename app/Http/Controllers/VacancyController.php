@@ -20,13 +20,14 @@ class VacancyController extends Controller
 
         $user = Auth::user();
         
-        $property = Contract::where('user_id', '=', $user->id)->first('property_id');
-        $vcontract = VContract::where('property_id', '=', $property->property_id)->pluck('vacancy_id')->toArray();
+        $property = Contract::where('tenant_id', '=', $user->id)->first();
+        // $vcontract = VContract::where('property_id', '=', $property->property_id)->pluck('vacancy_id')->toArray();
+        
         $vagas = Vacancy::where('user_id', '=', $user->id)->get();
         return view('dashboard.dweller.property.vacancies.index', [
             'property' => $property,
             'vagas' => $vagas,
-            'vcontract' => $vcontract
+            // 'vcontract' => $vcontract
         ]);
 
     }

@@ -16,18 +16,29 @@ class PropertyMatchesController extends Controller
     public function show($id) {
 
         $dados = [];
+        $tenant_interest = Contract::where('property_id', '=', $id)->first();
+        $contract = Contract::where('property_id', '=', $id)->pluck('locator_id')->toArray();
 
-        $contract = Contract::where('property_id', '=', $id)->pluck('user_id')->toArray();
         $macth = Match::where('property_id', '=', $id)->pluck('user_id')->toArray();
         
-        $users_contracts = Contract::pluck('user_id')->toArray();
+        $users_contracts = Contract::pluck('locator_id')->toArray();
 
         if(!empty($contract)) {
             $user_id = $contract;
         } else {
             $user_id = array_diff($macth, $users_contracts);
         }
+
+        if(!empty($tenant_interest)) {
+            $contract_id = $tenant_interest->id;
+            $tenant_interest = $tenant_interest->tenant_interest;
+        } else {
+            $tenant_interest = '';
+            $contract_id = '';
+        }
         
+        
+
         $Users_macth = User::whereIn('id', $user_id)->get();
         
         $habit_id = IHabit::where('property_id', '=', $id)->pluck('habit_id')->toArray();
@@ -40,13 +51,15 @@ class PropertyMatchesController extends Controller
         $Alerts = Alert::where('property_id', '=', $id)->pluck('user_id')->toArray();
 
         $Property = Property::find($id);
-
+        
         return view('dashboard.owner.matches.index', [
             'matchs' => $Users_macth,
             'contract' => $contract,
             'property' => $Property,
             'alerts' => $Users_alerts,
-            'create_alerts' => $Alerts
+            'create_alerts' => $Alerts,
+            'tenant_interest' => $tenant_interest,
+            'contract_id' => $contract_id
         ]);
     }
 }

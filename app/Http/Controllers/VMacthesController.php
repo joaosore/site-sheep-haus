@@ -37,7 +37,7 @@ class VMacthesController extends Controller
             $contract = Contract::where('property_id', '=', $vacancy->property_id)->first();
             $property = Property::where('id', '=', $contract->property_id)->first();
 
-            VMatch::create($dados);
+            // VMatch::create($dados);
 
             $message = Message::where('from', '=', $auth_login)
                             ->where('to', '=', $request->user_id)
@@ -46,11 +46,14 @@ class VMacthesController extends Controller
                             ->where('to', '=', $auth_login)
                             ->where('property_id', '=', $request->property_id)
                             ->first();
+            
+            return $message;
+
             if(empty($message)) {
                 Message::create([
                     'property_id' => (int) $contract->property_id,
                     'from' => (int) $auth->id,
-                    'to' => (int) $contract->user_id,
+                    'to' => (int) $request->user_id,
                     'last_mensagem' => 'Macth na Vaga ' . $property->name
                 ]);
             } else {
@@ -60,9 +63,9 @@ class VMacthesController extends Controller
                 ];
 
                 Message::where('from', '=', $auth_login)
-                    ->where('to', '=', $contract->user_id)
+                    ->where('to', '=', $request->user_id)
                     ->where('property_id', '=', $contract->property_id)
-                    ->orWhere('from', '=', $contract->user_id)
+                    ->orWhere('from', '=', $request->user_id)
                     ->where('to', '=', $auth_login)
                     ->where('property_id', '=', $contract->property_id)
                     ->update($last_mensagem);
@@ -71,7 +74,7 @@ class VMacthesController extends Controller
             Subject::create([
                 'property_id' => (int) $contract->property_id,
                 'from' => (int) $auth->id,
-                'to' => (int) $contract->user_id,
+                'to' => (int) $request->user_id,
                 'mensagem' => 'Macth na Vaga ' . $property->name
             ]);
 
@@ -85,6 +88,6 @@ class VMacthesController extends Controller
             'owner' => (object) $owner
         );
 
-        return redirect()->route('chats');
+        // return redirect()->route('chats');
     }
 }

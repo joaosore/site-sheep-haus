@@ -134,3 +134,15 @@ function initMap(geolocation) {
     map: map
   });
 }
+
+$('input[type="file"]').bind('change', function() {
+  let filesize = this.files[0].size // On older browsers this can return NULL.
+  let filesizeMB = (filesize / (1024*1024)).toFixed(2);
+
+  if(filesizeMB <= 5) {
+  } else {
+    alert('Somente arquivos menores que 5MB são permitidos');
+    $(this).val('');
+  }
+
+});

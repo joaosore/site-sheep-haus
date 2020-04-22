@@ -24,6 +24,7 @@ class DashboardController extends Controller
         $user = Auth::user();
         $auth_login = $user->id;
 
+        
         $mensages = Message::where('from', '=', $auth_login)->orWhere('to', '=', $auth_login)->orderByRaw('updated_at DESC')->get();
 
         if($user->function === 'M') {
@@ -31,7 +32,7 @@ class DashboardController extends Controller
             $auth = Auth::user();
             $user = User::where('id', '=', $auth->id)->first();
             $contract = Contract::pluck('property_id')->toArray();
-
+            
             $mhabit = [];
             $ihabit = [];
             $match = [];

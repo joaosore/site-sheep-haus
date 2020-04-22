@@ -15,10 +15,12 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_id');
-            $table->string('property_id');
-            $table->string('owner')->nullable();
-            $table->string('dweller')->nullable();
+            $table->string('property_id')->nullable();
+            $table->string('locator_id')->nullable();
+            $table->string('tenant_id')->nullable();
+            $table->enum('tenant_interest', ['true', 'false'])->default('false');
+            $table->string('locator_pdf')->nullable();
+            $table->string('tenant_pdf')->nullable();
             $table->timestamps();
         });
     }
